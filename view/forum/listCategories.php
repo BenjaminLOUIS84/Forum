@@ -31,7 +31,7 @@
     </div>
     <div class="ban">
         <figure>
-            <img src="./public/img/cuisine2.jpg" class="images" alt="Navarin d'Agneau">
+            <img src="./public/img/cuisine2.jpg" class="images" alt="Rösti oeufs aux légumes">
         </figure>
     </div>
     <div class="ban">
