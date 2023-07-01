@@ -5,6 +5,7 @@
 <h2>LES POSTS</h2>
 
 <div class="topicP">
+   
     <table>
         <thead>
             <tr>

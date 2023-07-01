@@ -34,9 +34,9 @@
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
-        public function listTopics($idCategory){                // Fonction pour afficher la liste de tout les Topics selon la catégorie
+        public function listTopics($idCategory){        // Fonction pour afficher la liste de tout les Topics selon la catégorie
             
-            $topicManager = new TopicManager();         // Instancier ces variables pour accéder aux méthodes de leurs classes 
+            $topicManager = new TopicManager();         // Instancier cette variable pour accéder aux méthodes de la classe 
 
             return [
                 "view" => VIEW_DIR."forum/listTopics.php",
@@ -61,12 +61,13 @@
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //TEST Combiner les fonctions natives du framework et les managers dans une fonction spécifique.
-        //Cela nécessite d'ajouter aussi 2 variables $userManager et $postManager dans listPosts.php
+        //Cela nécessite d'ajouter aussi 2 variables $topicManager et $postManager dans listPosts.php
         
         public function listPosts($idTopic){
 
             //Instancier ces variables pour accéder aux méthodes de leurs classes
             $postManager = new PostManager();
+            $topicManager = new TopicManager();
 
             return [
                 "view" => VIEW_DIR."forum/listPosts.php",
@@ -76,7 +77,6 @@
                         ? $postManager->findListByIdDep($idTopic, "Topic", ["dateCreate", "DESC"])
                         : $postManager->findAll(["dateCreate", "DESC"])
                     )
-            
                 ]
             ];
         }
