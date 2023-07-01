@@ -17,3 +17,7 @@
     
 </div>
 
+<figure>
+    <img src="./public/img/cuisine1.jpg" class="baniere" alt="Soupe au pistou revisitée">
+</figure>
+

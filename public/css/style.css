@@ -1,3 +1,5 @@
+/*PARAM LE CORPS DU SITE*/
+
 body {
     text-align: center;
     font-family: cursive;
@@ -7,6 +9,8 @@ body {
 #forum {
     height: 450px;
 }
+
+/* METTRE UNE VIDEO EN ARRIERE PLAN DE LA PAGE D'ACCUEIL */
 
 #background-video {
     height: 100vh;
@@ -20,20 +24,10 @@ body {
     z-index: -1;
     opacity: 70%;
 }
-    
-.topicT {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 40px;
-    margin-top: 40px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
-    backdrop-filter: blur(8px);
-}
+ 
+/*PARAM L'AJUSTEMENT DES DIFFERENTES RUBRIQUES DU COEUR DU SITE*/
 
-.topicT a {
-    padding: 5px;
-    box-shadow: 0px 6px 10px black;
-}
+/*PAGE Liste des Catégories*/
 
 .topicC {
     display: flex;
@@ -46,6 +40,30 @@ body {
     justify-content: space-evenly;
 }
 
+.baniere {
+    width: 50%;
+}
+
+/*PAGE Liste des Topics*/
+
+.topicT {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+    backdrop-filter: blur(8px);
+}
+
+/*BOUTONS ENTRER*/
+
+.topicT a {
+    padding: 5px;
+    box-shadow: 0px 6px 10px black;
+}
+
+/*PAGE Liste des Posts*/
+
 .topicP {
     display: flex;
     flex-direction: column;
@@ -55,10 +73,21 @@ body {
     backdrop-filter: blur(8px);
 }
 
+/*BOUTONS LIRE*/
+
 .topicP a {
     padding: 5px;
     box-shadow: 0px 6px 10px black;
 }
+
+/*COMMUN AUX PAGES Liste des Topics et Liste des Posts*/
+
+th,
+td {
+    padding: 10px;
+}
+
+/*PARAM LES TITRES ET LES LIENS DE NAVIGATION*/
 
 h1 {
     color: black;
@@ -73,7 +102,6 @@ a {
     color: white;
     padding: 18px;
     font-size: 1.2em;
-    
 }
 
 a:hover {
@@ -83,10 +111,7 @@ a:hover {
     opacity: 70%;
 }
 
-th,
-td {
-    padding: 10px;
-}
+/*PARAM LE MENU ET LE PIED DE PAGE*/
 
 footer,
 nav {
