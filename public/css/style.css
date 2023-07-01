@@ -49,7 +49,7 @@ body {
     }
 
     100% {
-        transform: translateX(calc(-250px * 5));
+        transform: translateX(calc(-250px * 10));
     }
 }
 
@@ -71,7 +71,7 @@ body {
     scroll-snap-align: start;
 
     /* Pour centrer la première image du caroussel et gérer l'espace entre les images*/
-    width: 50%;
+    width: 40%;
     max-width: 1000px;
 
     /*Pour scroller auto*/
@@ -79,7 +79,7 @@ body {
 }
 
 .images {
-    width: 90%;
+    width: 95%;
     opacity: 50%;
 }
 
