@@ -6,6 +6,6 @@
     <a href="/security/register.html">S'inscrire</a> -->
 </p>
 
-<!-- <video id="background-video" autoplay loop muted>
+<video id="background-video" autoplay loop muted>
     <source src="public/videos/demo.mp4" type="video/mp4">
-</video> -->
+</video>

@@ -8,7 +8,7 @@ body {
     height: 450px;
 }
 
-/* #background-video {
+#background-video {
     height: 100vh;
     width: 100vw;
     object-fit: cover;
@@ -19,7 +19,7 @@ body {
     bottom: 0;
     z-index: -1;
     opacity: 70%;
-} */
+}
     
 .topicT {
     display: flex;
