@@ -40,8 +40,47 @@ body {
     justify-content: space-evenly;
 }
 
+
+/*Banière contenant plusieurs images qui défilent automatiquement dans la page Liste des Catégories*/
+
 .baniere {
-    width: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background: whitesmoke;
+    padding-top: 50px;
+    padding-bottom: 200px;
+
+    /*Effet de défilement Auto*/
+    position: relative;
+    overflow: auto;
+    justify-content: left;
+    scroll-snap-type: x mandatory;
+}
+
+.ban {
+    position: sticky;
+    object-fit: cover;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+
+    /* Pour centrer la première image du caroussel et gérer l'espace entre les images*/
+    width: 50%;
+    max-width: 1000px;
+
+    /*Pour scroller auto*/
+    animation: scroll 20s linear infinite;
+
+}
+
+.images {
+    width: 70%;
+    align-items: center;
+    opacity: 50%;
+}
+
+.images:hover {
+    opacity: 100%;
 }
 
 /*PAGE Liste des Topics*/
@@ -60,6 +99,20 @@ body {
 .topicT a {
     padding: 5px;
     box-shadow: 0px 6px 10px black;
+}
+
+/*Image en arrière plan commune à tous les Topics de toute les catégories*/
+
+.photo {
+    width: 100%;
+    object-fit: cover;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+    opacity: 70%;
 }
 
 /*PAGE Liste des Posts*/
@@ -85,20 +138,6 @@ body {
 th,
 td {
     padding: 10px;
-}
-
-/*IMAGE EN ARRIERE PLAN*/
-
-.photo {
-    width: 100%;
-    object-fit: cover;
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    z-index: -1;
-    opacity: 70%;
 }
 
 /*PARAM LES TITRES ET LES LIENS DE NAVIGATION*/
