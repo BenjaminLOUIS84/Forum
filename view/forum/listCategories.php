@@ -17,7 +17,8 @@
     
 </div>
 
-<div class="baniere">
+<!-- banière contenant plusieurs images qui défilent automatiquement -->
+<div id="baniere">
     <div class="ban">
         <figure>
             <img src="./public/img/cuisine1.jpg" class="images" alt="Soupe au pistou revisitée">

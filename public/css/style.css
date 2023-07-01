@@ -32,7 +32,6 @@ body {
 .topicC {
     display: flex;
     flex-direction: row;
-    margin-bottom: 40px;
     margin-top: 40px;
     padding: 2px;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
@@ -40,16 +39,23 @@ body {
     justify-content: space-evenly;
 }
 
-
 /*Banière contenant plusieurs images qui défilent automatiquement dans la page Liste des Catégories*/
 
-.baniere {
+/* Animation Scroller les caroussels automatiquement*/
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(calc(-250px * 5));
+    }
+}
+
+#baniere {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    background: whitesmoke;
-    padding-top: 50px;
-    padding-bottom: 200px;
 
     /*Effet de défilement Auto*/
     position: relative;
@@ -70,12 +76,10 @@ body {
 
     /*Pour scroller auto*/
     animation: scroll 20s linear infinite;
-
 }
 
 .images {
-    width: 70%;
-    align-items: center;
+    width: 90%;
     opacity: 50%;
 }
 
