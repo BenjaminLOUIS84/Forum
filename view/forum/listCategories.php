@@ -17,7 +17,8 @@
     
 </div>
 
-<figure>
-    <img src="./public/img/cuisine1.jpg" class="baniere" alt="Soupe au pistou revisitée">
-</figure>
-
+<div class="baniere">
+    <!-- <figure>
+        <img src="./public/img/cuisine1.jpg" class="photo" alt="Soupe au pistou revisitée">
+    </figure> -->
+</div>

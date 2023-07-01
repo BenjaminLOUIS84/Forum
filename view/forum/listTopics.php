@@ -16,7 +16,7 @@
             </tr>
         </thead>
         <?php
-            foreach($topics as $topic){// On fait un foreach pour afficher tous les Topics
+            foreach($topics as $topic){// On fait un foreach pour afficher tous les Topics dans un tableau
                 ?>
                     <tbody>
                         <tr>
@@ -35,4 +35,10 @@
     </table>
 </div>
 
+<!-- Image en arrière plan -->
+<figure>
+    <img src="./public/img/cuisine1.jpg" class="photo" alt="Soupe au pistou revisitée">
+</figure>
+
+<!-- Lien vers la liste des Catégories -->
 <a href="index.php?ctrl=forum&action=listCategories">Retour</a>

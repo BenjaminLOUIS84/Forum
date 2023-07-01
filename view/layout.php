@@ -58,6 +58,11 @@
                     <!-- Pour faire la temporisation de sortie -->
                     <!-- Renvoi les différents contenus respectifs de chaque rubriques -->
                     <?= $page ?>
+                                
+                    <!-- <figure>
+                        <img src="./public/img/cuisine1.jpg" class="photo" alt="Soupe au pistou revisitée">
+                    </figure> -->
+
                 </main>
             </div>
             <footer>
