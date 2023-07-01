@@ -31,7 +31,7 @@
     </div>
     <div class="ban">
         <figure>
-            <img src="./public/img/cuisine2.jpg" class="images" alt="Rösti oeufs aux légumes">
+            <img src="./public/img/cuisine5.jpg" class="images" alt="Foie de veu en persillade, pomme de terre rôties et champignons">
         </figure>
     </div>
     <div class="ban">
@@ -51,7 +51,7 @@
     </div>
     <div class="ban">
         <figure>
-            <img src="./public/img/cuisine5.jpg" class="images" alt="Foie de veu en persillade, pomme de terre rôties et champignons">
+            <img src="./public/img/cuisine2.jpg" class="images" alt="Rösti oeufs aux légumes">
         </figure>
     </div>
 </div>
