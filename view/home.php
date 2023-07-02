@@ -1,4 +1,4 @@
-<h1>BIENVENUE SUR LE FORUM</h1>
+<h1>BIENVENUE SUR LE FORUM DEV COOK</h1>
 
 <p>
     <!-- <a href="/security/login.html">Se connecter</a>
