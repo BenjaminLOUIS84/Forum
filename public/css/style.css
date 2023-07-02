@@ -144,6 +144,10 @@ td {
     padding: 10px;
 }
 
+thead {
+    box-shadow: 0px 6px 10px black;
+}
+
 /*PARAM LES TITRES ET LES LIENS DE NAVIGATION*/
 
 h1 {
