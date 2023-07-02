@@ -1,6 +1,6 @@
 <?php
     $posts = $result["data"]['posts'];// Ces variables permettent d'accéder et d'afficher les informations demandées dans cette page
-    // $posts = $result["data"]['topics'];// Ces variables permettent d'accéder et d'afficher les informations demandées dans cette page
+    $topics = $result["data"]['topics'];// Ces variables permettent d'accéder et d'afficher les informations demandées dans cette page
 ?>
 
 <h2>LES POSTS</h2>
@@ -17,7 +17,8 @@
             </tr>
         </thead>
         <?php
-            foreach($posts as $post){// On fait un foreach pour afficher tous les Posts
+            foreach($posts as $post){// On fait un foreach pour permettre l'affichage des infos de tous les Posts
+                
                 ?>
                 <tbody>
                     <tr>
@@ -29,10 +30,17 @@
                         <td><a href="index.php?ctrl=forum&action=detailPost&id=<?=$post->getId()?>">LIRE</a><td>  
                     </tr>
                 </tbody>
-                <?php
+                <?php 
             }
-            // Afficher le Topic et ses informations du Post sélectionné
-            //echo $post->getUser()->getPseudo()." ".$post->getDateCreate();
+            foreach ($topics as $topic) {
+               $topic->getId();
+            }
+            // Afficher le titre du Topic sélectionné
+            echo "<div class='titre'>".$topic->getTitle()."</div>";
+            ?>
+            <!-- Lien pour créer un nouveau Post -->
+            <a href="#">Créer un nouveau Post</a>
+            <?php
             
         ?>
     </table>      

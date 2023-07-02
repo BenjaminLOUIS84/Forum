@@ -66,7 +66,7 @@
 
             //Instancier ces variables pour accéder aux méthodes de leurs classes
             $postManager = new PostManager();
-            // $topicManager = new TopicManager();
+            $topicManager = new TopicManager();
 
             return [
                 "view" => VIEW_DIR."forum/listPosts.php",
@@ -75,7 +75,8 @@
                         isset($idTopic)
                         ? $postManager->findListByIdDep($idTopic, "Topic", ["dateCreate", "DESC"])
                         : $postManager->findAll(["dateCreate", "DESC"])
-                    )
+                    ),
+                    "topics" => $topicManager->findAll()
                 ]
             ];
         }
