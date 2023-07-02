@@ -18,7 +18,7 @@
             return listCategories();
         }
 
-        public function listCategories(){                        // Fonction pour afficher la liste de toute les catégories
+        public function listCategories(){               // Fonction pour afficher la liste de toute les catégories
             
             $categoryManager = new CategoryManager();   // Instancier cette variable pour accéder aux méthodes de la classe
 

@@ -4,13 +4,6 @@
 
 <h2>LES TOPICS</h2>
 
-<?php //Afficher le nom de la Catégorie sélectionné
-    
-    // $topic = $topics->fetch();
-    // echo $topic->getCategory()->getName();
-    
-?>
-
 <div class="topicT">
     <table>
         <thead>
@@ -39,6 +32,8 @@
                     
                 <?php
             }
+            // Afficher le nom de la Catégorie sélectionnée
+            echo $topic->getCategory()->getName();
         ?>
     </table>
 </div>
