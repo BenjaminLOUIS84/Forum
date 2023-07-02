@@ -5,6 +5,15 @@
 
 <h2>LES POSTS</h2>
 
+<?php //Afficher le Topic sélectionné avec ses informations
+
+    // foreach($topics as $topic){
+    //     $topic->getCategory()->getName();
+    // }
+    // echo "Cuisine";
+    // echo $result->getName();
+?>
+
 <div class="topicP">
    
     <table>

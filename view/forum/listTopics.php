@@ -4,6 +4,15 @@
 
 <h2>LES TOPICS</h2>
 
+<?php //Afficher le nom de la Catégorie sélectionné
+
+    // foreach($topics as $topic){
+    //     $topic->getCategory()->getName();
+    // }
+    // echo "Cuisine";
+    // echo $result->getName();
+?>
+
 <div class="topicT">
     <table>
         <thead>
