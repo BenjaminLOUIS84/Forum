@@ -32,12 +32,18 @@
                 </tbody>
                 <?php 
             }
+
             foreach ($topics as $topic) {
-               $topic->getId();
+               $topic->getTitle();
             }
+
             // Afficher le titre du Topic sélectionné
-            echo "<div class='titre'>".$topic->getTitle()."</div>";
+
+            echo "<div class='titre'>".$topic->getTitle()." ".$topic->getId()."</div>";
+
+            //echo "<div class='titre'>".$post->getTopic()->getId()."</div>";
             ?>
+
             <!-- Lien pour créer un nouveau Post -->
             <a href="#">Créer un nouveau Post</a>
             <?php
