@@ -49,5 +49,6 @@
     <img src="./public/img/patisserie1.jpg" class="photo" alt="Paris-Brest">
 </figure>
 
+<!-- Trouver une solution pour gérer le retour vers la liste des Topics selon la catégorie -->
 <a class="retour" href="index.php?ctrl=forum&action=listTopics&id=1">Retour</a>
     

@@ -5,12 +5,10 @@
 <h2>LES TOPICS</h2>
 
 <?php //Afficher le nom de la Catégorie sélectionné
-
-    // foreach($topics as $topic){
-    //     $topic->getCategory()->getName();
-    // }
-    // echo "Cuisine";
-    // echo $result->getName();
+    
+    // $topic = $topics->fetch();
+    // echo $topic->getCategory()->getName();
+    
 ?>
 
 <div class="topicT">
@@ -38,6 +36,7 @@
                             <td><a href="index.php?ctrl=forum&action=listPosts&id=<?=$topic->getId()?>">ENTRER</a><td>  
                         </tr>
                     </tbody>
+                    
                 <?php
             }
         ?>
