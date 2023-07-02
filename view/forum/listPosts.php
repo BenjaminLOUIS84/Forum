@@ -49,6 +49,5 @@
     <img src="./public/img/patisserie1.jpg" class="photo" alt="Paris-Brest">
 </figure>
 
-<!-- <a class="retour" href="index.php?ctrl=forum&action=listTopics&id=<?=$post->getId()?>">Retour</a> -->
-<a class="retour" href="index.php?ctrl=forum&action=listCategories">Retour</a>
+<a class="retour" href="index.php?ctrl=forum&action=listTopics&id=1">Retour</a>
     
