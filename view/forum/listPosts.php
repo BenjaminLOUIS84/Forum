@@ -1,5 +1,6 @@
 <?php
     $posts = $result["data"]['posts'];// Ces variables permettent d'accéder et d'afficher les informations demandées dans cette page
+    // $posts = $result["data"]['topics'];// Ces variables permettent d'accéder et d'afficher les informations demandées dans cette page
 ?>
 
 <h2>LES POSTS</h2>
@@ -39,5 +40,6 @@
     <img src="./public/img/patisserie1.jpg" class="photo" alt="Paris-Brest">
 </figure>
 
+<!-- <a class="retour" href="index.php?ctrl=forum&action=listTopics&id=<?=$post->getId()?>">Retour</a> -->
 <a class="retour" href="index.php?ctrl=forum&action=listCategories">Retour</a>
     

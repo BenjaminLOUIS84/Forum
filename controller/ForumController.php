@@ -51,7 +51,6 @@
                 ]                               
             ];                                          // Permet d'afficher toutes les informations d'un topic
         }
-
         
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
@@ -67,7 +66,7 @@
 
             //Instancier ces variables pour accéder aux méthodes de leurs classes
             $postManager = new PostManager();
-            $topicManager = new TopicManager();
+            // $topicManager = new TopicManager();
 
             return [
                 "view" => VIEW_DIR."forum/listPosts.php",
