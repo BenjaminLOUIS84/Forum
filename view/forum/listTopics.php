@@ -8,7 +8,7 @@
     <table>
         <thead>
             <tr>
-                <th>CATEGORIES</th>
+                <!-- <th>CATEGORIES</th> -->
                 <th>TITRES</th>
                 <th>DATES&HEURES</th>
                 <th>PSEUDOS</th>
@@ -20,7 +20,7 @@
                 ?>
                     <tbody>
                         <tr>
-                            <td><?=$topic->getCategory()->getName()?></td>
+                            <!-- <td><?=$topic->getCategory()->getName()?></td> -->
                             <td><?=$topic->getTitle()?></td>
                             <td><?=$topic->getCreationdate()?></td>
                             <td><?=$topic->getUser()->getPseudo()?></td>
@@ -33,7 +33,7 @@
                 <?php
             }
             // Afficher le nom de la Catégorie sélectionnée
-            echo $topic->getCategory()->getName();
+            echo "<div class='titre'>".$topic->getCategory()->getName()."</div>";
         ?>
     </table>
 </div>
