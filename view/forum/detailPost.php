@@ -26,8 +26,7 @@
             }
 
             // Afficher le message du Post sélectionné
-            echo "<div class='titre'>".$post//->getTopic()
-            ->getText()."</div>";
+            echo "<div class='titre'>".$post->getText()."</div>";
             ?>
 
             <!-- Lien pour répondre au Post -->
@@ -44,4 +43,4 @@
 </figure>
 
 
-<a class="retour" href="index.php?ctrl=forum&action=listCategories">Retour</a>
+<a class="retour" href="index.php?ctrl=forum&action=listPosts&id=1>">Retour</a>
