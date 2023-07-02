@@ -33,7 +33,6 @@
             // Afficher le nom de la Catégorie sélectionnée
             echo "<div class='titre'>".$topic->getCategory()->getName()."</div>";
             ?>
-            <p>Lorem</p>
             <!-- Lien pour créer un nouveau Topic -->
             <a href="#">Démarrer un nouveau Topic</a>
             <?php
