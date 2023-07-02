@@ -8,7 +8,6 @@
     <table>
         <thead>
             <tr>
-                <!-- <th>CATEGORIES</th> -->
                 <th>TITRES</th>
                 <th>DATES&HEURES</th>
                 <th>PSEUDOS</th>
@@ -20,7 +19,6 @@
                 ?>
                     <tbody>
                         <tr>
-                            <!-- <td><?=$topic->getCategory()->getName()?></td> -->
                             <td><?=$topic->getTitle()?></td>
                             <td><?=$topic->getCreationdate()?></td>
                             <td><?=$topic->getUser()->getPseudo()?></td>
