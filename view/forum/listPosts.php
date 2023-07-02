@@ -36,7 +36,7 @@
 
 <!-- Image en arrière plan -->
 <figure>
-    <img src="./public/img/patisserie3.jpg" class="photo" alt="Nougat glacé, crème chantilly et crème anglaise">
+    <img src="./public/img/patisserie1.jpg" class="photo" alt="Paris-Brest">
 </figure>
 
 <a class="retour" href="index.php?ctrl=forum&action=listCategories">Retour</a>
