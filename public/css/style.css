@@ -24,7 +24,7 @@ body {
     z-index: -1;
     opacity: 70%;
 }
- 
+
 /*PARAM L'AJUSTEMENT DES DIFFERENTES RUBRIQUES DU COEUR DU SITE*/
 
 /*PAGE Liste des Catégories*/
@@ -170,6 +170,10 @@ a:hover {
     color: rgb(9, 4, 42);
     background: white;
     opacity: 70%;
+}
+
+.retour:hover {
+    background: none;
 }
 
 /*PARAM LE MENU ET LE PIED DE PAGE*/
