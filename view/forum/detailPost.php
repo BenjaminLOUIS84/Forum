@@ -26,7 +26,8 @@
             }
 
             // Afficher le message du Post sélectionné
-            echo "<div class='titre'>".$post->getText()."</div>";
+            echo "<div class='titre'>".$post//->getTopic()
+            ->getText()."</div>";
             ?>
 
             <!-- Lien pour répondre au Post -->
