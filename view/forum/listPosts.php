@@ -1,6 +1,6 @@
 <?php
-    $posts = $result["data"]['posts'];// Ces variables permettent d'accéder et d'afficher les informations demandées dans cette page
-    $topics = $result["data"]['topics'];// Ces variables permettent d'accéder et d'afficher les informations demandées dans cette page
+    $posts = $result["data"]['posts'];// Cette variable permet d'accéder et d'afficher les informations demandées dans cette page
+    $categories = $result["data"]['categories'];
 ?>
 
 <h2>LES POSTS</h2>
@@ -33,21 +33,16 @@
                 <?php 
             }
 
-            foreach ($topics as $topic) {
-               $topic->getTitle();
-            }
-
             // Afficher le titre du Topic sélectionné
-
-            echo "<div class='titre'>".$topic->getTitle()." ".$topic->getId()."</div>";
-
-            //echo "<div class='titre'>".$post->getTopic()->getId()."</div>";
+            echo "<div class='titre'>".$post->getTopic()->getTitle()."</div>";
             ?>
 
             <!-- Lien pour créer un nouveau Post -->
             <a href="#">Créer un nouveau Post</a>
             <?php
-            
+                foreach($categories as $category){
+                    $category->getId();
+                }
         ?>
     </table>      
 </div>
@@ -58,5 +53,7 @@
 </figure>
 
 <!-- Trouver une solution pour gérer le retour vers la liste des Topics selon la catégorie -->
-<a class="retour" href="index.php?ctrl=forum&action=listTopics&id=1">Retour</a>
+
+<a class="retour" href="index.php?ctrl=forum&action=listTopics&id=<?=$category->getId()?>">Retour</a>
+<!-- <a class="retour" href="index.php?ctrl=forum&action=listTopics&id=1">Retour</a> -->
     

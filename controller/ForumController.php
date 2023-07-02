@@ -57,16 +57,12 @@
         // OBJECTIF: Créer une fonction permettant d'afficher la liste de tout les posts de chaque utilisateurs selon le topic sélectionné
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        //TEST Combiner les fonctions natives du framework et les managers dans une fonction spécifique.
-        //Cela nécessite d'ajouter aussi 2 variables $topicManager et $postManager dans listPosts.php
         
         public function listPosts($idTopic){
 
-            //Instancier ces variables pour accéder aux méthodes de leurs classes
+            //Instancier cette variable pour accéder aux méthodes de leurs classes
             $postManager = new PostManager();
-            $topicManager = new TopicManager();
+            $categoryManager = new CategoryManager();
 
             return [
                 "view" => VIEW_DIR."forum/listPosts.php",
@@ -76,7 +72,7 @@
                         ? $postManager->findListByIdDep($idTopic, "Topic", ["dateCreate", "DESC"])
                         : $postManager->findAll(["dateCreate", "DESC"])
                     ),
-                    "topics" => $topicManager->findAll()
+                    "categories" => $categoryManager->findAll()
                 ]
             ];
         }
