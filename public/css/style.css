@@ -190,6 +190,11 @@ a:hover {
 
 /*PAGE Détails des Posts*/
 
+.reponses {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 /*Effet de carte retournée*/
 
 .card-container {
@@ -234,6 +239,10 @@ a:hover {
     border-radius: 5px;
     backface-visibility: hidden;
     transform: rotateY(-180deg);
+}
+
+h3 {
+    font-weight: bold;
 }
 
 /*PARAM LE MENU ET LE PIED DE PAGE*/

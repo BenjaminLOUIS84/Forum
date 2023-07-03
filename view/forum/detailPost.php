@@ -31,18 +31,30 @@
     </table> 
 
 </div>
-
-<div class="card-container">
-    <div class="card">
-        <div class="card-front">
-            <p>DECOUVRIR</p>
+<div class="reponses">
+    <div class="card-container">
+        <div class="card">
+            <div class="card-front">
+                <p>BENBY</p>
+            </div>
+            <div class="card-back">
+                <h3>Réponse de Benby</h3>
+                <p>Verser de l'eau dans la casserole puis......</p>
+            </div>
         </div>
-        <div class="card-back">
-            <p>Réponse de...</p>
+    </div>
+    <div class="card-container">
+        <div class="card">
+            <div class="card-front">
+                <p>LADY</p>
+            </div>
+            <div class="card-back">
+                <h3>Réponse de Lady</h3>
+                <p>Portez à ébulition puis ajouter......</p>
+            </div>
         </div>
     </div>
 </div>
-
 <!-- Image en arrière plan -->
 <figure>
     <img src="./public/img/cuisine2.jpg" class="photo" alt="Rösti oeuf aux légumes">
