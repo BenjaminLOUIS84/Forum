@@ -17,6 +17,15 @@
         <?php
             foreach($posts as $post){// On fait un foreach pour permettre l'affichage du tableau contenant les réponses 
                 $post->getText();
+                ?>
+                    <div class="reponses">
+                        <p>Réponse de...</p>    
+                        <!-- <p>Réponse de...</p>    
+                        <p>Réponse de...</p>    
+                        <p>Réponse de...</p>     -->
+                    </div>
+                <?php
+
             }
 
             // Afficher le message du Post sélectionné
@@ -31,13 +40,6 @@
 
     </table> 
 
-    <!-- <div class="reponses">
-        <p>Réponse de...</p>    
-        <p>Réponse de...</p>    
-        <p>Réponse de...</p>    
-        <p>Réponse de...</p>    
-    </div>  -->
-
 </div>
 
 <!-- Image en arrière plan -->
@@ -46,4 +48,5 @@
 </figure>
 
 <!-- Trouver une solution pour gérer le retour vers la liste des Posts selon le titre du Topic -->
-<!-- SOLUTION 1 -->
+<!-- TEST 1 Renvoi vers le post suivant -->
+<a class="retour" href="index.php?ctrl=forum&action=listPosts&id=<?=$post->getId()?>">Retour</a>
