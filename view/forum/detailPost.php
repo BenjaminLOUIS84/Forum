@@ -25,12 +25,11 @@
 
             <!-- Lien pour répondre au Post -->
             <a href="#">Répondre</a>
-            <?php
-            
+            <?php  
         ?>
 
     </table> 
-    
+
     <div class="reponses">
         <p>Réponse de...</p>    
         <!-- <p>Réponse de...</p>    
