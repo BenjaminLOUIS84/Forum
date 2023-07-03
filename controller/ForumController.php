@@ -83,7 +83,7 @@
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
 
-        public function detailPost($idTopic){
+        public function detailPost($id){
 
             //Instancier cette variable pour accéder aux méthodes de leurs classes
             $postManager = new PostManager();
@@ -91,14 +91,14 @@
             return [
                 "view" => VIEW_DIR."forum/detailPost.php",
                 "data" => [                     
-                    // "posts" => (
-                    //     isset($idTopic)
-                    //     ? $postManager->findListByIdDep($idTopic, "Topic") // Pour que le message corresponde au post
-                    //     : $postManager->findAll()// Pour afficher le message du Post
-                    //     )
-                    "posts" => 
+                    "posts" => (
+                        isset($id)
+                        ? $postManager->findListByIdDep($id, "Topic") // Pour que le message corresponde au post
+                        : $postManager->findAll()// Pour afficher le message du Post
+                        )
+                    // "posts" => 
                         
-                         $postManager->findListByIdDep($idTopic, "Topic") // Pour que le message corresponde au post
+                    //     $postManager->findOneById($idTopic, "Topic"), // Pour que le message corresponde au post
                         
                         
                 ]

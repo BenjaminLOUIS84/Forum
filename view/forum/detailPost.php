@@ -22,7 +22,8 @@
             }
 
             // Afficher le message du Post sélectionné
-            echo "<div class='titre'>".$post->getText()."</div>";
+            echo "<div class='titreP'>".$post->getText()."</div>";
+            //echo var_dump($post);
             ?>
 
             <!-- Lien pour répondre au Post -->

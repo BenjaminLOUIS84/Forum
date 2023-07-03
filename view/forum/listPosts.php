@@ -33,7 +33,7 @@
             }
 
             // Afficher le titre du Topic sélectionné
-            echo "<div class='titre'>".$post->getTopic()->getTitle()."</div>";
+            echo "<div class='titreT'>".$post->getTopic()->getTitle()."</div>";
             ?>
 
             <!-- Lien pour créer un nouveau Post -->

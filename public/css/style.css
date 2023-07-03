@@ -99,6 +99,11 @@ body {
     backdrop-filter: blur(8px);
 }
 
+.titreT {
+    font-size: 3em;
+    color: white;
+}
+
 /*BOUTONS ENTRER*/
 
 .topicT a {
@@ -131,6 +136,12 @@ body {
     backdrop-filter: blur(8px);
 }
 
+.titreP {
+    font-size: 2em;
+    color: white;
+    padding: 20px;
+}
+
 /*BOUTONS LIRE*/
 
 .topicP a {
@@ -147,11 +158,6 @@ td {
 
 thead {
     box-shadow: 0px 6px 10px black;
-}
-
-.titre {
-    font-size: 3em;
-    color: white;
 }
 
 /*PARAM LES TITRES ET LES LIENS DE NAVIGATION*/
