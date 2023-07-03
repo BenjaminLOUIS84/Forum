@@ -81,7 +81,6 @@
         //              Créer une fonction pour permettre l'ajout et l'affichage des réponses dans un tableau
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        
 
         public function detailPost($id){
 
@@ -90,17 +89,8 @@
 
             return [
                 "view" => VIEW_DIR."forum/detailPost.php",
-                "data" => [                     
-                    "posts" => (
-                        isset($id)
-                        ? $postManager->findListByIdDep($id, "Topic") // Pour que le message corresponde au post
-                        : $postManager->findAll()// Pour afficher le message du Post
-                        )
-                    // "posts" => 
-                        
-                    //     $postManager->findOneById($idTopic, "Topic"), // Pour que le message corresponde au post
-                        
-                        
+                "data" => [                        
+                    $postManager->findPostByIdDep($id) // Pour que le message corresponde au post    
                 ]
             ];
         }

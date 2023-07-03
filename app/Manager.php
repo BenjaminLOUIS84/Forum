@@ -51,6 +51,21 @@
                 $this->className
             );
         }
+
+        // Créer une fonction générique pour afficher le message correspondant au post
+
+        public function findPostByIdDep($id){
+
+            $sql = "SELECT *
+                    FROM ".$this->tableName." a
+                    WHERE a.id_".$this->tableName." = :id
+                    ";
+
+            return $this->getMultipleResults(
+                DAO::select($sql, ['id' => $id], true), 
+                $this->className
+            );
+        }
         /////////////////////////////////////////////////////////////////////////////////////////////////////
         public function findOneById($id){
 
