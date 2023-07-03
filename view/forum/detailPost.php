@@ -30,13 +30,13 @@
 
     </table> 
 
-    <div class="reponses">
-        <p>Réponse de...</p>    
-        <!-- <p>Réponse de...</p>    
-        <p>Réponse de...</p>    
-        <p>Réponse de...</p>     -->
-    </div>
+</div>
 
+<div class="reponses">
+    <p>Réponse de...</p>    
+    <!-- <p>Réponse de...</p>    
+    <p>Réponse de...</p>    
+    <p>Réponse de...</p>     -->
 </div>
 
 <!-- Image en arrière plan -->
