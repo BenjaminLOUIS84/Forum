@@ -32,11 +32,15 @@
 
 </div>
 
-<div class="reponses">
-    <p>Réponse de...</p>    
-    <!-- <p>Réponse de...</p>    
-    <p>Réponse de...</p>    
-    <p>Réponse de...</p>     -->
+<div class="card-container">
+    <div class="card">
+        <div class="card-front">
+            <p>DECOUVRIR</p>
+        </div>
+        <div class="card-back">
+            <p>Réponse de...</p>
+        </div>
+    </div>
 </div>
 
 <!-- Image en arrière plan -->
@@ -46,4 +50,4 @@
 
 <!-- Trouver une solution pour gérer le retour vers la liste des Posts selon le titre du Topic -->
 <!-- TEST 1 Renvoi vers le post suivant -->
-<a class="retour" href="index.php?ctrl=forum&action=listPosts&id=<?=$post->getId()?>">Retour</a>
+<!-- <a class="retour" href="index.php?ctrl=forum&action=listPosts&id=<?=$post->getId()?>">Retour</a> -->
