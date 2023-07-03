@@ -7,21 +7,17 @@
 <div class="topicP">
    
     <table>
+
         <thead>
             <tr>
                 <th>REPONSES</th>
             </tr>
         </thead>
+
         <?php
             foreach($posts as $post){// On fait un foreach pour permettre l'affichage du tableau contenant les réponses 
-                
-                ?>
-                <tbody>
-                    <tr>
-                        <td></td>
-                    </tr>
-                </tbody>
-                <?php 
+
+                $post->getText();
 
             }
 
@@ -34,7 +30,16 @@
             <?php
             
         ?>
-    </table>      
+
+    </table> 
+
+    <!-- <div class="reponses">
+        <p>Réponse de...</p>    
+        <p>Réponse de...</p>    
+        <p>Réponse de...</p>    
+        <p>Réponse de...</p>    
+    </div>  -->
+
 </div>
 
 <!-- Image en arrière plan -->
@@ -42,5 +47,5 @@
     <img src="./public/img/cuisine2.jpg" class="photo" alt="Rösti oeuf aux légumes">
 </figure>
 
-
-<a class="retour" href="index.php?ctrl=forum&action=listPosts&id=1>">Retour</a>
+<!-- Trouver une solution pour gérer le retour vers la liste des Posts selon le titre du Topic -->
+<!-- SOLUTION 1 -->

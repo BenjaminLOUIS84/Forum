@@ -7,6 +7,7 @@ body {
 }
 
 #forum {
+    /* height: max-content; */
     height: 450px;
 }
 
@@ -180,6 +181,23 @@ a:hover {
 .retour:hover {
     background: none;
 }
+
+/*PAGE Détails des Posts*/
+
+/* .reponses {
+    display: flex;
+    flex-wrap: wrap;
+} */
+
+/* .reponses p {
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0px 6px 10px black;
+    width: 300px;
+    height: 250px;
+    margin-left: 10px;
+} */
+
 
 /*PARAM LE MENU ET LE PIED DE PAGE*/
 
