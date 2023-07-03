@@ -18,10 +18,9 @@
             foreach($posts as $post){// On fait un foreach pour permettre l'affichage du tableau contenant les réponses 
                 $post->getText();
             }
-            
+
             // Afficher le message du Post sélectionné
             echo "<div class='titreP'>".$post->getText()."</div>";
-            //echo var_dump($post);
             ?>
 
             <!-- Lien pour répondre au Post -->
