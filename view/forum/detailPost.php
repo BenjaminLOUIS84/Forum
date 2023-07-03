@@ -16,16 +16,7 @@
 
         <?php
             foreach($posts as $post){// On fait un foreach pour permettre l'affichage du tableau contenant les réponses 
-                $post->getText();
-                ?>
-                    <div class="reponses">
-                        <p>Réponse de...</p>    
-                        <!-- <p>Réponse de...</p>    
-                        <p>Réponse de...</p>    
-                        <p>Réponse de...</p>     -->
-                    </div>
-                <?php
-
+                $post->getText();   
             }
 
             // Afficher le message du Post sélectionné
@@ -39,6 +30,13 @@
         ?>
 
     </table> 
+    
+    <div class="reponses">
+        <p>Réponse de...</p>    
+        <!-- <p>Réponse de...</p>    
+        <p>Réponse de...</p>    
+        <p>Réponse de...</p>     -->
+    </div>
 
 </div>
 
