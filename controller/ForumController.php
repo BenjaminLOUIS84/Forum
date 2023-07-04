@@ -33,7 +33,8 @@
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        
+        // TOPICS FONCTIONS
+
         public function listTopics($idCategory){        // Fonction pour afficher la liste de tout les Topics selon la catégorie
             
             $topicManager = new TopicManager();         // Instancier cette variable pour accéder aux méthodes de la classe 
@@ -51,13 +52,45 @@
                 ]                               
             ];                                          // Permet d'afficher toutes les informations d'un topic
         }
+
+        public function openFormTopic($id){                // Fonction pour accéder au formulaire des Topics
+            $topicManager = new TopicManager();         // Instancier cette variable pour accéder aux méthodes de la classe 
+
+            return [
+                "view" => VIEW_DIR."forum/formulaireTopic.php",
+
+                "data" => [                             // Les fonctions natives du FrameWork findAll() et findOneById($id) (se trouvent dans Manager.php) on demande à la variable d'utiliser cette fonction
+                    "topics" => $topicManager->findOneById($id)
+                ]                               
+            ];                                          
+        }
+
+        // public function addTopic($idCategory){          // Fonction pour ajouter un Topic selon la catégorie
+            
+        //     $topicManager = new TopicManager();         // Instancier cette variable pour accéder aux méthodes de la classe 
+
+        //     return [
+        //         "view" => VIEW_DIR."forum/listTopics.php",
+
+        //         "data" => [                             // Les fonctions natives du FrameWork findAll() et findOneById($id) (se trouvent dans Manager.php) on demande à la variable d'utiliser cette fonction
+
+        //             "topics" => (
+        //                 isset($idCategory)
+        //                 ? $topicManager->findListByIdDep($idCategory, "category", ["creationdate", "DESC"])
+        //                 : $topicManager->findAll(["creationdate", "DESC"])
+        //             )
+        //         ]                               
+        //     ];                                          // Permet d'afficher toutes les informations d'un topic
+        // }
+
         
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
         // OBJECTIF: Créer une fonction permettant d'afficher la liste de tout les posts de chaque utilisateurs selon le topic sélectionné
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        
+        // POSTS FONCTIONS
+
         public function listPosts($idTopic){
 
             //Instancier cette variable pour accéder aux méthodes de leurs classes

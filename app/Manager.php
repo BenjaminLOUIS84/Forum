@@ -66,6 +66,22 @@
                 $this->className
             );
         }
+
+        // Créer une fonction générique pour ajouter un nouveau topic
+
+        // public function addTopic($id){
+
+        //     $sql = "INSERT INTO
+        //             FROM ".$this->tableName." a
+        //             WHERE a.id_".$this->tableName." = :id
+        //             ";
+
+        //     return $this->getMultipleResults(
+        //         DAO::select($sql, ['id' => $id], true), 
+        //         $this->className
+        //     );
+        // }
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////
         public function findOneById($id){
 
