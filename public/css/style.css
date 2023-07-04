@@ -6,9 +6,12 @@ body {
     background: radial-gradient(gray, rgb(9, 4, 42));
 }
 
-#forum {
-    /* height: max-content; */
+/* #forum {
     height: 450px;
+} */
+
+#mainpage {
+    height: 600px;
 }
 
 /* METTRE UNE VIDEO EN ARRIERE PLAN DE LA PAGE D'ACCUEIL */

@@ -63,3 +63,6 @@
 <!-- Trouver une solution pour gérer le retour vers la liste des Posts selon le titre du Topic -->
 <!-- TEST 1 Renvoi vers le post suivant -->
 <!-- <a class="retour" href="index.php?ctrl=forum&action=listPosts&id=<?=$post->getId()?>">Retour</a> -->
+
+<a class="retour" href="index.php?ctrl=forum&action=listTopics&id=1">- TOPICS CUISINE -</a>
+<a class="retour" href="index.php?ctrl=forum&action=listTopics&id=2">- TOPICS PATISSERIE -</a>
