@@ -119,13 +119,11 @@
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
-        // OBJECTIFS: Créer une fonction permettant d'afficher le détail d'un post (le message du post et les réponses pour celui-ci)
-        //              Créer une fonction pour permettre l'ajout et l'affichage des réponses dans un tableau
+        // OBJECTIFS: Créer une fonction pour permettre l'ajout et l'affichage des réponses dans un tableau
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        
 
-        public function detailPost($id){
+        public function detailPost($id){                          // Fonction permettant d'afficher le détail d'un post (le message du post)
 
             //Instancier cette variable pour accéder aux méthodes de leurs classes
             $postManager = new PostManager();

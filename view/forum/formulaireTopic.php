@@ -4,19 +4,21 @@
 
 <h1>FORMULAIRE</h1>
 
-<?php
-    foreach($topics as $topic){
+<div class="topicT">
+    <?php
+        foreach($topics as $topic){
 
-    }
-    // Afficher le nom de la Catégorie sélectionnée
-    echo "<div class='titreT'>".$topic->getCategory()->getName()."</div>";
-?>
+        }
+        // Afficher le nom de la Catégorie sélectionnée
+        echo "<div class='titreT'>".$topic->getCategory()->getName()."</div>";
+    ?>
 
-<h2>Remplir ce formulaire pour ajouter un nouveau Topic à la base SQL</h2>
+    <h3>Remplir ce formulaire pour ajouter un nouveau Topic à la base SQL</h3>
 
-<?php
-   
-?>
+    <?php
+    
+    ?>
+</div>
 
 <!-- Image en arrière plan -->
 <figure>
