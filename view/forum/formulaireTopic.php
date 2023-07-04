@@ -5,6 +5,7 @@
 <h1>FORMULAIRE</h1>
 
 <div class="topicT">
+
     <?php
         foreach($topics as $topic){
 
@@ -15,9 +16,21 @@
 
     <h3>Remplir ce formulaire pour ajouter un nouveau Topic à la base SQL</h3>
 
-    <?php
-    
-    ?>
+    <form class="formulaireTopic" action="index.php?ctrl=forum&action=addTopic" method="post">
+                    
+        <label class="title" for="title">TITRE</label>
+        <input name="title" type="text" id="title" required> 
+
+        <label class="textTopic" for="textTopic">DATE&HEURE</label>
+        <input name="textTopic" type="date" required="1" id="creationDate"/>
+
+        <label class="pseudoTopic" for="pseudoTopic">PSEUDO</label>
+        <input name="pseudoTopic" type="text" required="1" id="pseudo"/>
+
+        <input id="submit" type="submit" name="addTopic" value="AJOUTER">
+
+    </form>
+
 </div>
 
 <!-- Image en arrière plan -->

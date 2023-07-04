@@ -56,7 +56,12 @@
 
         public function formulaireTopic($idCategory){   // Fonction pour accéder au formulaire des Topics selon la catégorie
 
-            $topicManager = new TopicManager();         // Instancier cette variable pour accéder aux méthodes de la classe 
+            $topicManager = new TopicManager();         // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
+
+            $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $textTopic = filter_input(INPUT_POST, 'textTopic', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $pseudoTopic = filter_input(INPUT_POST, 'pseudoTopic', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            
 
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
                 "view" => VIEW_DIR."forum/formulaireTopic.php",
