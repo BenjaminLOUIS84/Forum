@@ -53,14 +53,24 @@
             ];                                          // Permet d'afficher toutes les informations d'un topic
         }
 
-        public function openFormTopic($id){                // Fonction pour accéder au formulaire des Topics
+        public function formulaireTopic(){     // Fonction pour accéder au formulaire des Topics
+
             $topicManager = new TopicManager();         // Instancier cette variable pour accéder aux méthodes de la classe 
 
             return [
                 "view" => VIEW_DIR."forum/formulaireTopic.php",
 
                 "data" => [                             // Les fonctions natives du FrameWork findAll() et findOneById($id) (se trouvent dans Manager.php) on demande à la variable d'utiliser cette fonction
-                    "topics" => $topicManager->findOneById($id)
+                    
+                    "topics" => $topicManager->findAll()
+                    
+                    // "topics" => (
+                    //     isset($idCategory)
+                    //         ? $topicManager->findListByIdDep($idCategory, "category", ["creationdate", "DESC"])
+                    //         : $topicManager->findAll(["creationdate", "DESC"])
+                    // )
+
+                    // "topics" => $topicManager->findListByIdDep($idCategory, "category")
                 ]                               
             ];                                          
         }
@@ -80,10 +90,9 @@
         //                 : $topicManager->findAll(["creationdate", "DESC"])
         //             )
         //         ]                               
-        //     ];                                          // Permet d'afficher toutes les informations d'un topic
+        //     ];                                          
         // }
 
-        
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
         // OBJECTIF: Créer une fonction permettant d'afficher la liste de tout les posts de chaque utilisateurs selon le topic sélectionné
