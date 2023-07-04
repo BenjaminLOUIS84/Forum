@@ -12,11 +12,12 @@
 
     class HomeController extends AbstractController implements ControllerInterface{
 
-        // Fonction index() qui redirige en cas de problème vers la page listCategory.php par défaut (pour éviter une page d'erreur)
-        public function index(){
+        public function index(){                        // Fonction index() qui redirige en cas de problème vers la page listCategory.php par défaut (pour éviter une page d'erreur)
 
             return listCategories();
         }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public function listCategories(){               // Fonction pour afficher la liste de toute les catégories
             
@@ -53,24 +54,25 @@
             ];                                          // Permet d'afficher toutes les informations d'un topic
         }
 
-        public function formulaireTopic(){     // Fonction pour accéder au formulaire des Topics
+        public function formulaireTopic($idCategory){   // Fonction pour accéder au formulaire des Topics selon la catégorie
 
             $topicManager = new TopicManager();         // Instancier cette variable pour accéder aux méthodes de la classe 
 
-            return [
+            return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
                 "view" => VIEW_DIR."forum/formulaireTopic.php",
 
-                "data" => [                             // Les fonctions natives du FrameWork findAll() et findOneById($id) (se trouvent dans Manager.php) on demande à la variable d'utiliser cette fonction
+                "data" => [                             
                     
-                    "topics" => $topicManager->findAll()
+                    "topics" => $topicManager->findListByIdDep($idCategory, "category")
+                    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    //"topics" => $topicManager->findAll()  
                     
-                    // "topics" => (
+                    // "topics" => (                    // A utiliser en cas de besoin
                     //     isset($idCategory)
-                    //         ? $topicManager->findListByIdDep($idCategory, "category", ["creationdate", "DESC"])
-                    //         : $topicManager->findAll(["creationdate", "DESC"])
+                    //         ? $topicManager->findListByIdDep($idCategory, "category")
+                    //         : $topicManager->findAll()
                     // )
-
-                    // "topics" => $topicManager->findListByIdDep($idCategory, "category")
+                    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 ]                               
             ];                                          
         }
@@ -94,13 +96,11 @@
         // }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        
-        // OBJECTIF: Créer une fonction permettant d'afficher la liste de tout les posts de chaque utilisateurs selon le topic sélectionné
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // POSTS FONCTIONS
 
-        public function listPosts($idTopic){
+        public function listPosts($idTopic){                // Fonction permettant d'afficher la liste de tout les posts de chaque utilisateurs selon le topic sélectionné
 
             //Instancier cette variable pour accéder aux méthodes de leurs classes
             $postManager = new PostManager();
