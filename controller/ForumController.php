@@ -44,7 +44,11 @@
                 "view" => VIEW_DIR."forum/addCategory.php",
 
                 "data" => [                             
-                    "categories" => $categoryManager->findAll()  
+                    "categories" => 
+                        
+                        $categoryManager->findAll(),
+                        //$categoryManager->add()
+                    
                 ]                               
             ];                                          
         }

@@ -10,8 +10,8 @@
 
     <form class="formulaireTopic" action="index.php?ctrl=forum&action=add" method="post">
                     
-        <label class="title" for="title">TITRE</label>
-        <input name="title" type="text" id="title" required> 
+        <label class="name" for="name">NOM</label>
+        <input name="name" type="text" id="name" required> 
 
         <input id="submit" type="submit" name="add" value="AJOUTER">
 
