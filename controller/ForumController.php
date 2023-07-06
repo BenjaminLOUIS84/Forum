@@ -82,7 +82,15 @@
             ];                                          // Permet d'afficher toutes les informations d'un topic
         }
 
-        public function formulaireTopic($idCategory){   // Fonction pour accéder au formulaire des Topics selon la catégorie
+        public function formulaireTopic($idCategory){   // Fonction pour accéder au formulaire des Catégories à séparer de la fonction d'ajout
+
+            return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
+                "view" => VIEW_DIR."forum/formulaireTopic.php",                           
+            ];
+    
+        }
+
+        public function addTopic(){   // Fonction pour accéder au formulaire des Topics selon la catégorie
 
             $topicManager = new TopicManager();         // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
 
@@ -90,31 +98,16 @@
             date_default_timezone_set('Europe/Paris');
             $date = date('Y-m-d H:i:s');
             $category_id = filter_input(INPUT_POST, 'category_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
-            //$pseudo = filter_input(INPUT_POST, 'pseudo', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             
+            $topicManager->add(['title' => $title, 'creationDate' => $date,'category_id' => $idCategory]);
 
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
                 "view" => VIEW_DIR."forum/formulaireTopic.php",
 
                 "data" => [                             
                     
-                    "topics" =>
-                    $topicManager->findListByIdDep($idCategory, "category"),
-                    $topicManager->add(['title' => $title, 
-                    'creationDate' => $date,
-                    'category_id' => $category_id
-                    ])
-
-                    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                    //"topics" => $topicManager->findAll()  
-                    
-                    // "topics" => (                    // A utiliser en cas de besoin
-                    //     isset($idCategory)
-                    //         ? $topicManager->findListByIdDep($idCategory, "category")
-                    //         : $topicManager->add()
-                    // )
-                    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    "topics" => $topicManager->findListByIdDep($idCategory, "category"),
+                               
                 ]                               
             ];                                          
         }
@@ -136,6 +129,16 @@
         //         ]                               
         //     ];                                          
         // }
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    //"topics" => $topicManager->findAll()  
+                    
+                    // "topics" => (                    // A utiliser en cas de besoin
+                    //     isset($idCategory)
+                    //         ? $topicManager->findListByIdDep($idCategory, "category")
+                    //         : $topicManager->add()
+                    // )
+                    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

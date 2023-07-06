@@ -1,5 +1,5 @@
 <?php
-    $topics = $result["data"]['topics'];
+    //$topics = $result["data"]['topics'];
 ?>
 
 <h1>FORMULAIRE</h1>
@@ -7,11 +7,11 @@
 <div class="topicT">
 
     <?php
-        foreach($topics as $topic){
+        //foreach($topics as $topic){
 
-        }
+        //}
         // Afficher le nom de la Catégorie sélectionnée
-        echo "<div class='titreT'>".$topic->getCategory()->getName()."</div>";
+       // echo "<div class='titreT'>".$topic->getCategory()->getName()."</div>";
     ?>
 
     <h3>Remplir ce formulaire pour ajouter un nouveau Topic à la base SQL</h3>
@@ -20,12 +20,6 @@
                     
         <label class="title" for="title">TITRE</label>
         <input name="title" type="text" id="title" required> 
-
-        <!-- <label class="textTopic" for="textTopic">TEXTE</label>
-        <input name="textTopic" type="text" required="1" id="text"/> -->
-
-        <!-- <label class="pseudoTopic" for="pseudoTopic">PSEUDO</label>
-        <input name="pseudoTopic" type="text" required="1" id="pseudoTopic"/> -->
 
         <input id="submit" type="submit" name="addTopic" value="AJOUTER">
 
