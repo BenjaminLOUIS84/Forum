@@ -97,7 +97,7 @@
     
         }
 
-        public function addTopic(){   // Fonction pour accéder au formulaire des Topics selon la catégorie
+        public function addTopic(){                     // Fonction pour accéder au formulaire des Topics selon la catégorie
 
             $topicManager = new TopicManager();         // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
 

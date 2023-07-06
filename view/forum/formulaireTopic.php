@@ -11,7 +11,7 @@
 
         }
         // Afficher le nom de la Catégorie sélectionnée
-        //echo "<div class='titreT'>".$topic->getCategory()->getName()."</div>";
+        echo "<div class='titreT'>".$topic->getCategory()->getName()."</div>";
     ?>
 
     <h3>Remplir ce formulaire pour ajouter un nouveau Topic à la base SQL</h3>
