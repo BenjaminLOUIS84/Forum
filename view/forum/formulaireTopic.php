@@ -20,9 +20,14 @@
                     
         <label class="title" for="title">TITRE</label>
         <input name="title" type="text" id="title" required>
+        
+        <!-- Rédiger le post pour pouvoir aussi entrer dans le topic pour ajouter d'autres posts -->
+
+        <!-- <label class="text" for="text">TEXTE</label> -->
+        <!-- <input name="text" type="text" id="text" required> -->
 
         <!-- Liaisons du topic avec la catégorie et l'utilisateur -->
-        
+
         <input type="hidden" name="category_id" value="<?=$topic->getCategory()->getId()?>">
         <input type="hidden" name="user_id" value="<?=$topic->getUser()->getId()?>">
                         

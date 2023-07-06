@@ -100,10 +100,12 @@
         public function addTopic(){                     // Fonction pour accéder au formulaire des Topics selon la catégorie
 
             $topicManager = new TopicManager();         // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
+            // $postManager = new PostManager();        // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
 
             $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             date_default_timezone_set('Europe/Paris');
             $date = date('Y-m-d H:i:s');
+            // $text = filter_input(INPUT_POST, 'text', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             $category_id = filter_input(INPUT_POST, 'category_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $user_id = filter_input(INPUT_POST, 'user_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -116,6 +118,9 @@
                 "data" => [                             
                     
                     "topics" => $topicManager->findListByIdDep($category_id, "category"),
+                    
+                    // Pour lier un post au topic (rédiger le texte du post dans le formulaire)
+                    // $postManager->add(['text' => $text])
                                
                 ]                               
             ];                                          
@@ -139,6 +144,46 @@
                     )
                 ]
             ];
+        }
+
+        public function formulairePost($idTopic){           // Fonction pour accéder au formulaire des Posts à séparer de la fonction d'ajout
+
+            $postManager = new PostManager(); 
+            
+            return [                                        // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
+                "view" => VIEW_DIR."forum/formulairePost.php",
+                "data" => [                             
+                    
+                    "posts" => $postManager->findListByIdDep($idTopic, "topic"),
+                               
+                ]                            
+            ];
+    
+        }
+
+        public function addPost(){                          // Fonction pour accéder au formulaire des Posts selon le topic
+
+            // $topicManager = new TopicManager();             // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
+            $postManager = new PostManager();            // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
+
+            $text = filter_input(INPUT_POST, 'text', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            date_default_timezone_set('Europe/Paris');
+            $date = date('Y-m-d H:i:s');
+
+            $topic_id = filter_input(INPUT_POST, 'topic_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $user_id = filter_input(INPUT_POST, 'user_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            
+            $postManager->add(['text' => $text, 'dateCreate' => $date,'topic_id' => $topic_id, 'user_id' => $user_id]);
+
+            return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
+                "view" => VIEW_DIR."forum/formulairePost.php",
+
+                "data" => [                             
+                    
+                    "posts" => $postManager->findListByIdDep($topic_id, "topic"),
+                            
+                ]                               
+            ];                                          
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

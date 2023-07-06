@@ -74,8 +74,9 @@ body {
     flex-shrink: 0;
     scroll-snap-align: start;
 
+
     /* Pour centrer la première image du caroussel et gérer l'espace entre les images*/
-    width: 30%;
+    width: 40%;
     max-width: 1000px;
 
     /*Pour scroller auto*/
