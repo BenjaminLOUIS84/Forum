@@ -34,7 +34,7 @@
             ];                                          // Permet d'afficher toutes les catégories
         }
 
-        public function formulaireCategory(){           // Fonction pour accéder au formulaire des Topics selon la catégorie
+        public function formulaireCategory(){           // Fonction pour accéder au formulaire des Catégories
 
             $categoryManager = new CategoryManager();   // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
 
@@ -44,13 +44,10 @@
                 "view" => VIEW_DIR."forum/formulaireCategory.php",
 
                 "data" => [  
-                                               
+
                     "categories" => $categoryManager->add(['name' => $name])
                 ]                               
             ];
-
-            // $_SESSION['flash_message'] = $name." "."a été ajouté avec succès !";    //Pour afficher un message Flash à chaque ajout inscrire cette variable dans chaque partie
-            // $this->listCategories();                                                 //Etre redirigé sur la même page 
 
         }
 
