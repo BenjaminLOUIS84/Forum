@@ -47,7 +47,7 @@
                     "categories" => 
                         
                         $categoryManager->findAll(),
-                        //$categoryManager->add()
+                        $categoryManager->add(['name' => $name])
                     
                 ]                               
             ];                                          
