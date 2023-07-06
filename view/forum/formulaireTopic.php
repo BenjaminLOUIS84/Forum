@@ -1,5 +1,5 @@
 <?php
-    //$topics = $result["data"]['topics'];
+    $topics = $result["data"]['topics'];
 ?>
 
 <h1>FORMULAIRE</h1>
@@ -21,13 +21,13 @@
         <label class="title" for="title">TITRE</label>
         <input name="title" type="text" id="title" required> 
 
-        <label class="textTopic" for="textTopic">TEXTE</label>
-        <input name="textTopic" type="text" required="1" id="text"/>
+        <!-- <label class="textTopic" for="textTopic">TEXTE</label>
+        <input name="textTopic" type="text" required="1" id="text"/> -->
 
-        <label class="pseudoTopic" for="pseudoTopic">PSEUDO</label>
-        <input name="pseudoTopic" type="text" required="1" id="pseudoTopic"/>
+        <!-- <label class="pseudoTopic" for="pseudoTopic">PSEUDO</label>
+        <input name="pseudoTopic" type="text" required="1" id="pseudoTopic"/> -->
 
-        <input id="submit" type="submit" name="add" value="AJOUTER">
+        <input id="submit" type="submit" name="addTopic" value="AJOUTER">
 
     </form>
 

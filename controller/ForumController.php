@@ -87,7 +87,10 @@
             $topicManager = new TopicManager();         // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
 
             $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            //$text = filter_input(INPUT_POST, 'text', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            date_default_timezone_set('Europe/Paris');
+            $date = date('Y-m-d H:i:s');
+            $category_id = filter_input(INPUT_POST, 'category_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
             //$pseudo = filter_input(INPUT_POST, 'pseudo', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             
 
@@ -98,9 +101,9 @@
                     
                     "topics" =>
                     $topicManager->findListByIdDep($idCategory, "category"),
-                    $topicManager->add(['title' => $title,
-                    //'text' => $text,
-                    //'pseudo' => $pseudo
+                    $topicManager->add(['title' => $title, 
+                    'creationDate' => $date,
+                    'category_id' => $category_id
                     ])
 
                     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
