@@ -34,23 +34,24 @@
             ];                                          // Permet d'afficher toutes les catégories
         }
 
-        public function addNewCategory(){           // Fonction pour accéder au formulaire des Topics selon la catégorie
+        public function formulaireCategory(){           // Fonction pour accéder au formulaire des Topics selon la catégorie
 
             $categoryManager = new CategoryManager();   // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
 
             $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
-                "view" => VIEW_DIR."forum/addNewCategory.php",
+                "view" => VIEW_DIR."forum/formulaireCategory.php",
 
-                "data" => [                             
-                    "categories" => 
-                        
-                        $categoryManager->findAll(),
-                        $categoryManager->add(['name' => $name])
-                    
+                "data" => [  
+                                               
+                    "categories" => $categoryManager->add(['name' => $name])
                 ]                               
-            ];                                          
+            ];
+
+            // $_SESSION['flash_message'] = $name." "."a été ajouté avec succès !";    //Pour afficher un message Flash à chaque ajout inscrire cette variable dans chaque partie
+            // $this->listCategories();                                                 //Etre redirigé sur la même page 
+
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
