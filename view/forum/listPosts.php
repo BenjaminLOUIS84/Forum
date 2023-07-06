@@ -37,7 +37,7 @@
             ?>
 
             <!-- Lien pour créer un nouveau Post -->
-            <a href="#">Créer un nouveau Post</a>
+            <a href=""index.php?ctrl=forum&action=formulairePost&id=<?=$post->getTopic()->getId()?>"">Créer un nouveau Post</a>
             <?php
             
         ?>
