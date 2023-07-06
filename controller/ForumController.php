@@ -131,8 +131,7 @@
 
         public function listPosts($idTopic){                // Fonction permettant d'afficher la liste de tout les posts de chaque utilisateurs selon le topic sélectionné
 
-            //Instancier cette variable pour accéder aux méthodes de leurs classes
-            $postManager = new PostManager();
+            $postManager = new PostManager();               // Instancier cette variable pour accéder aux méthodes de leurs classes
 
             return [
                 "view" => VIEW_DIR."forum/listPosts.php",
