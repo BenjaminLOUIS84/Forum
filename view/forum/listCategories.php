@@ -10,7 +10,7 @@
 
 <div class="topicC">
     <!-- Pour accéder au formulaire pour ajouter une catégorie -->
-    <a href="index.php?ctrl=forum&action=addCategory">Nouvelle Catégorie</a>  
+    <a href="index.php?ctrl=forum&action=addNewCategory">Nouvelle Catégorie</a>  
 </div>
 
 <div class="topicC">

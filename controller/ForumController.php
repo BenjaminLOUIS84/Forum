@@ -34,14 +34,14 @@
             ];                                          // Permet d'afficher toutes les catégories
         }
 
-        public function addCategory(){           // Fonction pour accéder au formulaire des Topics selon la catégorie
+        public function addNewCategory(){           // Fonction pour accéder au formulaire des Topics selon la catégorie
 
             $categoryManager = new CategoryManager();   // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
 
             $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
-                "view" => VIEW_DIR."forum/addCategory.php",
+                "view" => VIEW_DIR."forum/addNewCategory.php",
 
                 "data" => [                             
                     "categories" => 
