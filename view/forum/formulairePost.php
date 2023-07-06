@@ -1,5 +1,5 @@
 <?php
-    $post = $result["data"]['posts'];
+    $posts = $result["data"]['posts'];
 ?>
 
 <h1>AJOUTER UN POST</h1>
