@@ -11,7 +11,7 @@ body {
 } */
 
 #mainpage {
-    height: 600px;
+    height: max-content;
 }
 
 /* METTRE UNE VIDEO EN ARRIERE PLAN DE LA PAGE D'ACCUEIL */
