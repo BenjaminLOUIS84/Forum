@@ -100,29 +100,30 @@
         public function addTopic(){                     // Fonction pour accéder au formulaire des Topics selon la catégorie
 
             $topicManager = new TopicManager();         // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
-            // $postManager = new PostManager();        // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
+            $postManager = new PostManager();           // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
 
             $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             date_default_timezone_set('Europe/Paris');
             $date = date('Y-m-d H:i:s');
-            // $text = filter_input(INPUT_POST, 'text', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $text = filter_input(INPUT_POST, 'text', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             $category_id = filter_input(INPUT_POST, 'category_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $user_id = filter_input(INPUT_POST, 'user_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            // Pour rédiger un post automatiquement quand on créer un topic on doit lier l'id topic au post
             
-            $topicManager->add(['title' => $title, 'creationDate' => $date,'category_id' => $category_id, 'user_id' => $user_id]);
+            $topic_id = $topicManager->add(['title' => $title, 'creationDate' => $date,'category_id' => $category_id, 'user_id' => $user_id]);
 
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
                 "view" => VIEW_DIR."forum/formulaireTopic.php",
 
-                "data" => [                             
+                "data" => [                             // Ce référer à la base SQL pour ajouter les informations en argument dans le tableau ci dessous
                     
                     "topics" => $topicManager->findListByIdDep($category_id, "category"),
-                    
-                    // Pour lier un post au topic (rédiger le texte du post dans le formulaire)
-                    // $postManager->add(['text' => $text])
+
+                    $postManager->add(['text' => $text, 'dateCreate' => $date, 'user_id' => $user_id, 'topic_id' => $topic_id])
                                
-                ]                               
+                ]                                       // Pour lier un post au topic (rédiger le texte du post dans le formulaire, inclure la dateCreate du post, l'utilisateur et le topic)                  
             ];                                          
         }
 

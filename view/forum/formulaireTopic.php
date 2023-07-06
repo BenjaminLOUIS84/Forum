@@ -23,8 +23,8 @@
         
         <!-- Rédiger le post pour pouvoir aussi entrer dans le topic pour ajouter d'autres posts -->
 
-        <!-- <label class="text" for="text">TEXTE</label> -->
-        <!-- <input name="text" type="text" id="text" required> -->
+        <label class="text" for="text">TEXTE</label>
+        <input name="text" type="text" id="text" required>
 
         <!-- Liaisons du topic avec la catégorie et l'utilisateur -->
 
