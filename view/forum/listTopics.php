@@ -48,4 +48,4 @@
 </figure>
 
 <!-- Lien vers la liste des Catégories -->
-<1a class="retour" href="index.php?ctrl=forum&action=listCategories">Retour</a>
+<a class="retour" href="index.php?ctrl=forum&action=listCategories">Retour</a>
