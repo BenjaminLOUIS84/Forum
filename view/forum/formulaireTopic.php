@@ -1,5 +1,5 @@
 <?php
-    $topics = $result["data"]['topics'];// Cette variable permet d'accéder et d'afficher les informations demandées dans cette page
+    //$topics = $result["data"]['topics'];
 ?>
 
 <h1>FORMULAIRE</h1>
@@ -16,7 +16,7 @@
 
     <h3>Remplir ce formulaire pour ajouter un nouveau Topic à la base SQL</h3>
 
-    <form class="formulaireTopic" action="index.php?ctrl=forum&action=add" method="post">
+    <form class="formulaireTopic" action="index.php?ctrl=forum&action=addTopic&id=<?=$topic->getCategory()->getId()?>" method="post">
                     
         <label class="title" for="title">TITRE</label>
         <input name="title" type="text" id="title" required> 

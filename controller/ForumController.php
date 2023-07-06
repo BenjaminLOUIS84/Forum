@@ -34,18 +34,28 @@
             ];                                          // Permet d'afficher toutes les catégories
         }
 
-        public function formulaireCategory(){           // Fonction pour accéder au formulaire des Catégories
+        public function formulaireCategory(){           // Fonction pour accéder au formulaire des Catégories à séparer de la fonction d'ajout
+
+            return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
+                "view" => VIEW_DIR."forum/formulaireCategory.php",                           
+            ];
+    
+        }
+
+        public function addCategory(){                  // Fonction pour ajouter une catégorie au formulaire 
 
             $categoryManager = new CategoryManager();   // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
 
             $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
+            $categoryManager->add(['name' => $name]);   // Pour effectuer l'action d'ajout 
+
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
-                "view" => VIEW_DIR."forum/formulaireCategory.php",
+                "view" => VIEW_DIR."forum/listCategories.php",
 
                 "data" => [  
 
-                    "categories" => $categoryManager->add(['name' => $name])
+                    "categories" => $categoryManager->findAll(),
                 ]                               
             ];
 
@@ -77,8 +87,8 @@
             $topicManager = new TopicManager();         // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
 
             $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $textTopic = filter_input(INPUT_POST, 'textTopic', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $pseudoTopic = filter_input(INPUT_POST, 'pseudoTopic', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            //$text = filter_input(INPUT_POST, 'text', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            //$pseudo = filter_input(INPUT_POST, 'pseudo', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             
 
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
@@ -86,7 +96,13 @@
 
                 "data" => [                             
                     
-                    "topics" => $topicManager->findListByIdDep($idCategory, "category")
+                    "topics" =>
+                    $topicManager->findListByIdDep($idCategory, "category"),
+                    $topicManager->add(['title' => $title,
+                    //'text' => $text,
+                    //'pseudo' => $pseudo
+                    ])
+
                     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                     //"topics" => $topicManager->findAll()  
                     
