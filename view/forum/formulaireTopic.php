@@ -1,17 +1,17 @@
 <?php
-    //$topics = $result["data"]['topics'];
+    $topics = $result["data"]['topics'];
 ?>
 
-<h1>FORMULAIRE</h1>
+<h1>AJOUTER UN TOPIC</h1>
 
 <div class="topicT">
 
     <?php
-        //foreach($topics as $topic){
+        foreach($topics as $topic){
 
-        //}
+        }
         // Afficher le nom de la Catégorie sélectionnée
-       // echo "<div class='titreT'>".$topic->getCategory()->getName()."</div>";
+        //echo "<div class='titreT'>".$topic->getCategory()->getName()."</div>";
     ?>
 
     <h3>Remplir ce formulaire pour ajouter un nouveau Topic à la base SQL</h3>
@@ -32,4 +32,5 @@
     <img src="./public/img/patisserie4.jpg" class="photo" alt="Panna Cotta aux Fruits rouges">
 </figure>
 
-<a class="retour" href="index.php?ctrl=forum&action=listCategories">Retour</a>
+<a class="retour" href="index.php?ctrl=forum&action=listTopics&id=1">- TOPICS CUISINE -</a>
+<a class="retour" href="index.php?ctrl=forum&action=listTopics&id=2">- TOPICS PATISSERIE -</a>

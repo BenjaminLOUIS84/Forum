@@ -84,8 +84,15 @@
 
         public function formulaireTopic($idCategory){   // Fonction pour accéder au formulaire des Catégories à séparer de la fonction d'ajout
 
+            $topicManager = new TopicManager(); 
+            
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
-                "view" => VIEW_DIR."forum/formulaireTopic.php",                           
+                "view" => VIEW_DIR."forum/formulaireTopic.php",
+                "data" => [                             
+                    
+                    "topics" => $topicManager->findListByIdDep($idCategory, "category"),
+                               
+                ]                            
             ];
     
         }
@@ -97,7 +104,7 @@
             $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             date_default_timezone_set('Europe/Paris');
             $date = date('Y-m-d H:i:s');
-            $category_id = filter_input(INPUT_POST, 'category_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $idCategory = filter_input(INPUT_POST, 'category_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             
             $topicManager->add(['title' => $title, 'creationDate' => $date,'category_id' => $idCategory]);
 
