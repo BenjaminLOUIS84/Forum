@@ -75,7 +75,7 @@ body {
     scroll-snap-align: start;
 
     /* Pour centrer la première image du caroussel et gérer l'espace entre les images*/
-    width: 40%;
+    width: 30%;
     max-width: 1000px;
 
     /*Pour scroller auto*/
@@ -83,7 +83,7 @@ body {
 }
 
 .images {
-    width: 80%;
+    width: 90%;
     opacity: 50%;
 }
 
@@ -187,7 +187,7 @@ input {
 
 th,
 td {
-    padding: 10px;
+    padding: 18px;
 }
 
 thead {
