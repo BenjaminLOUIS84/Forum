@@ -104,50 +104,22 @@
             $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             date_default_timezone_set('Europe/Paris');
             $date = date('Y-m-d H:i:s');
-            $idCategory = filter_input(INPUT_POST, 'category_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            $category_id = filter_input(INPUT_POST, 'category_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $user_id = filter_input(INPUT_POST, 'user_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             
-            $topicManager->add(['title' => $title, 'creationDate' => $date,'category_id' => $idCategory]);
+            $topicManager->add(['title' => $title, 'creationDate' => $date,'category_id' => $category_id, 'user_id' => $user_id]);
 
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
                 "view" => VIEW_DIR."forum/formulaireTopic.php",
 
                 "data" => [                             
                     
-                    "topics" => $topicManager->findListByIdDep($idCategory, "category"),
+                    "topics" => $topicManager->findListByIdDep($category_id, "category"),
                                
                 ]                               
             ];                                          
         }
-
-        // public function addTopic($idCategory){          // Fonction pour ajouter un Topic selon la catégorie
-            
-        //     $topicManager = new TopicManager();         // Instancier cette variable pour accéder aux méthodes de la classe 
-
-        //     return [
-        //         "view" => VIEW_DIR."forum/listTopics.php",
-
-        //         "data" => [                             // Les fonctions natives du FrameWork findAll() et findOneById($id) (se trouvent dans Manager.php) on demande à la variable d'utiliser cette fonction
-
-        //             "topics" => (
-        //                 isset($idCategory)
-        //                 ? $topicManager->findListByIdDep($idCategory, "category", ["creationdate", "DESC"])
-        //                 : $topicManager->findAll(["creationdate", "DESC"])
-        //             )
-        //         ]                               
-        //     ];                                          
-        // }
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                    //"topics" => $topicManager->findAll()  
-                    
-                    // "topics" => (                    // A utiliser en cas de besoin
-                    //     isset($idCategory)
-                    //         ? $topicManager->findListByIdDep($idCategory, "category")
-                    //         : $topicManager->add()
-                    // )
-                    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // POSTS FONCTIONS

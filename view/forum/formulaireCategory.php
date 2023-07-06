@@ -9,7 +9,7 @@
 
     <h3>Remplir ce champs pour ajouter une nouvelle Catégorie à la base SQL</h3>
 
-    <!-- Laction du formulaire exécute addCategory -->
+    <!-- L'action du formulaire exécute addCategory -->
     <form class="formulaireTopic" action="index.php?ctrl=forum&action=addCategory" method="post">
                     
         <label class="name" for="name">NOM</label>
