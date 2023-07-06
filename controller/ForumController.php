@@ -18,6 +18,7 @@
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // CATEGORIES FONCTIONS
 
         public function listCategories(){               // Fonction pour afficher la liste de toute les catégories
             
@@ -31,6 +32,21 @@
                     "categories" => $categoryManager->findAll(["name","ASC"])
                 ]                               
             ];                                          // Permet d'afficher toutes les catégories
+        }
+
+        public function addCategory(){           // Fonction pour accéder au formulaire des Topics selon la catégorie
+
+            $categoryManager = new CategoryManager();   // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
+
+            $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
+                "view" => VIEW_DIR."forum/addCategory.php",
+
+                "data" => [                             
+                    "categories" => $categoryManager->findAll()  
+                ]                               
+            ];                                          
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -75,7 +91,7 @@
                     // "topics" => (                    // A utiliser en cas de besoin
                     //     isset($idCategory)
                     //         ? $topicManager->findListByIdDep($idCategory, "category")
-                    //         : $topicManager->findAll()
+                    //         : $topicManager->add()
                     // )
                     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 ]                               

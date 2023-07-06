@@ -14,11 +14,14 @@
         foreach($categories as $category){// On fait un foreach pour afficher toute les catégories
             ?>
                 <!-- Pour accéder aux détails de la catégorie sélectionnée -->
-                <a href="index.php?ctrl=forum&action=listTopics&id=<?=$category->getId()?>"><?=$category->getName()?></a>  
+                <a href="index.php?ctrl=forum&action=listTopics&id=<?=$category->getId()?>"><?=$category->getName()?></a>
             <?php
         }
     ?>
-    
+
+    <!-- Pour accéder au formulaire pour ajouter une catégorie -->
+    <a href="index.php?ctrl=forum&action=addCategory">Nouvelle Catégorie</a>  
+
 </div>
 
 <!-- banière contenant plusieurs images qui défilent automatiquement -->

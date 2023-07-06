@@ -16,18 +16,18 @@
 
     <h3>Remplir ce formulaire pour ajouter un nouveau Topic à la base SQL</h3>
 
-    <form class="formulaireTopic" action="index.php?ctrl=forum&action=addTopic" method="post">
+    <form class="formulaireTopic" action="index.php?ctrl=forum&action=add" method="post">
                     
         <label class="title" for="title">TITRE</label>
         <input name="title" type="text" id="title" required> 
 
-        <label class="textTopic" for="textTopic">DATE&HEURE</label>
-        <input name="textTopic" type="date" required="1" id="creationDate"/>
+        <label class="textTopic" for="textTopic">TEXTE</label>
+        <input name="textTopic" type="text" required="1" id="text"/>
 
         <label class="pseudoTopic" for="pseudoTopic">PSEUDO</label>
-        <input name="pseudoTopic" type="text" required="1" id="pseudo"/>
+        <input name="pseudoTopic" type="text" required="1" id="pseudoTopic"/>
 
-        <input id="submit" type="submit" name="addTopic" value="AJOUTER">
+        <input id="submit" type="submit" name="add" value="AJOUTER">
 
     </form>
 
