@@ -163,8 +163,7 @@
 
         public function addPost(){                          // Fonction pour accéder au formulaire des Posts selon le topic
 
-            // $topicManager = new TopicManager();             // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
-            $postManager = new PostManager();            // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
+            $postManager = new PostManager();              
 
             $text = filter_input(INPUT_POST, 'text', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             date_default_timezone_set('Europe/Paris');
@@ -175,7 +174,7 @@
             
             $postManager->add(['text' => $text, 'dateCreate' => $date,'topic_id' => $topic_id, 'user_id' => $user_id]);
 
-            return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
+            return [                                        // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
                 "view" => VIEW_DIR."forum/formulairePost.php",
 
                 "data" => [                             
