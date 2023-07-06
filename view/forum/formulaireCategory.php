@@ -9,12 +9,12 @@
 
     <h3>Remplir ce champs pour ajouter une nouvelle Catégorie à la base SQL</h3>
 
-    <form class="formulaireTopic" action="index.php?ctrl=forum&action=addNewCategory" method="post">
+    <form class="formulaireTopic" action="index.php?ctrl=forum&action=formulaireCategory" method="post">
                     
         <label class="name" for="name">NOM</label>
         <input name="name" type="text" id="name" required> 
 
-        <input id="submit" type="submit" name="addNewCategory" value="AJOUTER">
+        <input id="submit" type="submit" name="formulaireCategory" value="AJOUTER">
 
     </form>
 
