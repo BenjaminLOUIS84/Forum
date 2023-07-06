@@ -9,6 +9,17 @@
 </p>
 
 <div class="topicC">
+
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <!-- Pour accéder au formulaire pour ajouter une catégorie -->
+                    <a href="index.php?ctrl=forum&action=addCategory">Nouvelle Catégorie</a>  
+                </th>
+            </tr>
+        </thead>
+    </table>
     
     <?php
         foreach($categories as $category){// On fait un foreach pour afficher toute les catégories
@@ -18,9 +29,6 @@
             <?php
         }
     ?>
-
-    <!-- Pour accéder au formulaire pour ajouter une catégorie -->
-    <a href="index.php?ctrl=forum&action=addCategory">Nouvelle Catégorie</a>  
 
 </div>
 
