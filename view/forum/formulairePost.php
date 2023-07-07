@@ -16,7 +16,7 @@
 
     <h3>Remplir ce formulaire pour ajouter un nouveau Post à la base SQL</h3>
 
-    <form class="formulairePost" action="index.php?ctrl=forum&action=addPost" method="post">
+    <form class="formulaireTopic" action="index.php?ctrl=forum&action=addPost" method="post">
                     
         <label class="text" for="text">TEXTE</label>
         <input name="text" type="text" id="text" required>

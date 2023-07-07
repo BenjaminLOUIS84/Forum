@@ -157,7 +157,7 @@
                     $topicManager->delete($id),
                     "topics" => $topicManager->findAll(["title", "ASC"]),
                 ],
-                "view" => VIEW_DIR."forum/listTopics.php" // ATTENTION Gérer le retour vers la même page
+                "view" => VIEW_DIR."forum/listCategories.php" // ATTENTION Gérer le retour vers la même page
                                            
             ];
         }
