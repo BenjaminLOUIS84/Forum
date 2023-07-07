@@ -27,7 +27,7 @@
                 <form action="index.php?ctrl=forum&action=delCategory&id=<?=$category->getId()?>" method="post">
                     
                     <!-- Mettre une icône dans l'input -->
-                    <input type="image" class="supp" alt="Supprimer" src="./public/img/supp.jpg">
+                    <input type="image" class="suppC" alt="Supprimer" src="./public/img/supp.jpg">
 
                 </form>
             

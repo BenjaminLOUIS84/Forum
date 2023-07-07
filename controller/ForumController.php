@@ -143,6 +143,22 @@
             ];                                          
         }
 
+        public function delTopic($id){               // Fonction pour supprimer un Topic
+
+            $topicManager = new TopicManager();
+
+            $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
+
+                "data" => [  
+                    $topicManager->delete($id),
+                    "topics" => $topicManager->findAll(["title", "ASC"]),
+                ],
+                "view" => VIEW_DIR."forum/listCategories.php"                             
+            ];
+        }
+
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // POSTS FONCTIONS
 

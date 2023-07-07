@@ -12,6 +12,7 @@
                 <th>DATES&HEURES</th>
                 <th>PSEUDOS</th>
                 <th>DETAILS</th>
+                <th>SUPPRIMER</th>
             </tr>
         </thead>
         <?php
@@ -24,7 +25,16 @@
                             <td><?=$topic->getUser()->getPseudo()?></td>
                             
                             <!-- Pour accéder aux détails du topic sélectionné -->
-                            <td><a href="index.php?ctrl=forum&action=listPosts&id=<?=$topic->getId()?>">ENTRER</a><td>  
+                            <td><a href="index.php?ctrl=forum&action=listPosts&id=<?=$topic->getId()?>">ENTRER</a><td>
+
+                                <!-- Pour supprimer le topic sélectionné directement dans la liste -->
+                                <form action="index.php?ctrl=forum&action=delTopic&id=<?=$topic->getId()?>" method="post">
+                    
+                                    <!-- Mettre une icône dans l'input -->
+                                    <input type="image" class="suppT" alt="Supprimer" src="./public/img/supp.jpg">
+
+                                </form>
+                            </td>  
                         </tr>
                     </tbody>
                     

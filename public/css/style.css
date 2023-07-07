@@ -95,22 +95,14 @@ body {
 
 /*PARAM de Suppression*/
 
-/*Option 1 Liste déroulante*/
-.listCat {
-    padding: 10px;
-    font-size: 1.2em;
-    border-radius: 5px;
-    font-weight: bold;
-}
-
-/*Option 2 bouton*/
-.supp {
+/*Bouton icône*/
+.suppC {
     cursor: pointer;
     width: 20%;
     background: snow;
 }
 
-.supp:hover {
+.suppC:hover {
     box-shadow: 0px 6px 10px black;
     transition: ease-in-out 0.5s;
 }
@@ -151,6 +143,20 @@ body {
     bottom: 0;
     z-index: -1;
     opacity: 70%;
+}
+
+/*PARAM de Suppression*/
+
+/*Bouton icône*/
+.suppT {
+    cursor: pointer;
+    width: 10%;
+    background: snow;
+}
+
+.suppT:hover {
+    box-shadow: 0px 6px 10px black;
+    transition: ease-in-out 0.5s;
 }
 
 /*FORMULAIRE Topics*/
