@@ -34,7 +34,7 @@
             ];                                          // Permet d'afficher toutes les catégories
         }
 
-        public function formulaireCategory(){           // Fonction pour accéder au formulaire des Catégories à séparer de la fonction d'ajout
+        public function formulaireCategory(){           // Fonction pour accéder au formulaire des Catégories à séparer de la fonction d'ajout et de suppression
 
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
                 "view" => VIEW_DIR."forum/formulaireCategory.php",                           
@@ -59,6 +59,24 @@
                 ]                               
             ];
 
+        }
+
+        public function delCategory($id){               // Fonction pour supprimer une Catégorie
+
+            $categoryManager = new CategoryManager();
+
+            $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            $categoryManager->delete(['id' => $id, 'name' => $name]);
+
+            return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
+                "view" => VIEW_DIR."forum/listCategories.php",
+
+                "data" => [  
+
+                    "categories" => $categoryManager->findAll(),
+                ]                               
+            ];
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

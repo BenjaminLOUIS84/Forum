@@ -22,6 +22,12 @@
             ?>
                 <!-- Pour accéder aux détails de la catégorie sélectionnée -->
                 <a href="index.php?ctrl=forum&action=listTopics&id=<?=$category->getId()?>"><?=$category->getName()?></a>
+            
+                <!-- Pour supprimmer une catégorie directement dans la liste -->
+                <form action="index.php?ctrl=forum&action=deleteCategory&id=<?=$category->getId()?>" method="post">
+                    <input class="supp" type="submit" name="deleteCategory" value="X">
+                </form>
+            
             <?php
         }
     ?>

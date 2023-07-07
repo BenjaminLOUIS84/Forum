@@ -36,11 +36,12 @@ body {
 .topicC {
     display: flex;
     flex-direction: row;
-    margin-top: 40px;
+    margin-top: 10px;
     padding: 2px;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
     backdrop-filter: blur(8px);
-    justify-content: space-evenly;
+    justify-content: center;
+    align-items: center;
 }
 
 /*Banière contenant plusieurs images qui défilent automatiquement dans la page Liste des Catégories*/
@@ -91,6 +92,33 @@ body {
 .images:hover {
     opacity: 100%;
 }
+
+/*PARAM de Suppression*/
+
+/*Option 1 Liste déroulante*/
+.listCat {
+    padding: 10px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/*Option 2 bouton*/
+.supp {
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    
+
+}
+
+.supp:hover {
+    background: gray;
+    color: white;
+    box-shadow: 0px 6px 10px black;
+    transition: ease-in-out 0.5s;
+}
+
 
 /*PAGE Liste des Topics*/
 
