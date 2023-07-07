@@ -24,13 +24,10 @@
             
             $categoryManager = new CategoryManager();   // Instancier cette variable pour accéder aux méthodes de la classe
 
-            return [
+            return [                                    // Fonction native du FrameWork findAll() (se trouve dans Manager.php) on demande à la variable d'utiliser cette fonction
                 "view" => VIEW_DIR."forum/listCategories.php",
 
-                "data" => [                             // Fonction native du FrameWork findAll() (se trouve dans Manager.php) on demande à la variable d'utiliser cette fonction
-
-                    "categories" => $categoryManager->findAll(["name","ASC"])
-                ]                               
+                "data" => ["categories" => $categoryManager->findAll(["name","ASC"])]                               
             ];                                          // Permet d'afficher toutes les catégories
         }
 
@@ -47,7 +44,6 @@
             $categoryManager = new CategoryManager();   // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
             
             $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            
 
             $category_id = $categoryManager->add(['name' => $name]);   // Pour effectuer l'action d'ajout 
 
@@ -55,12 +51,8 @@
                                            
                 "view" => VIEW_DIR."forum/listCategories.php",
 
-                "data" => [  
-
-                    "categories" => $categoryManager->findAll(),
-                ]                               
+                "data" => ["categories" => $categoryManager->findAll()]                               
             ];
-
         }
 
         public function delCategory($id){               // Fonction pour supprimer une Catégorie
@@ -71,12 +63,9 @@
 
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
 
-                "data" => [  
-                    $categoryManager->delete($id),
-                    "categories" => $categoryManager->findAll(["name", "ASC"]),
-                ],
+                "view" => VIEW_DIR."forum/listCategories.php",  // Après la suppression -> redirection sur la même page
 
-                "view" => VIEW_DIR."forum/listCategories.php"  // Après la suppression -> redirection sur la même page                           
+                "data" => [$categoryManager->delete($id),"categories" => $categoryManager->findAll(["name", "ASC"])]           
             ];
         }
 
@@ -107,13 +96,8 @@
             
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
                 "view" => VIEW_DIR."forum/formulaireTopic.php",
-                "data" => [                             
-                    
-                    "topics" => $topicManager->findListByIdDep($idCategory, "category"),
-                               
-                ]                            
+                "data" => ["topics" => $topicManager->findListByIdDep($idCategory, "category"),]                            
             ];
-    
         }
 
         public function addTopic(){                     // Fonction pour accéder au formulaire des Topics selon la catégorie
@@ -161,15 +145,15 @@
                     $topicManager->delete($category_id), // Pour effacer le topic
 
                     // "topics" => (
-                    //     isset($idCategory)              // Pour renvoyer la liste des topics de la catégorie correspondante
+                    //     isset($idCategory)            // Pour renvoyer la liste des topics de la catégorie correspondante
 
                     //     ? $topicManager->findListByIdDep($idCategory, "topic", ["title", "DESC"])
                     //     : $topicManager->findAll(["title", "DESC"])  
                     // )
 
+                    //"topics" => $this->listTopics()
                     //"topics" => $topicManager->findListByIdDep($category_id, "category")
-                    //"topics" => $topicManager->findListByIdDep($category_id, "category")
-                    "topics" => $topicManager->findAll(["title", "DESC"]), // Renvoi la liste de tous les topics (La cause du problème de redirection)
+                    //"topics" => $topicManager->findAll(["title", "DESC"]), // Renvoi la liste de tous les topics (La cause du problème de redirection)
                 ],
 
                 "view" => VIEW_DIR."forum/listTopics.php" // Retour vers la liste des topics de la categorie correspondante

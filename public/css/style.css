@@ -108,7 +108,7 @@ body {
 }
 
 .images {
-    width: 120%;
+    width: 115%;
     opacity: 50%;
 }
 
@@ -360,6 +360,6 @@ nav {
     justify-content: space-evenly;
 }
 
-footer {
+/* footer {
     margin-top: 180px;
-}
+} */
