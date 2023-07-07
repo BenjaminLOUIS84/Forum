@@ -134,31 +134,24 @@
             ];                                          
         }
 
-        public function delTopic($category_id){          // Fonction pour supprimer un Topic
+        public function delTopic($category_id){                  // Fonction pour supprimer un Topic
 
             $topicManager = new TopicManager();
 
-            $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            //$title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-            return [                                     // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
+            return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
 
                 "view" => VIEW_DIR."forum/listTopics.php", // Retour vers la liste des topics de la categorie correspondante
 
                 "data" => [  
 
-                    "topics" => $topicManager->delete($category_id), // Pour effacer le topic
+                    $topicManager->delete($category_id),         // Pour effacer le topic
 
-                    // "topics" => (
-                    //     isset($idCategory)            // Pour renvoyer la liste des topics de la catégorie correspondante
-
-                    //     ? $topicManager->findListByIdDep($idCategory, "topic", ["title", "DESC"])
-                    //     : $topicManager->findAll(["title", "DESC"])  
-                    // )
-
-                    //"topics" => $this->listTopics()
-                    //"topics" => $topicManager->findListByIdDep($category_id, "category")
-                    //"topics" => $topicManager->findAll(["title", "DESC"]), // Renvoi la liste de tous les topics (La cause du problème de redirection)
-                ]
+                    "topics" => 
+                   // $topicManager->findById($category_id),
+                    $topicManager->findAll(["title", "DESC"]) // Renvoi la liste de tous les topics (La cause du problème de redirection)
+                ]                                       // Trouver une solution renvoyer la liste des topics de la catégorie correspondante
             ];
         }
 
