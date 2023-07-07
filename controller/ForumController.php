@@ -25,6 +25,7 @@
             $categoryManager = new CategoryManager();   // Instancier cette variable pour accéder aux méthodes de la classe
 
             return [                                    // Fonction native du FrameWork findAll() (se trouve dans Manager.php) on demande à la variable d'utiliser cette fonction
+                
                 "view" => VIEW_DIR."forum/listCategories.php",
 
                 "data" => ["categories" => $categoryManager->findAll(["name","ASC"])]                               
@@ -34,9 +35,9 @@
         public function formulaireCategory(){           // Fonction pour accéder au formulaire des Catégories à séparer de la fonction d'ajout et de suppression
 
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
+                
                 "view" => VIEW_DIR."forum/formulaireCategory.php",                           
             ];
-    
         }
 
         public function addCategory(){                  // Fonction pour ajouter une catégorie au formulaire 
@@ -77,6 +78,7 @@
             $topicManager = new TopicManager();         // Instancier cette variable pour accéder aux méthodes de la classe 
 
             return [
+
                 "view" => VIEW_DIR."forum/listTopics.php",
 
                 "data" => [                             // Les fonctions natives du FrameWork findAll() et findOneById($id) (se trouvent dans Manager.php) on demande à la variable d'utiliser cette fonction
@@ -95,7 +97,9 @@
             $topicManager = new TopicManager(); 
             
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
+
                 "view" => VIEW_DIR."forum/formulaireTopic.php",
+
                 "data" => ["topics" => $topicManager->findListByIdDep($idCategory, "category"),]                            
             ];
         }
@@ -125,8 +129,7 @@
                     
                     "topics" => $topicManager->findListByIdDep($category_id, "category"),
 
-                    $postManager->add(['text' => $text, 'dateCreate' => $date, 'user_id' => $user_id, 'topic_id' => $topic_id])
-                               
+                    $postManager->add(['text' => $text, 'dateCreate' => $date, 'user_id' => $user_id, 'topic_id' => $topic_id])             
                 ]                                       // Pour lier un post au topic (rédiger le texte du post dans le formulaire, inclure la dateCreate du post, l'utilisateur et le topic)                  
             ];                                          
         }
@@ -136,13 +139,14 @@
             $topicManager = new TopicManager();
 
             $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            //$category_id = filter_input(INPUT_POST, 'category_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-            return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
+            return [                                     // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
+
+                "view" => VIEW_DIR."forum/listTopics.php", // Retour vers la liste des topics de la categorie correspondante
 
                 "data" => [  
 
-                    $topicManager->delete($category_id), // Pour effacer le topic
+                    "topics" => $topicManager->delete($category_id), // Pour effacer le topic
 
                     // "topics" => (
                     //     isset($idCategory)            // Pour renvoyer la liste des topics de la catégorie correspondante
@@ -154,9 +158,7 @@
                     //"topics" => $this->listTopics()
                     //"topics" => $topicManager->findListByIdDep($category_id, "category")
                     //"topics" => $topicManager->findAll(["title", "DESC"]), // Renvoi la liste de tous les topics (La cause du problème de redirection)
-                ],
-
-                "view" => VIEW_DIR."forum/listTopics.php" // Retour vers la liste des topics de la categorie correspondante
+                ]
             ];
         }
 
@@ -168,8 +170,11 @@
             $postManager = new PostManager();           // Instancier cette variable pour accéder aux méthodes de leurs classes
 
             return [
+
                 "view" => VIEW_DIR."forum/listPosts.php",
-                "data" => [                     
+
+                "data" => [
+
                     "posts" => (
                         isset($idTopic)
                         ? $postManager->findListByIdDep($idTopic, "Topic", ["dateCreate", "DESC"])
@@ -181,17 +186,14 @@
 
         public function formulairePost($idTopic){      // Fonction pour accéder au formulaire des Posts à séparer de la fonction d'ajout
 
-            $postManager = new PostManager(); 
+            $postManager = new PostManager();          // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
             
-            return [                                   // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
+            return [   
+                                                
                 "view" => VIEW_DIR."forum/formulairePost.php",
-                "data" => [                             
-                    
-                    "posts" => $postManager->findListByIdDep($idTopic, "topic"),
-                               
-                ]                            
+                
+                "data" => ["posts" => $postManager->findListByIdDep($idTopic, "topic")]                            
             ];
-    
         }
 
         public function addPost(){                    // Fonction pour accéder au formulaire des Posts selon le topic
@@ -207,14 +209,11 @@
             
             $postManager->add(['text' => $text, 'dateCreate' => $date,'topic_id' => $topic_id, 'user_id' => $user_id]);
 
-            return [                                  // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
+            return [     
+
                 "view" => VIEW_DIR."forum/formulairePost.php",
 
-                "data" => [                             
-                    
-                    "posts" => $postManager->findListByIdDep($topic_id, "topic"),
-                            
-                ]                               
+                "data" => ["posts" => $postManager->findListByIdDep($topic_id, "topic")]                               
             ];                                          
         }
 
@@ -226,15 +225,9 @@
 
             return [                                  // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
 
-                "data" => [  
+                "view" => VIEW_DIR."forum/listPosts.php", // ATTENTION Gérer le retour vers la même page
 
-                    $postManager->delete($id),
-                    "posts" => $postManager->findAll(["text", "ASC"]),
-                ],
-
-                "view" => VIEW_DIR."forum/listPosts.php" // ATTENTION Gérer le retour vers la même page 
-                // "view" => VIEW_DIR."forum/listPosts.php" // ATTENTION Gérer le retour vers la même page 
-
+                "data" => [$postManager->delete($id),"posts" => $postManager->findAll(["text", "ASC"])]
             ];
         }
 
@@ -246,14 +239,13 @@
 
         public function detailPost($id){               // Fonction permettant d'afficher le détail d'un post (le message du post)
 
-            //Instancier cette variable pour accéder aux méthodes de leurs classes
-            $postManager = new PostManager();
+            $postManager = new PostManager();          //Instancier cette variable pour accéder aux méthodes de leurs classes
 
             return [
+
                 "view" => VIEW_DIR."forum/detailPost.php",
-                "data" => [                     
-                    "posts" => $postManager->findPostByIdDep($id) // Pour que le message corresponde au post    
-                ]
+
+                "data" => ["posts" => $postManager->findPostByIdDep($id)] // Pour que le message corresponde au post    
             ];
         }
     }
