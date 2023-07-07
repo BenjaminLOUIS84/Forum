@@ -25,7 +25,10 @@
             
                 <!-- Pour supprimmer une catégorie directement dans la liste -->
                 <form action="index.php?ctrl=forum&action=deleteCategory&id=<?=$category->getId()?>" method="post">
-                    <input class="supp" type="submit" name="deleteCategory" value="X">
+                    
+                    <!-- Mettre une icône dans l'input -->
+                    <input type="image" class="supp" alt="Supprimer" src="./public/img/supp.jpg">
+
                 </form>
             
             <?php

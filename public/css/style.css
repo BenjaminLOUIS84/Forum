@@ -105,16 +105,12 @@ body {
 
 /*Option 2 bouton*/
 .supp {
-    font-weight: bold;
     cursor: pointer;
-    border: none;
-    
-
+    width: 20%;
+    background: snow;
 }
 
 .supp:hover {
-    background: gray;
-    color: white;
     box-shadow: 0px 6px 10px black;
     transition: ease-in-out 0.5s;
 }
