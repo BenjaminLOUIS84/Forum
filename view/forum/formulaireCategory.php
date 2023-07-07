@@ -10,7 +10,7 @@
         <label class="name" for="name">NOM</label>
         <input name="name" type="text" id="name" required> 
 
-        <input id="submit" type="submit" name="formulaireCategory" value="AJOUTER">
+        <input id="submit" type="submit" name="addCategory" value="AJOUTER">
 
     </form>
 

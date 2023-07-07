@@ -45,12 +45,14 @@
         public function addCategory(){                  // Fonction pour ajouter une catégorie au formulaire 
 
             $categoryManager = new CategoryManager();   // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
-
+            
             $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            
 
-            $categoryManager->add(['name' => $name]);   // Pour effectuer l'action d'ajout 
+            $category_id = $categoryManager->add(['name' => $name]);   // Pour effectuer l'action d'ajout 
 
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
+                                           
                 "view" => VIEW_DIR."forum/listCategories.php",
 
                 "data" => [  
@@ -158,7 +160,8 @@
                     "topics" => $topicManager->findAll(["title", "ASC"]),
                 ],
                 "view" => VIEW_DIR."forum/listTopics.php" // ATTENTION Gérer le retour vers la même page
-                                           
+
+                // "view" => VIEW_DIR.""
             ];
         }
 
