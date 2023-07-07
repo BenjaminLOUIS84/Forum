@@ -220,7 +220,7 @@
             ];                                          
         }
 
-        public function delPost($id){               // Fonction pour supprimer un Post
+        public function delPost($id){                   // Fonction pour supprimer un Post
 
             $postManager = new PostManager();
 

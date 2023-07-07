@@ -13,22 +13,33 @@
                 <th>MESSAGES</th>
                 <th>DATES&HEURES</th>
                 <th>DETAILS</th>
+                <th>SUPPRIMER</th>
             </tr>
         </thead>
         <?php
             foreach($posts as $post){// On fait un foreach pour permettre l'affichage des infos de tous les Posts
-                
                 ?>
-                <tbody>
-                    <tr>
-                        <td><?=$post->getUser()->getPseudo()?></td>
-                        <td><?=$post->getText()?></td>
-                        <td><?=$post->getDateCreate()?></td>
-                        
-                        <!-- Pour accéder aux détails du topic sélectionné -->
-                        <td><a href="index.php?ctrl=forum&action=detailPost&id=<?=$post->getId()?>">LIRE</a><td>  
-                    </tr>
-                </tbody>
+                    <tbody>
+                        <tr>
+                            <td><?=$post->getUser()->getPseudo()?></td>
+                            <td><?=$post->getText()?></td>
+                            <td><?=$post->getDateCreate()?></td>
+                            
+                            <!-- Pour accéder aux détails du topic sélectionné -->
+                            <td><a href="index.php?ctrl=forum&action=detailPost&id=<?=$post->getId()?>">LIRE</a>
+                                <td>
+                                    <!-- Pour supprimer le post sélectionné directement dans la liste -->
+                                    <form action="index.php?ctrl=forum&action=delPost&id=<?=$post->getId()?>" method="post">
+                                
+                                        <!-- Mettre une icône dans l'input -->
+                                        <input type="image" class="suppP" alt="Supprimer" src="./public/img/supp.jpg">
+
+                                    </form>
+                                </td>
+                            </td>  
+                        </tr>
+                    </tbody>
+
                 <?php 
             }
 
@@ -36,8 +47,9 @@
             echo "<div class='titreT'>".$post->getTopic()->getTitle()."</div>";
             ?>
 
-            <!-- Lien pour créer un nouveau Post -->
-            <a href="index.php?ctrl=forum&action=formulairePost&id=<?=$post->getTopic()->getId()?>">Créer un nouveau Post</a>
+                <!-- Lien pour créer un nouveau Post -->
+                <a href="index.php?ctrl=forum&action=formulairePost&id=<?=$post->getTopic()->getId()?>">Créer un nouveau Post</a>
+                
             <?php
             
         ?>

@@ -25,15 +25,16 @@
                             <td><?=$topic->getUser()->getPseudo()?></td>
                             
                             <!-- Pour accéder aux détails du topic sélectionné -->
-                            <td><a href="index.php?ctrl=forum&action=listPosts&id=<?=$topic->getId()?>">ENTRER</a><td>
+                            <td><a href="index.php?ctrl=forum&action=listPosts&id=<?=$topic->getId()?>">ENTRER</a>
+                                <td>
+                                    <!-- Pour supprimer le topic sélectionné directement dans la liste -->
+                                    <form action="index.php?ctrl=forum&action=delTopic&id=<?=$topic->getId()?>" method="post">
+                        
+                                        <!-- Mettre une icône dans l'input -->
+                                        <input type="image" class="suppT" alt="Supprimer" src="./public/img/supp.jpg">
 
-                                <!-- Pour supprimer le topic sélectionné directement dans la liste -->
-                                <form action="index.php?ctrl=forum&action=delTopic&id=<?=$topic->getId()?>" method="post">
-                    
-                                    <!-- Mettre une icône dans l'input -->
-                                    <input type="image" class="suppT" alt="Supprimer" src="./public/img/supp.jpg">
-
-                                </form>
+                                    </form>
+                                </td>
                             </td>  
                         </tr>
                     </tbody>
@@ -44,8 +45,8 @@
             echo "<div class='titreT'>".$topic->getCategory()->getName()."</div>";
             ?>
 
-            <!-- Lien pour créer un nouveau Topic selon la catégorie -->
-            <a href="index.php?ctrl=forum&action=formulaireTopic&id=<?=$topic->getCategory()->getId()?>">Démarrer un nouveau Topic</a>
+                <!-- Lien pour créer un nouveau Topic selon la catégorie -->
+                <a href="index.php?ctrl=forum&action=formulaireTopic&id=<?=$topic->getCategory()->getId()?>">Démarrer un nouveau Topic</a>
 
             <?php
         ?>

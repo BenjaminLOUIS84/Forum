@@ -214,6 +214,20 @@ input {
     box-shadow: 0px 6px 10px black;
 }
 
+/*PARAM de Suppression*/
+
+/*Bouton icône*/
+.suppP {
+    cursor: pointer;
+    width: 10%;
+    background: snow;
+}
+
+.suppP:hover {
+    box-shadow: 0px 6px 10px black;
+    transition: ease-in-out 0.5s;
+}
+
 /*COMMUN AUX PAGES Liste des Topics et Liste des Posts*/
 
 th,
