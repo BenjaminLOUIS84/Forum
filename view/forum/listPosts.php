@@ -65,4 +65,7 @@
 <!-- SOLUTION 1 -->
 <a class="retour" href="index.php?ctrl=forum&action=listTopics&id=1">- TOPICS CUISINE -</a>
 <a class="retour" href="index.php?ctrl=forum&action=listTopics&id=2">- TOPICS PATISSERIE -</a>
+
 <!-- SOLUTION 2 -->
+<!-- <a class="retour" href="index.php?ctrl=forum&action=listTopics&id=<?=$post->getTopic()->getId()?>">- RETOUR -</a> -->
+
