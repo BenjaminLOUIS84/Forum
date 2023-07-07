@@ -67,15 +67,13 @@
 
             $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-            $categoryManager->delete(['id' => $id, 'name' => $name]);
-
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
-                "view" => VIEW_DIR."forum/listCategories.php",
 
                 "data" => [  
-
-                    "categories" => $categoryManager->findAll(),
-                ]                               
+                    $categoryManager->delete($id),
+                    "categories" => $categoryManager->findAll(["name", "ASC"]),
+                ],
+                "view" => VIEW_DIR."forum/listCategories.php"                             
             ];
         }
 
