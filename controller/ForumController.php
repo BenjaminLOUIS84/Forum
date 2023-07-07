@@ -145,7 +145,7 @@
             ];                                          
         }
 
-        public function delTopic($id){               // Fonction pour supprimer un Topic
+        public function delTopic($id){                  // Fonction pour supprimer un Topic
 
             $topicManager = new TopicManager();
 
@@ -165,9 +165,9 @@
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // POSTS FONCTIONS
 
-        public function listPosts($idTopic){                // Fonction permettant d'afficher la liste de tout les posts de chaque utilisateurs selon le topic sélectionné
+        public function listPosts($idTopic){            // Fonction permettant d'afficher la liste de tout les posts de chaque utilisateurs selon le topic sélectionné
 
-            $postManager = new PostManager();               // Instancier cette variable pour accéder aux méthodes de leurs classes
+            $postManager = new PostManager();           // Instancier cette variable pour accéder aux méthodes de leurs classes
 
             return [
                 "view" => VIEW_DIR."forum/listPosts.php",
@@ -181,11 +181,11 @@
             ];
         }
 
-        public function formulairePost($idTopic){           // Fonction pour accéder au formulaire des Posts à séparer de la fonction d'ajout
+        public function formulairePost($idTopic){      // Fonction pour accéder au formulaire des Posts à séparer de la fonction d'ajout
 
             $postManager = new PostManager(); 
             
-            return [                                        // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
+            return [                                   // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
                 "view" => VIEW_DIR."forum/formulairePost.php",
                 "data" => [                             
                     
@@ -196,7 +196,7 @@
     
         }
 
-        public function addPost(){                          // Fonction pour accéder au formulaire des Posts selon le topic
+        public function addPost(){                    // Fonction pour accéder au formulaire des Posts selon le topic
 
             $postManager = new PostManager();              
 
@@ -209,7 +209,7 @@
             
             $postManager->add(['text' => $text, 'dateCreate' => $date,'topic_id' => $topic_id, 'user_id' => $user_id]);
 
-            return [                                        // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
+            return [                                  // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
                 "view" => VIEW_DIR."forum/formulairePost.php",
 
                 "data" => [                             
@@ -220,13 +220,13 @@
             ];                                          
         }
 
-        public function delPost($id){                   // Fonction pour supprimer un Post
+        public function delPost($id){                 // Fonction pour supprimer un Post
 
             $postManager = new PostManager();
 
             $text = filter_input(INPUT_POST, 'text', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-            return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
+            return [                                  // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
 
                 "data" => [  
                     $postManager->delete($id),
@@ -245,7 +245,7 @@
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        public function detailPost($id){                          // Fonction permettant d'afficher le détail d'un post (le message du post)
+        public function detailPost($id){               // Fonction permettant d'afficher le détail d'un post (le message du post)
 
             //Instancier cette variable pour accéder aux méthodes de leurs classes
             $postManager = new PostManager();
@@ -264,7 +264,7 @@
     //RECHERCHES POUR ATTEINDRE L'OBJECTIF
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
-    //TEST Utiliser la fonction native du framework findOneById() 
+    //TEST Utiliser la fonction native du framework indOneById() 
 
     // public function listPosts($id){
     //     //Instancier cette variable pour accéder aux méthodes de la classe
