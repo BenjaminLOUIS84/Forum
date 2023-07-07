@@ -156,12 +156,13 @@
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
 
                 "data" => [  
+
                     $topicManager->delete($id),
                     "topics" => $topicManager->findAll(["title", "ASC"]),
-                ],
-                "view" => VIEW_DIR."forum/listTopics.php" // ATTENTION Gérer le retour vers la même page
 
-                // "view" => VIEW_DIR.""
+                ],
+
+                "view" => VIEW_DIR."forum/listTopics.php" // ATTENTION Gérer le retour vers la même page
             ];
         }
 
@@ -232,12 +233,14 @@
             return [                                  // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
 
                 "data" => [  
+
                     $postManager->delete($id),
                     "posts" => $postManager->findAll(["text", "ASC"]),
                 ],
-                "view" => VIEW_DIR."forum/listPosts.php" // ATTENTION Gérer le retour vers la même page 
 
-                // "view" => VIEW_DIR."forum/listPosts.php" // ATTENTION Gérer le retour vers la même page                          
+                "view" => VIEW_DIR."forum/listPosts.php" // ATTENTION Gérer le retour vers la même page 
+                // "view" => VIEW_DIR."forum/listPosts.php" // ATTENTION Gérer le retour vers la même page 
+
             ];
         }
 
