@@ -73,7 +73,8 @@
                     $categoryManager->delete($id),
                     "categories" => $categoryManager->findAll(["name", "ASC"]),
                 ],
-                "view" => VIEW_DIR."forum/listCategories.php"                             
+
+                "view" => VIEW_DIR."forum/listCategories.php"  // Après la suppression -> redirection sur la même page                           
             ];
         }
 
@@ -131,7 +132,8 @@
             $topic_id = $topicManager->add(['title' => $title, 'creationDate' => $date,'category_id' => $category_id, 'user_id' => $user_id]);
 
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
-                "view" => VIEW_DIR."forum/formulaireTopic.php",
+
+                "view" => VIEW_DIR."forum/formulaireTopic.php", // Après l'ajout on reste sur la même page
 
                 "data" => [                             // Ce référer à la base SQL pour ajouter les informations en argument dans le tableau ci dessous
                     
@@ -155,7 +157,8 @@
                     $topicManager->delete($id),
                     "topics" => $topicManager->findAll(["title", "ASC"]),
                 ],
-                "view" => VIEW_DIR."forum/listCategories.php"                             
+                "view" => VIEW_DIR."forum/listTopics.php" // ATTENTION Gérer le retour vers la même page
+                                           
             ];
         }
 
@@ -215,6 +218,25 @@
                             
                 ]                               
             ];                                          
+        }
+
+        public function delPost($id){               // Fonction pour supprimer un Post
+
+            $postManager = new PostManager();
+
+            $text = filter_input(INPUT_POST, 'text', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
+
+                "data" => [  
+                    $postManager->delete($id),
+                    "posts" => $postManager->findAll(["text", "ASC"]),
+                ],
+                "view" => VIEW_DIR."forum/listPosts.php" // ATTENTION Gérer le retour vers la même page
+
+                
+                                           
+            ];
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
