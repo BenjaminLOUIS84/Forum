@@ -232,10 +232,7 @@
                     $postManager->delete($id),
                     "posts" => $postManager->findAll(["text", "ASC"]),
                 ],
-                "view" => VIEW_DIR."forum/listPosts.php" // ATTENTION Gérer le retour vers la même page
-
-                
-                                           
+                "view" => VIEW_DIR."forum/listPosts.php" // ATTENTION Gérer le retour vers la même page                          
             ];
         }
 
