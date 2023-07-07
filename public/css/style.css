@@ -32,6 +32,22 @@ body {
 /*PARAM L'AJUSTEMENT DES DIFFERENTES RUBRIQUES DU COEUR DU SITE*/
 
 /*PAGE Liste des Catégories*/
+.topic {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    padding: 2px;
+    background: snow;
+    backdrop-filter: blur(8px);
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 6px 10px black;
+}
+
+.topic a {
+    color: black;
+    font-size: 2em;
+}
 
 .topicC {
     display: flex;
@@ -45,7 +61,7 @@ body {
 }
 
 .topicC a {
-    font-size: 2em;
+    font-size: 1em;
 }
 
 /*Banière contenant plusieurs images qui défilent automatiquement dans la page Liste des Catégories*/
