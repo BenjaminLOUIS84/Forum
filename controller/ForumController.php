@@ -152,6 +152,7 @@
             $topicManager = new TopicManager();
 
             $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            //$category_id = filter_input(INPUT_POST, 'category_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
 
@@ -162,12 +163,12 @@
                     // "topics" => (
                     //     isset($idCategory)              // Pour renvoyer la liste des topics de la catégorie correspondante
 
-                    //     ? $topicManager->findListByIdDep($idCategory, "category", ["creationdate", "DESC"])
-                    //     : $topicManager->findAll(["creationdate", "DESC"])  
+                    //     ? $topicManager->findListByIdDep($idCategory, "topic", ["title", "DESC"])
+                    //     : $topicManager->findAll(["title", "DESC"])  
                     // )
 
                     //"topics" => $topicManager->findListByIdDep($category_id, "category")
-
+                    //"topics" => $topicManager->findListByIdDep($category_id, "category")
                     "topics" => $topicManager->findAll(["title", "DESC"]), // Renvoi la liste de tous les topics (La cause du problème de redirection)
                 ],
 
