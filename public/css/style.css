@@ -44,6 +44,10 @@ body {
     align-items: center;
 }
 
+.topicC a {
+    font-size: 2em;
+}
+
 /*Banière contenant plusieurs images qui défilent automatiquement dans la page Liste des Catégories*/
 
 /* Animation Scroller les caroussels automatiquement*/

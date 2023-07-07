@@ -11,7 +11,7 @@
 <div class="topicC">
 
     <!-- Pour accéder au formulaire pour ajouter une catégorie -->
-    <a href="index.php?ctrl=forum&action=formulaireCategory">Nouvelle Catégorie</a> 
+    <a href="index.php?ctrl=forum&action=formulaireCategory">Ajouter une Catégorie</a> 
      
 </div>
 
