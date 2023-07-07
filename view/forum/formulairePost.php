@@ -2,7 +2,7 @@
     $posts = $result["data"]['posts'];
 ?>
 
-<h1>AJOUTER UN POST</h1>
+<h2>AJOUTER UN POST</h2>
 
 <div class="topicT">
 

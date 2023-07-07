@@ -131,7 +131,7 @@
 
             // Pour rédiger un post automatiquement quand on créer un topic on doit lier l'id topic au post
             
-            $topic_id = $topicManager->add(['title' => $title, 'creationDate' => $date,'category_id' => $category_id, 'user_id' => $user_id]);
+            $topic_id = $topicManager->add(['title' => $title, 'creationdate' => $date,'category_id' => $category_id, 'user_id' => $user_id]);
 
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
 
@@ -147,7 +147,7 @@
             ];                                          
         }
 
-        public function delTopic($id){                  // Fonction pour supprimer un Topic
+        public function delTopic($category_id){          // Fonction pour supprimer un Topic
 
             $topicManager = new TopicManager();
 
@@ -157,12 +157,21 @@
 
                 "data" => [  
 
-                    $topicManager->delete($id),
-                    "topics" => $topicManager->findAll(["title", "ASC"]),
+                    $topicManager->delete($category_id), // Pour effacer le topic
 
+                    // "topics" => (
+                    //     isset($idCategory)              // Pour renvoyer la liste des topics de la catégorie correspondante
+
+                    //     ? $topicManager->findListByIdDep($idCategory, "category", ["creationdate", "DESC"])
+                    //     : $topicManager->findAll(["creationdate", "DESC"])  
+                    // )
+
+                    //"topics" => $topicManager->findListByIdDep($category_id, "category")
+
+                    "topics" => $topicManager->findAll(["title", "DESC"]), // Renvoi la liste de tous les topics (La cause du problème de redirection)
                 ],
 
-                "view" => VIEW_DIR."forum/listTopics.php" // ATTENTION Gérer le retour vers la même page
+                "view" => VIEW_DIR."forum/listTopics.php" // Retour vers la liste des topics de la categorie correspondante
             ];
         }
 

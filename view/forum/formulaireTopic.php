@@ -2,7 +2,7 @@
     $topics = $result["data"]['topics'];
 ?>
 
-<h1>AJOUTER UN TOPIC</h1>
+<h2>AJOUTER UN TOPIC</h2>
 
 <div class="topicT">
 

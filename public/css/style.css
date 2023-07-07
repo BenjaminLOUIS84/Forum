@@ -248,6 +248,7 @@ thead {
 
 h1 {
     color: black;
+    padding-bottom: 380px;
 }
 
 h2 {
@@ -266,6 +267,10 @@ a:hover {
     color: rgb(9, 4, 42);
     background: white;
     opacity: 70%;
+}
+
+.retour {
+    padding-bottom: 50px;
 }
 
 .retour:hover {

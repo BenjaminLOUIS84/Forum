@@ -1,4 +1,4 @@
-<h1>AJOUTER UNE CATEGORIE</h1>
+<h2>AJOUTER UNE CATEGORIE</h2>
 
 <div class="topicT">
 
