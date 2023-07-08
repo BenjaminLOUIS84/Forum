@@ -132,7 +132,7 @@
             ];                                          
         }
 
-        public function delTopic($idCategory){          // Fonction pour supprimer un Topic
+        public function delTopic($id){                  // Fonction pour supprimer un Topic
 
             $topicManager = new TopicManager();
 
@@ -140,13 +140,14 @@
 
                 "view" => VIEW_DIR."forum/listTopics.php",// Retour vers la liste des topics de la categorie correspondante
 
-                "data" => [$topicManager->delete($idCategory),  // Pour effacer le topic
+                "data" => [$topicManager->delete($id),  // Pour effacer le topic
 
                     "topics" => (
-                        //isset($idCategory)
-                        //? $topicManager->findListByIdDep($idCategory, "category", ["creationdate", "DESC"]) // Affiche les topics de la catégorie correspondante
-                        //: $topicManager->findAll(["creationdate", "DESC"]) // Affiche la liste de tous les topics 
-                         $topicManager->findAll(["creationdate", "DESC"]) // Affiche la liste de tous les topics 
+                        // isset($id)
+                        // ? $topicManager->findListByIdDep($id, "category", ["creationdate", "DESC"]) // Affiche les topics de la catégorie correspondante
+                        // : $topicManager->findAll(["creationdate", "DESC"]) // Affiche la liste de tous les topics 
+
+                        $topicManager->findAll() // Affiche la liste de tous les topics 
                     )
                 ]                                         
             ];
@@ -217,7 +218,7 @@
 
                 "view" => VIEW_DIR."forum/listPosts.php", // ATTENTION Gérer le retour vers la même page
 
-                "data" => [$postManager->delete($id),"posts" => $postManager->findAll(["text", "ASC"])]
+                "data" => [$postManager->delete($id),"posts" => $postManager->findAll()]
             ];
         }
 
@@ -245,7 +246,7 @@
     //RECHERCHES POUR ATTEINDRE L'OBJECTIF
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
-    //TEST Utiliser la fonction native du framework indOneById() 
+    //TEST Utiliser la fonction native du framework findOneById() 
 
     // public function listPosts($id){
     //     //Instancier cette variable pour accéder aux méthodes de la classe
