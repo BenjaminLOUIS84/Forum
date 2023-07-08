@@ -20,7 +20,7 @@
 
          /////////////////////////////////////////////////////////////////////////////////////////////////////
         // Créer une fonction spécifique pour afficher toutes les informations des Topics d'une Catégorie 
-        // Cette fonction servira de complément à la fonction listTopics($id) dans le forumController
+        // Cette fonction servira pour gérer le reotur et de complément à la fonction delTopic($id) dans le forumController
 
         // public function selectByCategory($id)
         // {

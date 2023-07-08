@@ -138,20 +138,16 @@
 
             $topicManager = new TopicManager();
 
-            //$title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
 
-                "view" => VIEW_DIR."forum/listTopics.php", // Retour vers la liste des topics de la categorie correspondante
+                "view" => VIEW_DIR."forum/listTopics.php",// Retour vers la liste des topics de la categorie correspondante
 
-                "data" => [  
+                "data" => [$topicManager->delete($category_id),  // Pour effacer le topic
 
-                    $topicManager->delete($category_id),         // Pour effacer le topic
-
-                    "topics" => 
-                   // $topicManager->findById($category_id),
-                    $topicManager->findAll(["title", "DESC"]) // Renvoi la liste de tous les topics (La cause du problème de redirection)
-                ]                                       // Trouver une solution renvoyer la liste des topics de la catégorie correspondante
+                    //"topics" => $topicManager->findAll(["title", "DESC"]),// findAll() = Renvoi la liste de tous les topics 
+                    "topics" => $topicManager->findListByIdDep($category_id, "category")// Fait appel à la fonction dans le TopicManager
+            
+                ]                                       // Pour renvoyer la liste des topics de la catégorie correspondante
             ];
         }
 
