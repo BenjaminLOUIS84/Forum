@@ -143,10 +143,11 @@
                 "data" => [$topicManager->delete($id),  // Pour effacer le topic
 
                     "topics" => (
+
                         // isset($id)
                         // ? $topicManager->findListByIdDep($id, "category", ["creationdate", "DESC"]) // Affiche les topics de la catégorie correspondante
                         // : $topicManager->findAll(["creationdate", "DESC"]) // Affiche la liste de tous les topics 
-
+                        
                         $topicManager->findAll() // Affiche la liste de tous les topics 
                     )
                 ]                                         
