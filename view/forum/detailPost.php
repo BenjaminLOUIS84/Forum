@@ -24,7 +24,7 @@
             ?>
 
             <!-- Lien pour répondre au Post -->
-            <a href="#">Répondre</a>
+            <a href="index.php?ctrl=forum&action=formulaireReponse">Répondre</a>
             <?php  
         ?>
 
@@ -55,6 +55,7 @@
         </div>
     </div>
 </div>
+
 <!-- Image en arrière plan -->
 <figure>
     <img src="./public/img/cuisine2.jpg" class="photo" alt="Rösti oeuf aux légumes">

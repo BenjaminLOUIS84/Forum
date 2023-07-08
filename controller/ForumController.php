@@ -240,6 +240,19 @@
                 "data" => ["posts" => $postManager->findPostByIdDep($id)] // Pour que le message corresponde au post    
             ];
         }
+
+        public function formulaireReponse(){            // Fonction pour accéder au formulaire des Réponses à séparer de la fonction d'ajout
+
+            return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
+                                                
+                "view" => VIEW_DIR."forum/formulaireReponse.php"
+                        
+            ];
+        }
+
+
+
+        
     }
 ?>
 
