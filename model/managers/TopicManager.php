@@ -7,6 +7,7 @@
     use Model\Managers\TopicManager;
     use Model\Managers\UserManager;
     use Model\Managers\PostManager;
+    use Model\Managers\ReponseManager;
     
     class TopicManager extends Manager{
 
@@ -15,28 +16,6 @@
 
         public function __construct(){
             parent::connect();
-        }
-        // On peut créer d'autres méthodes dans cet objet (CF expl PostManager)
-
-         /////////////////////////////////////////////////////////////////////////////////////////////////////
-        // Créer une fonction spécifique pour afficher toutes les informations des Topics d'une Catégorie 
-        // Cette fonction servira pour gérer le reotur et de complément à la fonction delTopic($id) dans le forumController
-
-        // public function selectByCategory($id)
-        // {
-        //     $sql = "SELECT *
-        //     FROM category c
-        //     INNER JOIN topic t
-        //     ON c.id_category = t.category_id
-        //     WHERE c.id_category = :id";
-            
-        //     return $this->getMultipleResults(
-        //         DAO::select($sql, ['id' => $id], true), 
-        //         $this->className
-        //     );
-        // }                         
-        /////////////////////////////////////////////////////////////////////////////////////////////////////
-        
-    }
-   
+        }    
+    } 
 ?>

@@ -9,13 +9,13 @@
     use Model\Managers\PostManager;
     use Model\Managers\ReponseManager;
 
-    class CategoryManager extends Manager{
+    class ReponseManager extends Manager{
 
-        protected $className = "Model\Entities\Category";
-        protected $tableName = "category";
+        protected $className = "Model\Entities\Reponse";
+        protected $tableName = "reponse";
 
         public function __construct(){
             parent::connect();
         }
-    }   
+    }
 ?>

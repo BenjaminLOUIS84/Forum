@@ -250,9 +250,27 @@
             ];
         }
 
+        public function addReponse(){                  // Fonction pour ajouter une réponse au post 
+
+           // $postManager = new PostManager();   // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
+            
+            $text = filter_input(INPUT_POST, 'text', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            //$postManager->add(['text' => $text]);   // Pour effectuer l'action d'ajout 
+
+            return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
+                                           
+                "view" => VIEW_DIR."forum/detailPost.php",
+
+               // "data" => ["posts" => $postManager->findAll()]                               
+            ];
+        }
 
 
-        
+
+
+
+
     }
 ?>
 
