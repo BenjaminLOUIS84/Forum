@@ -144,8 +144,8 @@
 
                 "data" => [$topicManager->delete($category_id),  // Pour effacer le topic
 
-                    "topics" => $topicManager->findAll(["title", "DESC"]),// findAll() = Renvoi la liste de tous les topics 
-                    "topics" => $topicManager->findListByIdDep($category_id, "category") // Pour renvoyer la liste des topics de la catégorie correspondante
+                    "topics" => $topicManager->findAll(["creationdate", "DESC"]),// findAll() = Renvoi la liste de tous les topics 
+                    "topics" => $topicManager->findListByIdDep($category_id, "category", ["creationdate", "DESC"]) // Pour renvoyer la liste des topics de la catégorie correspondante
             
                 ]                                      
             ];
