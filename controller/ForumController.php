@@ -60,8 +60,6 @@
 
             $categoryManager = new CategoryManager();
 
-            $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
 
                 "view" => VIEW_DIR."forum/listCategories.php",  // Après la suppression -> redirection sur la même page
@@ -134,20 +132,22 @@
             ];                                          
         }
 
-        public function delTopic($category_id){         // Fonction pour supprimer un Topic
+        public function delTopic($idCategory){          // Fonction pour supprimer un Topic
 
             $topicManager = new TopicManager();
 
-            return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
+            return [                                     // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
 
                 "view" => VIEW_DIR."forum/listTopics.php",// Retour vers la liste des topics de la categorie correspondante
 
-                "data" => [$topicManager->delete($category_id),  // Pour effacer le topic
+                "data" => [$topicManager->delete($idCategory),  // Pour effacer le topic
 
-                    "topics" => $topicManager->findAll(["creationdate", "DESC"]),// findAll() = Renvoi la liste de tous les topics 
-                    "topics" => $topicManager->findListByIdDep($category_id, "category", ["creationdate", "DESC"]) // Pour renvoyer la liste des topics de la catégorie correspondante
-            
-                ]                                      
+                    "topics" => (
+                        isset($idCategory)
+                        ? $topicManager->findListByIdDep($idCategory, "category", ["creationdate", "DESC"]) // Affiche les topics de la catégorie correspondante
+                        : $topicManager->findAll(["creationdate", "DESC"]) // Affiche la liste de tous les topics 
+                    )
+                ]                                         
             ];
         }
 

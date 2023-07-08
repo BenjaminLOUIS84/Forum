@@ -49,7 +49,10 @@
                 <a href="index.php?ctrl=forum&action=formulaireTopic&id=<?=$topic->getCategory()->getId()?>">Démarrer un nouveau Topic</a>
 
             <?php
+
         ?>
+
+        
     </table>
 </div>
 
