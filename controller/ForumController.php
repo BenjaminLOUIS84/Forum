@@ -134,7 +134,7 @@
             ];                                          
         }
 
-        public function delTopic($category_id){                  // Fonction pour supprimer un Topic
+        public function delTopic($category_id){         // Fonction pour supprimer un Topic
 
             $topicManager = new TopicManager();
 
