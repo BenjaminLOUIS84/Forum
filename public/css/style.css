@@ -397,8 +397,6 @@ a:hover {
 .reponses {
     display: flex;
     flex-wrap: wrap;
-    perspective: 500px;
-    transform-style: preserve-3d;
 }
 
 /*Effet de carte retournée*/
