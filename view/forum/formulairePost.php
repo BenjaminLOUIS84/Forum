@@ -7,9 +7,7 @@
 <div class="topicT">
 
     <?php
-        foreach($posts as $post){
-
-        }
+        foreach($posts as $post){}
         // Afficher le nom de la Catégorie sélectionnée
         echo "<div class='titreT'>".$post->getTopic()->getTitle()."</div>";
     ?>

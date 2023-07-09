@@ -241,28 +241,39 @@
             ];
         }
 
-        public function formulaireReponse(){            // Fonction pour accéder au formulaire des Réponses à séparer de la fonction d'ajout
+        public function formulaireReponse($idPost){            // Fonction pour accéder au formulaire des Réponses à séparer de la fonction d'ajout
+
+            $reponseManager = new ReponseManager();
 
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
                                                 
-                "view" => VIEW_DIR."forum/formulaireReponse.php"
+                "view" => VIEW_DIR."forum/formulaireReponse.php",
+
+                "data" => ["reponses" => $reponseManager->findListByIdDep($idPost, "post")]     
                         
             ];
         }
 
-        public function addReponse(){                  // Fonction pour ajouter une réponse au post 
+        public function addReponse(){                   // Fonction pour ajouter une réponse au post 
 
-           // $postManager = new PostManager();   // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
+           $reponseManager = new ReponseManager();      // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
             
             $text = filter_input(INPUT_POST, 'text', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-            //$postManager->add(['text' => $text]);   // Pour effectuer l'action d'ajout 
+            date_default_timezone_set('Europe/Paris');
+            $date = date('Y-m-d H:i:s');
+
+            $post_id = filter_input(INPUT_POST, 'post_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $user_id = filter_input(INPUT_POST, 'user_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            
+            $reponseManager->add(['text' => $text, 'dateCreate' => $date,'post_id' => $post_id, 'user_id' => $user_id]);// Pour effectuer l'action d'ajout
+             
 
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
                                            
                 "view" => VIEW_DIR."forum/detailPost.php",
 
-               // "data" => ["posts" => $postManager->findAll()]                               
+                "data" => ["reponses" => $reponseManager->findListByIdDep($post_id, "post")]                       
             ];
         }
 

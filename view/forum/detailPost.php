@@ -1,5 +1,6 @@
 <?php
     $posts = $result["data"]['posts'];// Cette variable permet d'accéder et d'afficher les informations demandées dans cette page
+    $reponses = $result["data"]['reponses'];// Cette variable permet d'accéder et d'afficher les informations demandées dans cette page
 ?>
 
 <h2>DETAIL</h2>
@@ -24,37 +25,37 @@
             ?>
 
             <!-- Lien pour répondre au Post -->
-            <a href="index.php?ctrl=forum&action=formulaireReponse">Répondre</a>
+            <a href="index.php?ctrl=forum&action=formulaireReponse&id=<?=$post->getId()?>">Répondre</a>
             <?php  
         ?>
 
     </table> 
 
 </div>
-<div class="reponses">
-    <div class="card-container">
-        <div class="card">
-            <div class="card-front">
-                <p>BENBY</p>
+
+<?php // Afficher les réponses sous forme de cartes à retourner
+
+    foreach($reponses as $reponse){
+
+        ?>
+            <div class="reponses">
+                <div class="card-container">
+                    <div class="card">
+                        <div class="card-front">
+                            <p><?=$reponse->getUser()->getPseudo()?></p>
+                        </div>
+                        <div class="card-back">
+                            <h3>Réponse de <?=$reponse->getUser()->getPseudo()?></h3>
+                            <h3><?=$reponse->getDateCreate()?></h3>
+                            <p><?=$reponse->getText()?></p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="card-back">
-                <h3>Réponse de Benby</h3>
-                <p>Verser de l'eau dans la casserole puis......</p>
-            </div>
-        </div>
-    </div>
-    <div class="card-container">
-        <div class="card">
-            <div class="card-front">
-                <p>LADY</p>
-            </div>
-            <div class="card-back">
-                <h3>Réponse de Lady</h3>
-                <p>Portez à ébulition puis ajouter......</p>
-            </div>
-        </div>
-    </div>
-</div>
+
+        <?php
+    }
+?>
 
 <!-- Image en arrière plan -->
 <figure>
