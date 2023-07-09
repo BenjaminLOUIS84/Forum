@@ -279,7 +279,7 @@
 
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
                                            
-                "view" => VIEW_DIR."forum/detailPost.php",
+                "view" => VIEW_DIR."forum/formulaireReponse.php",
 
                 "data" => ["reponses" => $reponseManager->findListByIdDep($post_id, "post")]                       
             ];
