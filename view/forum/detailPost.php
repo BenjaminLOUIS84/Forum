@@ -51,22 +51,26 @@
                         </div>
 
                         <div class="card-back">
-                            
+
                             <h3>Réponse de <?=$reponse->getUser()->getPseudo()?></h3>
                             <p><?=$reponse->getText()?></p>
+
+                            <div class="optionsR">
+
+                                <!-- Pour supprimer la réponse sélectionnée directement dans la liste -->
+                                <form action="index.php?ctrl=forum&action=delReponse&id=<?=$reponse->getId()?>" method="post">
+
+                                    <!-- Mettre une icône dans l'input -->
+                                    <input type="image" class="suppR" alt="Supprimer" src="./public/img/supp.jpg">
+
+                                </form>
                             
-                            <!-- Pour supprimer la réponse sélectionnée directement dans la liste -->
-                            <form action="index.php?ctrl=forum&action=delReponse&id=<?=$reponse->getId()?>" method="post">
+                                <!-- Pour modifier une réponse -->
+                                <form action="iindex.php?ctrl=forum&action=formulaireReponse&id=<?=$reponse->getId()?>" method="post">
+                                    <input type="image" class="majR" alt="Modifier" src="./public/img/maj.jpg">
+                                </form>
 
-                                <!-- Mettre une icône dans l'input -->
-                                <input type="image" class="suppT" alt="Supprimer" src="./public/img/supp.jpg">
-
-                            </form>
-
-                            <!-- Pour modifier une réponse -->
-                            <form action="iindex.php?ctrl=forum&action=formulaireReponse&id=<?=$reponse->getId()?>" method="post">
-                                <input type="image" class="majT" alt="Modifier" src="./public/img/maj.jpg">
-                            </form>
+                            </div>
 
                         </div>
                     </div>

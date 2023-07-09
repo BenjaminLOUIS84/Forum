@@ -234,14 +234,14 @@ body {
 
 td .suppT {
     cursor: pointer;
-    width: 30%;
+    width: 35%;
     background: snow;
-    margin: 5px;
+    margin-left: 30px;
 }
 
 td .majT {
     cursor: pointer;
-    width: 40%;
+    width: 45%;
     background: snow;
 }
 
@@ -263,20 +263,6 @@ td .majT {
     bottom: 0;
     z-index: -1;
     opacity: 70%;
-}
-
-/*PARAM de Suppression*/
-
-/*Bouton icône*/
-.suppT {
-    cursor: pointer;
-    width: 10%;
-    background: snow;
-}
-
-.suppT:hover {
-    box-shadow: 0px 6px 10px black;
-    transition: ease-in-out 0.5s;
 }
 
 /*FORMULAIRE Topics*/
@@ -335,20 +321,6 @@ input {
     padding: 10px;
     box-shadow: 0px 6px 10px black;
     border-radius: 10px;
-}
-
-/*PARAM de Suppression*/
-
-/*Bouton icône*/
-.suppP {
-    cursor: pointer;
-    width: 10%;
-    background: snow;
-}
-
-.suppP:hover {
-    box-shadow: 0px 6px 10px black;
-    transition: ease-in-out 0.5s;
 }
 
 /*COMMUN AUX PAGES Liste des Topics et Liste des Posts*/
@@ -447,6 +419,32 @@ a:hover {
     border-radius: 5px;
     backface-visibility: hidden;
     transform: rotateY(-180deg);
+}
+
+/*PARAM Options (Suppression & Modification)*/
+
+/*Boutons icônes*/
+
+.suppR {
+    cursor: pointer;
+    width: 10%;
+    background: snow;
+}
+
+.majR {
+    cursor: pointer;
+    width: 10%;
+    background: snow;
+}
+
+.suppR:hover,
+.majR:hover {
+    box-shadow: 0px 6px 10px black;
+    transition: ease-in-out 0.5s;
+}
+
+.optionsR {
+    display: flex;
 }
 
 h3 {
