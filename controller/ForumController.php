@@ -300,13 +300,13 @@
                 "data" => [
                     $reponseManager->delete($id),
 
-                    //"posts" => $postManager->findAll(),
+                    "posts" => $postManager->findAll()
 
-                    "posts" => (
-                        isset($id)
-                        ? $postManager->findListByIdDep($id, "Post", ["dateCreate", "DESC"]) // Pour afficher les réponses de chaque posts
-                        : $postManager->findAll(["dateCreate", "DESC"]) // Pour afficher toute les réponses
-                    )
+                    // "posts" => (
+                    //     isset($id)
+                    //     ? $postManager->findListByIdDep($id, "Post", ["dateCreate", "DESC"]) // Pour afficher les réponses de chaque posts
+                    //     : $postManager->findAll(["dateCreate", "DESC"]) // Pour afficher toute les réponses
+                    // )
                 ]
             ];
         }
