@@ -23,19 +23,24 @@
                 <div class="cat">
                     <!-- Pour accéder aux détails de la catégorie sélectionnée -->
                     <a href="index.php?ctrl=forum&action=listTopics&id=<?=$category->getId()?>"><?=$category->getName()?></a>
-                
-                    <!-- Pour supprimmer une catégorie directement dans la liste -->
-                    <form action="index.php?ctrl=forum&action=delCategory&id=<?=$category->getId()?>" method="post">
+
+                    <div class="option">
+
+                        <!-- Pour supprimmer une catégorie directement dans la liste -->
+                        <form action="index.php?ctrl=forum&action=delCategory&id=<?=$category->getId()?>" method="post">
+                            
+                            <!-- Mettre une icône dans l'input -->
+                            <input type="image" class="suppC" alt="Supprimer" src="./public/img/supp.jpg">
+
+                        </form>
+
+                        <!-- Pour modifier une catégorie -->
+                        <form action="index.php?ctrl=forum&action=majCategory&id=<?=$category->getId()?>" method="post">
+                            <input type="image" class="majC" alt="Modifier" src="./public/img/maj.jpg">
+                        </form>
                         
-                        <!-- Mettre une icône dans l'input -->
-                        <input type="image" class="suppC" alt="Supprimer" src="./public/img/supp.jpg">
+                    </div>
 
-                    </form>
-
-                    <!-- Pour modifier une catégorie -->
-                    <form action="index.php?ctrl=forum&action=majCategory&id=<?=$category->getId()?>" method="post">
-                        <input type="image" class="majC" alt="Modifier" src="./public/img/maj.jpg">
-                    </form>
                 </div>
             <?php
         }

@@ -6,10 +6,6 @@ body {
     background: radial-gradient(gray, rgb(9, 4, 42));
 }
 
-/* #forum {
-    height: 450px;
-} */
-
 #mainpage {
     height: max-content;
 }
@@ -125,9 +121,9 @@ body {
     opacity: 100%;
 }
 
-/*PARAM de Suppression*/
+/*PARAM de Suppression & Modification*/
 
-/*Bouton icône*/
+/*Boutons icônes*/
 .suppC,
 .majC {
     cursor: pointer;
