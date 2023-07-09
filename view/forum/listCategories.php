@@ -20,7 +20,7 @@
     <?php
         foreach($categories as $category){
             ?>
-                <div class="cat">
+                <div class="back">
                     <!-- Pour accéder aux détails de la catégorie sélectionnée -->
                     <a href="index.php?ctrl=forum&action=listTopics&id=<?=$category->getId()?>"><?=$category->getName()?></a>
 

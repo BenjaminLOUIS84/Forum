@@ -24,18 +24,28 @@
                             <td><?=$topic->getCreationdate()?></td>
                             <td><?=$topic->getUser()->getPseudo()?></td>
                             
-                            <!-- Pour accéder aux détails du topic sélectionné -->
-                            <td><a href="index.php?ctrl=forum&action=listPosts&id=<?=$topic->getId()?>">ENTRER</a>
-                                <td>
-                                    <!-- Pour supprimer le topic sélectionné directement dans la liste -->
-                                    <form action="index.php?ctrl=forum&action=delTopic&id=<?=$topic->getId()?>" method="post">
-                        
-                                        <!-- Mettre une icône dans l'input -->
-                                        <input type="image" class="suppT" alt="Supprimer" src="./public/img/supp.jpg">
+                            <div class="back">
 
-                                    </form>
+                                <!-- Pour accéder aux détails du topic sélectionné -->
+                                <td><a href="index.php?ctrl=forum&action=listPosts&id=<?=$topic->getId()?>">ENTRER</a>
+
+                                    <div class="option">
+                                        
+                                        <td>
+                                            <!-- Pour supprimer le topic sélectionné directement dans la liste -->
+                                            <form action="index.php?ctrl=forum&action=delTopic&id=<?=$topic->getId()?>" method="post">
+                                
+                                                <!-- Mettre une icône dans l'input -->
+                                                <input type="image" class="suppT" alt="Supprimer" src="./public/img/supp.jpg">
+
+                                            </form>
+                                        </td>
+
+                                    </div>
+
                                 </td>
-                            </td>  
+
+                            </div> 
                         </tr>
                     </tbody>
                     

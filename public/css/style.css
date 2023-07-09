@@ -60,7 +60,7 @@ body {
 }
 
 /*PARAM Background*/
-.cat {
+.back {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -85,7 +85,7 @@ body {
 }
 
 /*Déplier le background pour afficher les options au passage de la souris*/
-.cat:hover {
+.back:hover {
     width: 30%;
 }
 
@@ -94,7 +94,7 @@ body {
     font-size: 2em;
 }
 
-.cat a:hover {
+.back a:hover {
     transition: ease-in-out 0.5s;
     color: rgb(9, 4, 42);
     background: none;
