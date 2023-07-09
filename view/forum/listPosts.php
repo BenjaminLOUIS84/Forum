@@ -41,7 +41,7 @@
                                         </form>
 
                                         <!-- Pour modifier un post -->
-                                        <form action="index.php?ctrl=forum&action=formulairePost&id=<?=$post->getTopic()->getId()?>"> method="post">
+                                        <form action="index.php?ctrl=forum&action=formulairePost&id=<?=$post->getTopic()->getId()?>" method="post">
                                             <input type="image" class="majT" alt="Modifier" src="./public/img/maj.jpg">
                                         </form>
 
