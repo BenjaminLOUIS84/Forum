@@ -293,19 +293,20 @@
             $reponseManager = new ReponseManager();
             $postManager = new PostManager();
 
-            return [                                  // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
+            return [                                     // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
 
                 "view" => VIEW_DIR."forum/detailPost.php", // ATTENTION Gérer le retour vers la même page
 
-                "data" => [$reponseManager->delete($id),
+                "data" => [
+                    $reponseManager->delete($id),
 
-                //"posts" => $postManager->findAll(),
+                    //"posts" => $postManager->findAll(),
 
-                "reponses" => (
-                    isset($id)
-                    ? $reponseManager->findListByIdDep($id, "Post", ["dateCreate", "DESC"]) // Pour afficher les réponses de chaque posts
-                    : $reponseManager->findAll(["dateCreate", "DESC"]) // Pour afficher toute les réponses
-                )
+                    "posts" => (
+                        isset($id)
+                        ? $postManager->findListByIdDep($id, "Post", ["dateCreate", "DESC"]) // Pour afficher les réponses de chaque posts
+                        : $postManager->findAll(["dateCreate", "DESC"]) // Pour afficher toute les réponses
+                    )
                 ]
             ];
         }
