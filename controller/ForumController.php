@@ -298,7 +298,7 @@
                 "view" => VIEW_DIR."forum/detailPost.php", // ATTENTION Gérer le retour vers la même page
 
                 "data" => [$reponseManager->delete($id),
-                "posts" => $postManager->findAll(),
+                //"posts" => $postManager->findAll(),
                 "reponses" => (
                     isset($id)
                     ? $reponseManager->findListByIdDep($id, "Post", ["dateCreate", "DESC"]) // Pour afficher les réponses de chaque posts
