@@ -36,12 +36,13 @@
     $reponses = $result["data"]['reponses'];// Cette variable permet d'accéder et d'afficher les informations demandées dans cette page
 ?>
 
-<?php // Afficher les réponses sous forme de cartes à retourner
+<div class="reponses">
 
-    foreach($reponses as $reponse){
+    <?php // Afficher les réponses sous forme de cartes à retourner
 
-        ?>
-            <div class="reponses">
+        foreach($reponses as $reponse){
+
+            ?>
                 <div class="card-container">
                     <div class="card">
                         <div class="card-front">
@@ -54,11 +55,11 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            <?php
+        }
+    ?>
 
-        <?php
-    }
-?>
+</div>
 
 <!-- Image en arrière plan -->
 <figure>
