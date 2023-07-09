@@ -223,7 +223,7 @@ body {
 
 .suppT {
     cursor: pointer;
-    width: 50%;
+    width: 100%;
     background: snow;
 }
 
@@ -231,6 +231,12 @@ body {
     cursor: pointer;
     width: 40%;
     background: snow;
+}
+
+.suppT:hover,
+.majT:hover {
+    box-shadow: 0px 6px 10px black;
+    transition: ease-in-out 0.5s;
 }
 
 /*Image en arrière plan commune à tous les Topics de toute les catégories*/
