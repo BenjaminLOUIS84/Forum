@@ -288,7 +288,7 @@
             ];
         }
 
-        public function delReponse($id){                 // Fonction pour supprimer un Post
+        public function delReponse($id){                 // Fonction pour supprimer une réponse
 
             $reponseManager = new ReponseManager();
             $postManager = new PostManager();
@@ -298,7 +298,9 @@
                 "view" => VIEW_DIR."forum/detailPost.php", // ATTENTION Gérer le retour vers la même page
 
                 "data" => [$reponseManager->delete($id),
+
                 //"posts" => $postManager->findAll(),
+
                 "reponses" => (
                     isset($id)
                     ? $reponseManager->findListByIdDep($id, "Post", ["dateCreate", "DESC"]) // Pour afficher les réponses de chaque posts
