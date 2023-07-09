@@ -188,8 +188,49 @@ body {
 /*BOUTONS ENTRER*/
 
 .topicT a {
-    padding: 5px;
+    padding: 10px;
     box-shadow: 0px 6px 10px black;
+    border-radius: 10px;
+}
+
+/*PARAM Background*/
+.backT {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: snow;
+    margin: 5px;
+    border-radius: 10px;
+
+    /*Effet de glissement pour afficher les options*/
+
+    /*Direction du flottement et temps d'éxecution*/
+    float: left;
+    transition: width .5s ease 0.1s;
+
+    /*Cacher les options*/
+    width: 0%;
+}
+
+/*Déplier le background pour afficher les options au passage de la souris*/
+.backT:hover {
+    width: 50%;
+}
+
+/*PARAM Options (Suppression & Modification)*/
+
+/*Boutons icônes*/
+
+.suppT {
+    cursor: pointer;
+    width: 50%;
+    background: snow;
+}
+
+.majT {
+    cursor: pointer;
+    width: 40%;
+    background: snow;
 }
 
 /*Image en arrière plan commune à tous les Topics de toute les catégories*/
@@ -296,6 +337,7 @@ input {
 th,
 td {
     padding: 18px;
+    text-align: initial;
 }
 
 thead {
