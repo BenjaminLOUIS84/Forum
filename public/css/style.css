@@ -39,6 +39,7 @@ body {
     backdrop-filter: blur(8px);
     justify-content: center;
     align-items: center;
+    box-shadow: 0px 6px 10px black;
 }
 
 .topicC a {
@@ -54,7 +55,7 @@ body {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
     backdrop-filter: blur(8px);
     justify-content: center;
-    align-items: center;
+    align-items: baseline;
     box-shadow: 0px 6px 10px black;
 }
 
@@ -65,16 +66,34 @@ body {
     align-items: center;
     background: snow;
     margin: 5px;
-    border-radius: 5px;
+    border-radius: 10px;
+    
+    float: left;
+    white-space: nowrap;
+    width: 0%;
+    height: 100%;
+    transition: width .5s ease 0.1s;
 }
 
 .option {
-    display: none;
+    display: flex;
+    overflow: hidden
+}
+
+.cat:hover {
+    width: 50%;
 }
 
 .topic a {
     color: black;
     font-size: 2em;
+}
+
+.cat a:hover {
+    transition: ease-in-out 0.5s;
+    color: rgb(9, 4, 42);
+    background: none;
+    opacity: 70%;
 }
 
 /*PARAM Options (Suppression & Modification)*/
@@ -228,6 +247,7 @@ input {
     background: white;
     opacity: 70%;
 }
+
 /*PAGE Liste des Posts*/
 
 .topicP {
@@ -320,10 +340,12 @@ a:hover {
     height: 200px;
     width: 300px;
 }
+
 .card-container:hover .card {
     transform: rotateY(180deg);
     transition: ease-in-out 1s;
 }
+
 .card {
     position: absolute;
     height: 100%;
@@ -331,6 +353,7 @@ a:hover {
     transition: all 1s ease;
     transform-style: preserve-3d;
 }
+
 .card-front {
     position: absolute;
     height: 100%;
