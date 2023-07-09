@@ -1,6 +1,5 @@
 <?php
     $posts = $result["data"]['posts'];// Cette variable permet d'accéder et d'afficher les informations demandées dans cette page
-    $reponses = $result["data"]['reponses'];// Cette variable permet d'accéder et d'afficher les informations demandées dans cette page
 ?>
 
 <h2>DETAIL</h2>
@@ -32,6 +31,10 @@
     </table> 
 
 </div>
+
+<?php
+    $reponses = $result["data"]['reponses'];// Cette variable permet d'accéder et d'afficher les informations demandées dans cette page
+?>
 
 <?php // Afficher les réponses sous forme de cartes à retourner
 
