@@ -3,7 +3,7 @@
 
     use App\Entity;
 
-    final class Post extends Entity{
+    final class Reponse extends Entity{
 
         // Configurer les noms de la Base de données pour qu'ils soient comme dans le code
 

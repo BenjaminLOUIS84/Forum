@@ -226,19 +226,26 @@
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
-        // OBJECTIFS: Créer une fonction pour permettre l'ajout et l'affichage des réponses dans un tableau
+        // OBJECTIFS: Créer une fonction pour permettre l'ajout et l'affichage des réponses spécifiquent à chaque posts sous forme de cartes
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public function detailPost($id){               // Fonction permettant d'afficher le détail d'un post (le message du post)
 
             $postManager = new PostManager();          //Instancier cette variable pour accéder aux méthodes de leurs classes
+            $reponseManager = new ReponseManager();          //Instancier cette variable pour accéder aux méthodes de leurs classes
 
             return [
 
                 "view" => VIEW_DIR."forum/detailPost.php",
 
-                "data" => ["posts" => $postManager->findPostByIdDep($id)] // Pour que le message corresponde au post    
+                "data" => [
+
+                    "posts" => $postManager->findPostByIdDep($id), // Pour que le message corresponde au post    
+                
+                    "reponses" => $reponseManager->findAll(["dateCreate", "DESC"])
+
+                ]     
             ];
         }
 
