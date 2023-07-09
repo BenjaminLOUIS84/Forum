@@ -233,7 +233,7 @@
         public function detailPost($id){               // Fonction permettant d'afficher le détail d'un post (le message du post)
 
             $postManager = new PostManager();          //Instancier cette variable pour accéder aux méthodes de leurs classes
-            $reponseManager = new ReponseManager();          //Instancier cette variable pour accéder aux méthodes de leurs classes
+            $reponseManager = new ReponseManager();    //Instancier cette variable pour accéder aux méthodes de leurs classes
 
             return [
 
@@ -245,14 +245,14 @@
                 
                     "reponses" => (
                         isset($id)
-                        ? $reponseManager->findListByIdDep($id, "Post", ["dateCreate", "DESC"])
-                        : $reponseManager->findAll(["dateCreate", "DESC"]) // Pour afficher les réponses de chaque posts
+                        ? $reponseManager->findListByIdDep($id, "Post", ["dateCreate", "DESC"]) // Pour afficher les réponses de chaque posts
+                        : $reponseManager->findAll(["dateCreate", "DESC"]) // Pour afficher toute les réponses
                     )
                 ]     
             ];
         }
 
-        public function formulaireReponse($idPost){            // Fonction pour accéder au formulaire des Réponses à séparer de la fonction d'ajout
+        public function formulaireReponse($idPost){     // Fonction pour accéder au formulaire des Réponses à séparer de la fonction d'ajout
 
             $reponseManager = new ReponseManager();
 
@@ -297,7 +297,8 @@
 ?>
 
 <?php
-    //RECHERCHES POUR ATTEINDRE L'OBJECTIF
+
+    //RECHERCHES POUR ATTEINDRE L'OBJECTIF ET COMPRENDRE LE FRAMEWORK
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     //TEST Utiliser la fonction native du framework findOneById() 
