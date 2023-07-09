@@ -419,21 +419,17 @@ a:hover {
     border-radius: 5px;
     backface-visibility: hidden;
     transform: rotateY(-180deg);
+    padding: 10px;
 }
 
 /*PARAM Options (Suppression & Modification)*/
 
 /*Boutons icônes*/
 
-.suppR {
-    cursor: pointer;
-    width: 10%;
-    background: snow;
-}
-
+.suppR,
 .majR {
     cursor: pointer;
-    width: 10%;
+    width: 30%;
     background: snow;
 }
 
@@ -445,6 +441,11 @@ a:hover {
 
 .optionsR {
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    background: snow;
+    border-radius: 10px;
 }
 
 h3 {
