@@ -27,7 +27,7 @@
                             <td>
                                 <div class="backT">
 
-                                    <!-- Pour accéder aux détails du topic sélectionné -->
+                                    <!-- Pour accéder aux détails du post sélectionné -->
                                     <a href="index.php?ctrl=forum&action=detailPost&id=<?=$post->getId()?>">LIRE</a>
                                 
                                     <div class="option">
@@ -40,8 +40,8 @@
 
                                         </form>
 
-                                        <!-- Pour modifier un topic -->
-                                        <form action="index.php?ctrl=forum&action=majTopic&id=<?=$post->getId()?>" method="post">
+                                        <!-- Pour modifier un post -->
+                                        <form action="index.php?ctrl=forum&action=formulairePost&id=<?=$post->getTopic()->getId()?>"> method="post">
                                             <input type="image" class="majT" alt="Modifier" src="./public/img/maj.jpg">
                                         </form>
 

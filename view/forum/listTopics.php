@@ -40,7 +40,7 @@
                                         </form>
 
                                         <!-- Pour modifier un topic -->
-                                        <form action="index.php?ctrl=forum&action=majTopic&id=<?=$topic->getId()?>" method="post">
+                                        <form action="index.php?ctrl=forum&action=formulaireTopic&id=<?=$topic->getCategory()->getId()?>" method="post">
                                             <input type="image" class="majT" alt="Modifier" src="./public/img/maj.jpg">
                                         </form>
 
