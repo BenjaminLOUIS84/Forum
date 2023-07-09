@@ -243,8 +243,11 @@
 
                     "posts" => $postManager->findPostByIdDep($id), // Pour que le message corresponde au post    
                 
-                    "reponses" => $reponseManager->findAll(["dateCreate", "DESC"])
-
+                    "reponses" => (
+                        isset($id)
+                        ? $reponseManager->findListByIdDep($id, "Post", ["dateCreate", "DESC"])
+                        : $reponseManager->findAll(["dateCreate", "DESC"]) // Pour afficher les réponses de chaque posts
+                    )
                 ]     
             ];
         }
