@@ -199,7 +199,6 @@ body {
     flex-direction: row;
     align-items: center;
     background: snow;
-    margin: 5px;
     border-radius: 10px;
 
     /*Effet de glissement pour afficher les options*/
@@ -217,17 +216,30 @@ body {
     width: 50%;
 }
 
+.backT a {
+    color: black;
+    font-size: 1em;
+}
+
+.backT a:hover {
+    transition: ease-in-out 0.5s;
+    color: rgb(9, 4, 42);
+    background: none;
+    opacity: 70%;
+}
+
 /*PARAM Options (Suppression & Modification)*/
 
 /*Boutons icônes*/
 
-.suppT {
+td .suppT {
     cursor: pointer;
-    width: 100%;
+    width: 30%;
     background: snow;
+    margin: 5px;
 }
 
-.majT {
+td .majT {
     cursor: pointer;
     width: 40%;
     background: snow;

@@ -12,8 +12,7 @@
                 <th>PSEUDOS</th>
                 <th>MESSAGES</th>
                 <th>DATES&HEURES</th>
-                <th>DETAILS</th>
-                <th>SUPPRIMER</th>
+                <th>OPTIONS</th>
             </tr>
         </thead>
         <?php
@@ -25,17 +24,31 @@
                             <td><?=$post->getText()?></td>
                             <td><?=$post->getDateCreate()?></td>
                             
-                            <!-- Pour accéder aux détails du topic sélectionné -->
-                            <td><a href="index.php?ctrl=forum&action=detailPost&id=<?=$post->getId()?>">LIRE</a>
-                                <td>
-                                    <!-- Pour supprimer le post sélectionné directement dans la liste -->
-                                    <form action="index.php?ctrl=forum&action=delPost&id=<?=$post->getId()?>" method="post">
-                                
-                                        <!-- Mettre une icône dans l'input -->
-                                        <input type="image" class="suppP" alt="Supprimer" src="./public/img/supp.jpg">
+                            <td>
+                                <div class="backT">
 
-                                    </form>
-                                </td>
+                                    <!-- Pour accéder aux détails du topic sélectionné -->
+                                    <a href="index.php?ctrl=forum&action=detailPost&id=<?=$post->getId()?>">LIRE</a>
+                                
+                                    <div class="option">
+
+                                        <!-- Pour supprimer le post sélectionné directement dans la liste -->
+                                        <form action="index.php?ctrl=forum&action=delPost&id=<?=$post->getId()?>" method="post">
+                                
+                                            <!-- Mettre une icône dans l'input -->
+                                            <input type="image" class="suppT" alt="Supprimer" src="./public/img/supp.jpg">
+
+                                        </form>
+
+                                        <!-- Pour modifier un topic -->
+                                        <form action="index.php?ctrl=forum&action=majTopic&id=<?=$post->getId()?>" method="post">
+                                            <input type="image" class="majT" alt="Modifier" src="./public/img/maj.jpg">
+                                        </form>
+
+                                    </div>
+
+                                </div>
+
                             </td>  
                         </tr>
                     </tbody>
