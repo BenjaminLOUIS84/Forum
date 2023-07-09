@@ -47,10 +47,10 @@
                     <div class="card">
                         <div class="card-front">
                             <p><?=$reponse->getUser()->getPseudo()?></p>
+                            <h3><?=$reponse->getDateCreate()?></h3>
                         </div>
                         <div class="card-back">
                             <h3>Réponse de <?=$reponse->getUser()->getPseudo()?></h3>
-                            <h3><?=$reponse->getDateCreate()?></h3>
                             <p><?=$reponse->getText()?></p>
                         </div>
                     </div>
