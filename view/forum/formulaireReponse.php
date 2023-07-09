@@ -33,4 +33,3 @@
 
 <a class="retour" href="index.php?ctrl=forum&action=listTopics&id=1">- TOPICS CUISINE -</a>
 <a class="retour" href="index.php?ctrl=forum&action=listTopics&id=2">- TOPICS PATISSERIE -</a>
-<a class="retour" href="index.php?ctrl=forum&action=detailPosts&id=1">- RETOUR -</a>
