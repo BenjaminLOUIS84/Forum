@@ -72,7 +72,7 @@
 
         public function majCategory($name, $id){
 
-            $sql = "UPDATE ".$this->tableName."
+            $sql = "UPDATE ".$this->tableName." a
                     SET name = :name
                     WHERE id_".$this->tableName." = :id
                     ";

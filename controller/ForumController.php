@@ -69,7 +69,7 @@
             ];
         }
 
-        public function formCat($id){                   // Fonction pour accéder au formCat() de la catégorie à modifier à séparer de la fonction modifier
+        public function formCat(){                   // Fonction pour accéder au formCat() de la catégorie à modifier à séparer de la fonction modifier
 
             $categoryManager = new CategoryManager();
 
@@ -77,11 +77,11 @@
                 
                 "view" => VIEW_DIR."forum/formCat.php",  
                 
-                "data" => ["categories" => $categoryManager->findOneById($id)]
+                //"data" => ["categories" => $categoryManager->findOneById($id)]
             ];
         }
 
-        public function majCategory($id){               // Fonction pour modifier une catégorie  
+        public function majCategory($id){              // Fonction pour modifier une catégorie  
 
             $categoryManager = new CategoryManager();   // Instancier cette variable pour accéder aux méthodes de la classe et ajouter le filtre
             
@@ -91,7 +91,12 @@
                                            
                 "view" => VIEW_DIR."forum/listCategories.php",
 
-                "data" => [$categoryManager->majCategory($name, $id), "categories" => $categoryManager->findAll(["name", "ASC"])]     
+                "data" => [
+
+                    $categoryManager->majCategory($name, $id),
+                    
+                    "categories" => $categoryManager->findAll(["name", "ASC"])
+                ]     
             ];
         }
 
