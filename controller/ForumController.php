@@ -128,20 +128,16 @@
 
             $topicManager = new TopicManager();
             $categoryManager = new CategoryManager();   // Instancier cette variable permettre l'ajout d'un topic dans une catégorie vide
-
-            //$userManager = new UserManager();         // Instancier cette variable permettre l'ajout d'un user
-            $postManager = new PostManager();
+            
+            // Plusieurs essais avec userManager et postManager non concluant 
 
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
 
                 "view" => VIEW_DIR."forum/formulaireTopic.php",
 
                 "data" => ["topics" => $topicManager->findListByIdDep($idCategory, "category"),
-                "category" => $categoryManager->findOneById($idCategory),
-
-                // "user" => $userManager->findOneById($idCategory)// Pour retrouver un élément selon un id
-                "post" => $postManager->findOneById($idCategory)
-
+                "category" => $categoryManager->findOneById($idCategory)
+                
                 ]                            
             ];
         }

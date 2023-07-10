@@ -1,7 +1,6 @@
 <?php
     $topics = $result["data"]['topics'];
     $category = $result["data"]['category'];
-    $user = $result["data"]['user'];
 ?>
 
 <h2>AJOUTER UN TOPIC</h2>
@@ -41,13 +40,14 @@
             
             <?php
 
-        }else{// Afficher le formulaire pour ajouter un premier topic à la catégorie vide
+        }else{// Afficher le formulaire pour ajouter un premier topic à la catégorie vide (cas où il n'y aucuns topics)
 
-            echo "<div class='titreT'>".$category->getName()."</div>";
+            echo "<div class='titreT'>".$category->getName()."</div>";//Pour afficher le titre de la catégorie gràce à la variable $category
             echo "Ajouter un premier topic à cette catégorie";
             
 
-            ?>
+            ?>  
+                <!-- Générer le même formulaire qui celui ci dessus mais avec des $ variables différentes dans le cas d'une catégorie vide -->
 
                 <form class="formulaireTopic" action="index.php?ctrl=forum&action=addTopic" method="post">
                     
@@ -56,9 +56,11 @@
                     <label class="text" for="text">TEXTE</label>
                     <input name="text" type="text" id="text" required>
 
+                    <!-- Liaison du topic avec la catégorie -->
+
                     <input type="hidden" name="category_id" value="<?=$category->getId()?>">
 
-                    <input type="hidden" name="user_id" value="<?=$user->getId()?>">
+                    <!-- Liaison du topic avec l'utilisateur problème pour récupérer l'Id de l'utilisateur nécessaire pour valider l'ajout d'un nouveau post dans une catégorie vide-->
 
                     <input id="submit" type="submit" name="addTopic" value="AJOUTER">
             
