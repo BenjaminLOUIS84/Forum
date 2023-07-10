@@ -83,7 +83,7 @@
             
             $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-            $category_id = $categoryManager->majCategory(['name' => $name, ':id' => $id]);   // Pour effectuer l'action de modification 
+            $category_id = $categoryManager->majCategory([':name' => $name, ':id' => $id]);   // Pour effectuer l'action de modification 
 
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
                                            
