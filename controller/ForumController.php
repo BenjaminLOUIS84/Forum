@@ -85,11 +85,11 @@
         
             //$categoryManager->majCategory([':name' => $name, ':id' => $id]);   // Pour effectuer l'action de modification 
 
-            $categoryManager->majCategory($name, $id);   // Pour effectuer l'action de modification 
+            //$categoryManager->majCategory($name, $id);   // Pour effectuer l'action de modification 
 
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
                                            
-                "view" => VIEW_DIR."forum/listCategories.php",
+                //"view" => VIEW_DIR."forum/listCategories.php",
 
                 //"data" => ["categories" => $categoryManager->findAll(["name", "ASC"])]
 
