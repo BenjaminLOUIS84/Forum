@@ -35,7 +35,7 @@
                         </form>
 
                         <!-- Pour modifier une catégorie -->
-                        <form action="index.php?ctrl=forum&action=formCat" method="post">
+                        <form action="index.php?ctrl=forum&action=formCat&id=<?=$category->getId()->getName()?>" method="post">
                             <input type="image" class="majC" alt="Modifier" src="./public/img/maj.jpg">
                         </form>
                         
