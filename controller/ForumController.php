@@ -83,7 +83,7 @@
             
             $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         
-            //$categoryManager->majCategory([':name' => $name, ':id' => $id]);   // Pour effectuer l'action de modification 
+            $categoryManager->majCategory([':name' => $name, ':id' => $id]);   // Pour effectuer l'action de modification 
 
             //$categoryManager->majCategory($name, $id);   // Pour effectuer l'action de modification 
 
@@ -91,9 +91,9 @@
                                            
                 "view" => VIEW_DIR."forum/formCat.php",
 
-                //"data" => ["categories" => $categoryManager->findAll(["name", "ASC"])]
+                "data" => ["categories" => $categoryManager->findAll(["name", "ASC"])]
 
-                "data" => [$categoryManager->majCategory($name, $id)]                               
+                //"data" => [$categoryManager->majCategory($name, $id)]                               
             ];
         }
 

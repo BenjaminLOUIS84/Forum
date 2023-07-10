@@ -77,7 +77,7 @@
                     WHERE id_".$this->tableName." = :id
                     ";
 
-            return DAO::update($sql, [':name' => $name, 'id' => $id]); 
+            return DAO::update($sql, [':name' => $name, ':id' => $id]); 
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////
