@@ -80,6 +80,15 @@
             return DAO::update($sql, [':name' => $name, ':id' => $id]); 
         }
 
+        // public function majCategory($name, $id){
+
+        //     $sql = "UPDATE category c
+        //     SET c.name = ':name'
+        //     WHERE c.id_category = :id";
+
+        //     return DAO::update($sql, [':name' => $name, ':id' => $id]); 
+        // }
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////
         public function findOneById($id){
 
