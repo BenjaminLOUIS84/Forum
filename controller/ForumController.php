@@ -69,7 +69,7 @@
             ];
         }
 
-        public function formCat(){                   // Fonction pour accéder au formCat() de la catégorie à modifier à séparer de la fonction modifier
+        public function formCat(){                      // Fonction pour accéder au formCat() de la catégorie à modifier à séparer de la fonction modifier
 
             $categoryManager = new CategoryManager();
 
@@ -81,7 +81,7 @@
             ];
         }
 
-        public function majCategory($id){              // Fonction pour modifier une catégorie  
+        public function majCategory($id){               // Fonction pour modifier une catégorie  
 
             $categoryManager = new CategoryManager();   // Instancier cette variable pour accéder aux méthodes de la classe et ajouter le filtre
             

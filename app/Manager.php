@@ -74,7 +74,7 @@
 
             $sql = "UPDATE ".$this->tableName." a
                     SET name = :name
-                    WHERE id_".$this->tableName." = :id
+                    WHERE a.id_".$this->tableName." = :id
                     ";
 
             return DAO::update($sql, [':name' => $name, ':id' => $id]); 
