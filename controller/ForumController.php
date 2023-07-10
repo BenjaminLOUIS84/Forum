@@ -126,20 +126,32 @@
 
         public function formulaireTopic($idCategory){   // Fonction pour accéder au formulaire des Catégories à séparer de la fonction d'ajout
 
-            $topicManager = new TopicManager(); 
-            
+            $topicManager = new TopicManager();
+            $categoryManager = new CategoryManager();   // Instancier cette variable permettre l'ajout d'un topic dans une catégorie vide
+
+            //$userManager = new UserManager();         // Instancier cette variable permettre l'ajout d'un user
+            $postManager = new PostManager();
+
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
 
                 "view" => VIEW_DIR."forum/formulaireTopic.php",
 
-                "data" => ["topics" => $topicManager->findListByIdDep($idCategory, "category"),]                            
+                "data" => ["topics" => $topicManager->findListByIdDep($idCategory, "category"),
+                "category" => $categoryManager->findOneById($idCategory),
+
+                // "user" => $userManager->findOneById($idCategory)// Pour retrouver un élément selon un id
+                "post" => $postManager->findOneById($idCategory)
+
+                ]                            
             ];
         }
 
         public function addTopic(){                     // Fonction pour accéder au formulaire pour ajouter des Topics selon la catégorie
 
             $topicManager = new TopicManager();         // Instancier ces variables pour accéder aux méthodes de leur classes et ajouter les filtres
-            $postManager = new PostManager();           
+            $postManager = new PostManager();           // Instancier pour lier un post à un topic
+            
+         
 
             $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             date_default_timezone_set('Europe/Paris');

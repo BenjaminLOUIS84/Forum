@@ -1,5 +1,7 @@
 <?php
     $topics = $result["data"]['topics'];
+    $category = $result["data"]['category'];
+    $user = $result["data"]['user'];
 ?>
 
 <h2>AJOUTER UN TOPIC</h2>
@@ -32,16 +34,40 @@
 
                 <input type="hidden" name="category_id" value="<?=$topic->getCategory()->getId()?>">
                 <input type="hidden" name="user_id" value="<?=$topic->getUser()->getId()?>">
-                                
+                                               
                 <input id="submit" type="submit" name="addTopic" value="AJOUTER">
 
             </form>
             
             <?php
 
-        }else{
+        }else{// Afficher le formulaire pour ajouter un premier topic à la catégorie vide
+
+            echo "<div class='titreT'>".$category->getName()."</div>";
             echo "Ajouter un premier topic à cette catégorie";
+            
+
+            ?>
+
+                <form class="formulaireTopic" action="index.php?ctrl=forum&action=addTopic" method="post">
+                    
+                    <label class="title" for="title">TITRE</label>
+                    <input name="title" type="text" id="title" required>
+                    <label class="text" for="text">TEXTE</label>
+                    <input name="text" type="text" id="text" required>
+
+                    <input type="hidden" name="category_id" value="<?=$category->getId()?>">
+
+                    <input type="hidden" name="user_id" value="<?=$user->getId()?>">
+
+                    <input id="submit" type="submit" name="addTopic" value="AJOUTER">
+            
+                </form>
+
+            <?php
+            
         }
+
     ?>
 
 </div>
