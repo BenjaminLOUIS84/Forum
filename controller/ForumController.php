@@ -77,13 +77,13 @@
             ];
         }
 
-        public function majCategory(){                  // Fonction pour ajouter une catégorie au formulaire 
+        public function majCategory($name, $id){        // Fonction pour modifier une catégorie  
 
-            $categoryManager = new CategoryManager();   // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
+            $categoryManager = new CategoryManager();   // Instancier cette variable pour accéder aux méthodes de la classe et ajouter le filtre
             
             $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-            $category_id = $categoryManager->majCategory(['name' => $name]);   // Pour effectuer l'action d'ajout 
+            $category_id = $categoryManager->majCategory(['name' => $name, ':id' => $id]);   // Pour effectuer l'action de modification 
 
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
                                            
