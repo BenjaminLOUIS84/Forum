@@ -18,7 +18,7 @@
     
     <form class="formulaireTopic" action="index.php?ctrl=forum&action=majCategory" method="post">
 
-    <!-- <form class="formulaireTopic" action="index.php?ctrl=forum&action=majCategory&id=<?=$category->getId()?>" method="post"> -->
+    
                     
         <label class="name" for="name">NOM</label>
         <input name="name" type="text" id="name" required> 
