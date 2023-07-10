@@ -106,7 +106,7 @@
         public function listTopics($idCategory){        // Fonction pour afficher la liste de tout les Topics selon la catégorie
             
             $topicManager = new TopicManager();         // Instancier cette variable pour accéder aux méthodes de la classe 
-            $categoryManager = new CategoryManager();         // Instancier cette variable pour accéder aux méthodes de la classe 
+            $categoryManager = new CategoryManager();   // Instancier cette variable pour accéder aux méthodes de la classe et permettre l'ajout de topic dans une catégorie vide
 
             return [
 
@@ -117,11 +117,11 @@
                     "topics" => (
                         isset($idCategory)
                         ? $topicManager->findListByIdDep($idCategory, "category", ["creationdate", "DESC"])
-                        : $topicManager->findAll(["creationdate", "DESC"])
+                        : $topicManager->findAll(["creationdate", "DESC"])// Permet d'afficher toutes les informations d'un topic
                     ),
-                    "category" => $categoryManager->findOneById($idCategory)
+                    "category" => $categoryManager->findOneById($idCategory)// Pour retrouver un élément selon un id
                 ]                               
-            ];                                          // Permet d'afficher toutes les informations d'un topic
+            ];                                          
         }
 
         public function formulaireTopic($idCategory){   // Fonction pour accéder au formulaire des Catégories à séparer de la fonction d'ajout
@@ -136,10 +136,10 @@
             ];
         }
 
-        public function addTopic(){                     // Fonction pour accéder au formulaire des Topics selon la catégorie
+        public function addTopic(){                     // Fonction pour accéder au formulaire pour ajouter des Topics selon la catégorie
 
-            $topicManager = new TopicManager();         // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
-            $postManager = new PostManager();           // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
+            $topicManager = new TopicManager();         // Instancier ces variables pour accéder aux méthodes de leur classes et ajouter les filtres
+            $postManager = new PostManager();           
 
             $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             date_default_timezone_set('Europe/Paris');

@@ -17,7 +17,7 @@
         </thead>
         <?php
 
-            if($topics == true){
+            if($topics == true){//Créer une condition pour afficher une catégorie vide si il y a un ou plusieurs topics alors afficher ci desous)
                 
                 foreach($topics as $topic){// On fait un foreach pour afficher tous les Topics dans un tableau
                     
@@ -61,14 +61,17 @@
                 echo "<div class='titreT'>".$topic->getCategory()->getName()."</div>";
                 ?>
                     <!-- Lien pour créer un nouveau Topic selon la catégorie -->
-                    <a href="index.php?ctrl=forum&action=formulaireTopic&id=<?=$topic->getCategory()->getId()?>">Démarrer un nouveau Topic</a>
+                    <!-- <a href="index.php?ctrl=forum&action=formulaireTopic&id=<?=$topic->getCategory()->getId()?>">Démarrer un nouveau Topic</a> -->
                 <?php
 
-            }else{
+            }else{//Sinon afficher ci dessous ( pour permettre l'ajout de topic dans une catégorie vide instancier la variable $category CF Controlleur)
+               
+                echo "<div class='titreT'>".$category->getName()."</div>";
                 echo "Il n'y a pas encore de topic pour cette categorie";   
             }
 
             ?>
+                <!-- Lien pour créer un nouveau Topic selon la catégorie -->
                 <a href="index.php?ctrl=forum&action=formulaireTopic&id=<?=$category->getId()?>">Démarrer un nouveau Topic</a>
             <?php 
         ?>
