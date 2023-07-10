@@ -69,6 +69,30 @@
             ];
         }
 
+        public function formCat(){                      // Fonction pour accéder au formCat() à séparer de la fonction modifier
+
+            return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
+                
+                "view" => VIEW_DIR."forum/formCat.php",                           
+            ];
+        }
+
+        public function majCategory(){                  // Fonction pour ajouter une catégorie au formulaire 
+
+            $categoryManager = new CategoryManager();   // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
+            
+            $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+            $category_id = $categoryManager->add(['name' => $name]);   // Pour effectuer l'action d'ajout 
+
+            return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
+                                           
+                "view" => VIEW_DIR."forum/listCategories.php",
+
+                "data" => ["categories" => $categoryManager->findAll()]                               
+            ];
+        }
+        
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // TOPICS FONCTIONS
 
