@@ -73,11 +73,13 @@
         public function majCategory($name, $id){
 
             $sql = "UPDATE ".$this->tableName." a
-                    SET name = :name
-                    WHERE a.id_".$this->tableName." = :id
-                    ";
+                    SET a.name = ':name'
+                    WHERE a.id_".$this->tableName." = :id";
 
-            return DAO::update($sql, [':name' => $name, ':id' => $id]); 
+            return $this->getMultipleResults(
+                DAO::update($sql, [':name' => $name, ':id' => $id]),
+                $this->className
+            ); 
         }
 
         // public function majCategory($name, $id){
