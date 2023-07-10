@@ -106,6 +106,7 @@
         public function listTopics($idCategory){        // Fonction pour afficher la liste de tout les Topics selon la catégorie
             
             $topicManager = new TopicManager();         // Instancier cette variable pour accéder aux méthodes de la classe 
+            $categoryManager = new CategoryManager();         // Instancier cette variable pour accéder aux méthodes de la classe 
 
             return [
 
@@ -117,7 +118,8 @@
                         isset($idCategory)
                         ? $topicManager->findListByIdDep($idCategory, "category", ["creationdate", "DESC"])
                         : $topicManager->findAll(["creationdate", "DESC"])
-                    )
+                    ),
+                    "category" => $categoryManager->findOneById($idCategory)
                 ]                               
             ];                                          // Permet d'afficher toutes les informations d'un topic
         }
