@@ -70,15 +70,6 @@
         // Créer des fonctions génériques pour modifier les données de la base SQL
         // CATEGORIES
 
-        // public function majCategory($name, $id){
-
-        //     $sql = "UPDATE category c
-        //             SET name = :name
-        //             WHERE c.id_category = :id";
-
-        //     return DAO::update($sql, [':name' => $name, ':id' => $id]); 
-        // }
-
         public function majCategory($name, $id){
 
             $sql = "UPDATE ".$this->tableName."
