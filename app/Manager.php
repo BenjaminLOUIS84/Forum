@@ -68,11 +68,11 @@
         }
 
         // Créer des fonctions génériques pour modifier les données de la base SQL
-
+        // CATEGORIES
         public function majCategory($id){
 
-            $sql = "SELECT *
-                    FROM ".$this->tableName." a
+            $sql = "UPDATE category
+                    SET name = :name
                     WHERE a.id_".$this->tableName." = :id
                     ";
 
