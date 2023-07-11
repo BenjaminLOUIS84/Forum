@@ -69,7 +69,7 @@
             ];
         }
 
-        public function formCat(){                      // Fonction pour accéder au formCat() de la catégorie à modifier à séparer de la fonction modifier
+        public function formCat($id){                   // Fonction pour accéder au formCat() de la catégorie à modifier à séparer de la fonction modifier
 
             $categoryManager = new CategoryManager();
 
@@ -77,7 +77,7 @@
                 
                 "view" => VIEW_DIR."forum/formCat.php",  
                 
-                //"data" => ["categories" => $categoryManager->findOneById($id)]
+                "data" => ["category" => $categoryManager->findOneById($id)] // Pour cibler avec précision la catégorie à modifier grâce à l'ID
             ];
         }
 

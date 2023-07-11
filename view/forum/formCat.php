@@ -1,3 +1,7 @@
+<?php
+    $category = $result["data"]['category'];
+?>
+
 <h2>MODIFIER UNE CATEGORIE</h2>
 
 <div class="topicT">
@@ -6,7 +10,7 @@
 
     <!-- L'action du formulaire exécute majCategory -->
     
-    <form class="formulaireTopic" action="index.php?ctrl=forum&action=majCategory" method="post">
+    <form class="formulaireTopic" action="index.php?ctrl=forum&action=majCategory&id=<?=$category->getId()?>" method="post">
 
         <label class="name" for="name">NOM</label>
         <input name="name" type="text" id="name" required>

@@ -74,19 +74,19 @@
 
             $sql = "UPDATE ".$this->tableName." a
                     SET a.name = :name
-                    WHERE a.id_".$this->tableName." = :id";
+                    WHERE a.id_".$this->tableName." = :id
+                    ";
 
-            return $this->getMultipleResults(
-                DAO::update($sql, [':name' => $name, ':id' => $id]),
-                $this->className
-            ); 
-        }
+            return DAO::update($sql, [':name' => $name, ':id' => $id]); 
+
+        } // Equivaut à ci dessous
 
         // public function majCategory($name, $id){
 
         //     $sql = "UPDATE category c
-        //     SET c.name = ':name'
-        //     WHERE c.id_category = :id";
+        //     SET c.name = :name
+        //     WHERE c.id_category = :id
+        //     ";
 
         //     return DAO::update($sql, [':name' => $name, ':id' => $id]); 
         // }
