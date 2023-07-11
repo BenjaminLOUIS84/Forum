@@ -21,6 +21,8 @@
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // CATEGORIES FONCTIONS
 
+        //////////////////////////////AFFICHER TOUTE LES CATEGORIES
+
         public function listCategories(){               // Fonction pour afficher la liste de toute les catégories
             
             $categoryManager = new CategoryManager();   // Instancier cette variable pour accéder aux méthodes de la classe
@@ -33,6 +35,8 @@
             ];                                          // Permet d'afficher toutes les catégories
         }
 
+        //////////////////////////////FORULAIRE POUR AJOUTER UNE CATEGORIE
+
         public function formulaireCategory(){           // Fonction pour accéder au formulaire des Catégories à séparer de la fonction d'ajout et de suppression
 
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
@@ -40,6 +44,8 @@
                 "view" => VIEW_DIR."forum/formulaireCategory.php",                           
             ];
         }
+
+        //////////////////////////////AJOUTER UNE CATEGORIE VIDE
 
         public function addCategory(){                  // Fonction pour ajouter une catégorie vide au formulaire 
 
@@ -57,6 +63,8 @@
             ];
         }
 
+        //////////////////////////////SUPPRIMER UNE CATEGORIE
+
         public function delCategory($id){               // Fonction pour supprimer une Catégorie
 
             $categoryManager = new CategoryManager();
@@ -69,6 +77,8 @@
             ];
         }
 
+        //////////////////////////////FORMULAIRE POUR MODIFIER UNE CATEGORIE
+
         public function formCat($id){                   // Fonction pour accéder au formCat() de la catégorie à modifier à séparer de la fonction modifier
 
             $categoryManager = new CategoryManager();
@@ -80,6 +90,8 @@
                 "data" => ["category" => $categoryManager->findOneById($id)] // Pour cibler avec précision la catégorie à modifier grâce à l'ID
             ];
         }
+
+        //////////////////////////////MODIFIER UNE CATEGORIE
 
         public function majCategory($id){               // Fonction pour modifier une catégorie  
 
@@ -98,6 +110,8 @@
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // TOPICS FONCTIONS
 
+        //////////////////////////////AFFICHER LA LISTE DE TOUT LES TOPICS SELON LA CATEGORIE
+
         public function listTopics($id){                // Fonction pour afficher la liste de tout les Topics selon la catégorie
         
             $topicManager = new TopicManager();         // Instancier cette variable pour accéder aux méthodes de la classe 
@@ -114,12 +128,12 @@
                         ? $topicManager->findListByIdDep($id, "category", ["creationdate", "DESC"])
                         : $topicManager->findAll(["creationdate", "DESC"])// Permet d'afficher toutes les informations d'un topic
                     ),
-                    "category" => $categoryManager->findOneById($id),// Pour retrouver un élément selon un id
-                    
-                ] 
-                                              
+                    "category" => $categoryManager->findOneById($id),// Pour retrouver un élément selon un id 
+                ]                                  
             ];                                          
         }
+
+        //////////////////////////////FORMULAIRE POUR AJOUTER UN TOPIC 
 
         public function formulaireTopic($idCategory){       // Fonction pour accéder au formulaire des Catégories à séparer de la fonction d'ajout
 
@@ -145,8 +159,9 @@
                 ]                            
             ];
         }
+        //////////////////////////////AJOUTER UN TOPIC AVEC UN POST
 
-        public function addTopic($category_id){                     // Fonction pour accéder au formulaire pour ajouter des Topics selon la catégorie
+        public function addTopic($category_id){         // Fonction pour accéder au formulaire pour ajouter des Topics selon la catégorie
 
             $topicManager = new TopicManager();         // Instancier ces variables pour accéder aux méthodes de leur classes et ajouter les filtres
             $postManager = new PostManager();           // Instancier pour lier un post à un topic
@@ -180,6 +195,8 @@
             ];                                          
         }
 
+        //////////////////////////////SUPPRIMER UN TOPIC 
+
         public function delTopic($id){                  // Fonction pour supprimer un Topic
 
             $topicManager = new TopicManager();
@@ -210,6 +227,8 @@
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // POSTS FONCTIONS
 
+        //////////////////////////////AFFICHER LA LISTE DE TOUT LES POSTS SELON LE TOPIC 
+
         public function listPosts($idTopic){            // Fonction permettant d'afficher la liste de tout les posts de chaque utilisateurs selon le topic sélectionné
 
             $postManager = new PostManager();           // Instancier cette variable pour accéder aux méthodes de leurs classes
@@ -232,6 +251,8 @@
             ];
         }
 
+        //////////////////////////////FORMULAIRE POUR AJOUTER UN POST
+
         public function formulairePost($idTopic){      // Fonction pour accéder au formulaire des Posts à séparer de la fonction d'ajout
 
             $postManager = new PostManager();          // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
@@ -243,6 +264,8 @@
                 "data" => ["posts" => $postManager->findListByIdDep($idTopic, "topic")]                            
             ];
         }
+
+        //////////////////////////////AJOUTER UN POST VIDE
 
         public function addPost(){                    // Fonction pour accéder au formulaire des Posts selon le topic
 
@@ -265,6 +288,8 @@
             ];                                          
         }
 
+        //////////////////////////////SUPPRIMER UN POST
+
         public function delPost($id){                 // Fonction pour supprimer un Post
 
             $postManager = new PostManager();
@@ -284,6 +309,8 @@
         // OBJECTIFS: Créer une fonction pour permettre l'ajout et l'affichage des réponses spécifiquent à chaque posts sous forme de cartes
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        //////////////////////////////AFFICHER TOUTES LES REPONSES SELON LE POST
 
         public function detailPost($id){               // Fonction permettant d'afficher le détail d'un post (le message du post)
 
@@ -307,6 +334,8 @@
             ];
         }
 
+        //////////////////////////////FORMULAIRE POUR AJOUTER UNE REPONSE
+
         public function formulaireReponse($idPost){     // Fonction pour accéder au formulaire des Réponses à séparer de la fonction d'ajout
 
             $reponseManager = new ReponseManager();
@@ -319,6 +348,8 @@
                         
             ];
         }
+
+        //////////////////////////////AJOUTER UNE REPONSE
 
         public function addReponse(){                   // Fonction pour ajouter une réponse au post 
 
@@ -343,6 +374,8 @@
             ];
         }
 
+        //////////////////////////////SUPPRIMER UNE REPONSE
+        
         public function delReponse($id){                 // Fonction pour supprimer une réponse
 
             $reponseManager = new ReponseManager();
