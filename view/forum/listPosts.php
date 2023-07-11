@@ -81,6 +81,6 @@
 <a class="retour" href="index.php?ctrl=forum&action=listTopics&id=2">- TOPICS PATISSERIE -</a>
 
 
-<!-- Gérer le retour du formulaire vers la liste des topics de la catégorie correspondante -->
+<!-- Gérer le retour de la liste des posts vers la liste des topics de la catégorie correspondante -->
 <!-- <a class="retour" href="index.php?ctrl=forum&action=listTopics&id=">- RETOUR -</a> -->
 
