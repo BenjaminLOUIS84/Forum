@@ -41,7 +41,7 @@
             ];
         }
 
-        public function addCategory(){                  // Fonction pour ajouter une catégorie au formulaire 
+        public function addCategory(){                  // Fonction pour ajouter une catégorie vide au formulaire 
 
             $categoryManager = new CategoryManager();   // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
             
@@ -129,15 +129,22 @@
             $topicManager = new TopicManager();
             $categoryManager = new CategoryManager();   // Instancier cette variable permettre l'ajout d'un topic dans une catégorie vide
             
-            // Plusieurs essais avec userManager et postManager non concluant 
+            //$userManager = new UserManager();   // Instancier cette variable permettre l'ajout d'un topic dans une catégorie vide 
 
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
 
                 "view" => VIEW_DIR."forum/formulaireTopic.php",
 
-                "data" => ["topics" => $topicManager->findListByIdDep($idCategory, "category"),
-                "category" => $categoryManager->findOneById($idCategory)
-                
+                "data" => [
+                    
+                    "topics" => (
+                        isset($idCategory)
+                        ? $topicManager->findListByIdDep($idCategory, "category", ["creationdate", "DESC"])
+                        : $topicManager->findAll(["creationdate", "DESC"])// Permet d'afficher toutes les informations d'un topic
+                    ),
+                    "category" => $categoryManager->findOneById($idCategory),// Pour retrouver un élément selon un id
+                    
+                    //"user" => $userManager->findOneById($idCategory)
                 ]                            
             ];
         }
@@ -146,9 +153,7 @@
 
             $topicManager = new TopicManager();         // Instancier ces variables pour accéder aux méthodes de leur classes et ajouter les filtres
             $postManager = new PostManager();           // Instancier pour lier un post à un topic
-            
-         
-
+        
             $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             date_default_timezone_set('Europe/Paris');
             $date = date('Y-m-d H:i:s');
@@ -160,7 +165,7 @@
             // Pour rédiger un post automatiquement quand on créer un topic on doit lier l'id topic au post
             
             $topic_id = $topicManager->add(['title' => $title, 'creationdate' => $date,'category_id' => $category_id, 'user_id' => $user_id]);
-
+            
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
 
                 "view" => VIEW_DIR."forum/formulaireTopic.php", // Après l'ajout on reste sur la même page
@@ -168,8 +173,9 @@
                 "data" => [                             // Ce référer à la base SQL pour ajouter les informations en argument dans le tableau ci dessous
                     
                     "topics" => $topicManager->findListByIdDep($category_id, "category"),
+                    
+                    $postManager->add(['text' => $text, 'dateCreate' => $date, 'user_id' => $user_id, 'topic_id' => $topic_id]) 
 
-                    $postManager->add(['text' => $text, 'dateCreate' => $date, 'user_id' => $user_id, 'topic_id' => $topic_id])             
                 ]                                       // Pour lier un post au topic (rédiger le texte du post dans le formulaire, inclure la dateCreate du post, l'utilisateur et le topic)                  
             ];                                          
         }
