@@ -98,7 +98,7 @@
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // TOPICS FONCTIONS
 
-        public function listTopics($id){        // Fonction pour afficher la liste de tout les Topics selon la catégorie
+        public function listTopics($id){                // Fonction pour afficher la liste de tout les Topics selon la catégorie
         
             $topicManager = new TopicManager();         // Instancier cette variable pour accéder aux méthodes de la classe 
             $categoryManager = new CategoryManager();   // Instancier cette variable pour accéder aux méthodes de la classe et permettre l'ajout de topic dans une catégorie vide
@@ -119,13 +119,13 @@
             ];                                          
         }
 
-        public function formulaireTopic($idCategory){   // Fonction pour accéder au formulaire des Catégories à séparer de la fonction d'ajout
+        public function formulaireTopic($idCategory){       // Fonction pour accéder au formulaire des Catégories à séparer de la fonction d'ajout
 
             $topicManager = new TopicManager();
-            //$categoryManager = new CategoryManager();   // Instancier cette variable permettre l'ajout d'un topic dans une catégorie vide
-            //$userManager = new UserManager();           // Instancier cette variable permettre l'ajout d'un topic dans une catégorie vide 
+            //$categoryManager = new CategoryManager();     // Instancier cette variable permettre l'ajout d'un topic dans une catégorie vide
+            //$userManager = new UserManager();             // Instancier cette variable permettre l'ajout d'un topic dans une catégorie vide 
 
-            return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
+            return [                                        // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
 
                 "view" => VIEW_DIR."forum/formulaireTopic.php",
 
