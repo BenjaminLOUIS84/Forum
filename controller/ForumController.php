@@ -115,7 +115,8 @@
                         : $topicManager->findAll(["creationdate", "DESC"])// Permet d'afficher toutes les informations d'un topic
                     ),
                     "category" => $categoryManager->findOneById($id)// Pour retrouver un élément selon un id
-                ]                               
+                ] 
+                                              
             ];                                          
         }
 
@@ -145,10 +146,11 @@
             ];
         }
 
-        public function addTopic(){                     // Fonction pour accéder au formulaire pour ajouter des Topics selon la catégorie
+        public function addTopic($category_id){                     // Fonction pour accéder au formulaire pour ajouter des Topics selon la catégorie
 
             $topicManager = new TopicManager();         // Instancier ces variables pour accéder aux méthodes de leur classes et ajouter les filtres
             $postManager = new PostManager();           // Instancier pour lier un post à un topic
+            $categoryManager = new CategoryManager();    
         
             $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             date_default_timezone_set('Europe/Paris');
@@ -164,11 +166,12 @@
             
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
 
-                "view" => VIEW_DIR."forum/formulaireTopic.php", // Après l'ajout on reste sur la même page
+                "view" => VIEW_DIR."forum/listTopics.php", // Après l'ajout on reste sur la même page
 
                 "data" => [                             // Ce référer à la base SQL pour ajouter les informations en argument dans le tableau ci dessous
                     
                     "topics" => $topicManager->findListByIdDep($category_id, "category"),
+                    "category" => $categoryManager->findOneById($category_id),
                     
                     $postManager->add(['text' => $text, 'dateCreate' => $date, 'user_id' => $user_id, 'topic_id' => $topic_id]) 
 
