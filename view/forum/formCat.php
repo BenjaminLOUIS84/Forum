@@ -1,16 +1,6 @@
-<?php
-    //$categories = $result["data"]['categories'];
-?>
-
 <h2>MODIFIER UNE CATEGORIE</h2>
 
 <div class="topicT">
-
-    <?php
-        // foreach($categories as $category){}
-        // Afficher le nom de la Catégorie sélectionnée
-        // echo "<div class='titreT'>".$category->getId()->getName()."</div>";
-    ?>
 
     <h3>Remplir ce champs pour modifier cette Catégorie</h3>
 

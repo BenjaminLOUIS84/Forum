@@ -65,7 +65,7 @@
 
                 "view" => VIEW_DIR."forum/listCategories.php",  // Après la suppression -> redirection sur la même page
 
-                "data" => [$categoryManager->delete($id),"categories" => $categoryManager->findAll(["name", "ASC"])]           
+                "data" => [$categoryManager->delete($id), "categories" => $categoryManager->findAll(["name", "ASC"])]           
             ];
         }
 
@@ -91,12 +91,7 @@
                                            
                 "view" => VIEW_DIR."forum/listCategories.php",
 
-                "data" => [
-
-                    $categoryManager->majCategory($name, $id),
-                    
-                    "categories" => $categoryManager->findAll(["name", "ASC"])
-                ]     
+                "data" => [$categoryManager->majCategory($name, $id), "categories" => $categoryManager->findAll(["name", "ASC"])]     
             ];
         }
 
