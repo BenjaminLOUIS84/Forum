@@ -1,7 +1,8 @@
 <?php
+   
     $topics = $result["data"]['topics'];
-    $category = $result["data"]['category'];
-    //$user = $result["data"]['user'];
+    //$category = $result["data"]['category'];
+   // $user = $result["data"]['user'];
 ?>
 
 <h2>AJOUTER UN TOPIC</h2>
@@ -10,11 +11,10 @@
 
     <?php
         if($topics == true){//Créer une condition pour permettre l'ajout d'un topic dans une catégorie vide
-            
-            foreach($topics as $topic){}
 
+            foreach($topics as $topic){}
             // Afficher le nom de la Catégorie sélectionnée
-            echo "<div class='titreT'>".$topic->getCategory()->getName()."</div>";
+            //echo "<div class='titreT'>".$topic->getCategory()->getName()."</div>";
             
             ?>
 
@@ -43,7 +43,7 @@
 
         }else{// Afficher le formulaire pour ajouter un premier topic à la catégorie vide (cas où il n'y aucuns topics)
 
-            echo "<div class='titreT'>".$category->getName()."</div>";//Pour afficher le titre de la catégorie gràce à la variable $category
+            //echo "<div class='titreT'>".$category->getName()."</div>";//Pour afficher le titre de la catégorie gràce à la variable $category
             echo "Ajouter un premier topic à cette catégorie";  
 
             ?>  
@@ -57,11 +57,10 @@
                     <input name="text" type="text" id="text" required>
 
                     <!-- Liaison du topic avec la catégorie -->
-
-                    <input type="hidden" name="category_id" value="<?=$category->getId()?>">
-            
-
+                    <!-- <input type="hidden" name="category_id" value=""> -->
+                   
                     <!-- Liaison du topic avec l'utilisateur problème pour récupérer l'Id de l'utilisateur nécessaire pour valider l'ajout d'un nouveau post dans une catégorie vide-->
+                    <!-- <input type="hidden" name="id_user" value=""> -->
 
                     <input id="submit" type="submit" name="addTopic" value="AJOUTER">
             
