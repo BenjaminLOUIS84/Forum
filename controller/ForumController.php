@@ -122,7 +122,7 @@
         public function formulaireTopic($idCategory){       // Fonction pour accéder au formulaire des Catégories à séparer de la fonction d'ajout
 
             $topicManager = new TopicManager();
-            $categoryManager = new CategoryManager();     // Instancier cette variable permettre l'ajout d'un topic dans une catégorie vide
+            $categoryManager = new CategoryManager();       // Instancier cette variable permettre l'ajout d'un topic dans une catégorie vide et gérer le retour
             //$userManager = new UserManager();             // Instancier cette variable permettre l'ajout d'un topic dans une catégorie vide 
 
             return [                                        // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
@@ -136,7 +136,7 @@
                         ? $topicManager->findListByIdDep($idCategory, "category", ["creationdate", "DESC"])
                         : $topicManager->findAll(["creationdate", "DESC"])// Permet d'afficher toutes les informations d'un topic
                     ),
-                    "category" => $categoryManager->findOneById($idCategory)// Pour retrouver un élément selon un id
+                    "category" => $categoryManager->findOneById($idCategory)// Pour retrouver un élément selon un id pour gérer le retour
 
                     // "topic" => $topicManager->findOneById($id),
                     // "category" => $categoryManager->findOneById($id),// Pour retrouver un élément selon un id
@@ -164,7 +164,7 @@
             
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
 
-                "view" => VIEW_DIR."forum/formulaireTopic.php", // Après l'ajout on reste sur la même page
+                "view" => VIEW_DIR."forum/listTopic.php", // Après l'ajout on reste sur la même page
 
                 "data" => [                             // Ce référer à la base SQL pour ajouter les informations en argument dans le tableau ci dessous
                     
@@ -209,6 +209,7 @@
         public function listPosts($idTopic){            // Fonction permettant d'afficher la liste de tout les posts de chaque utilisateurs selon le topic sélectionné
 
             $postManager = new PostManager();           // Instancier cette variable pour accéder aux méthodes de leurs classes
+            $categoryManager = new CategoryManager();   // Instancier cette variable pour gérer le retour
 
             return [
 
@@ -220,7 +221,9 @@
                         isset($idTopic)
                         ? $postManager->findListByIdDep($idTopic, "Topic", ["dateCreate", "DESC"])
                         : $postManager->findAll(["dateCreate", "DESC"])
-                    )
+                    ),
+
+                    "category" => $categoryManager->findOneById($idTopic)// Pour gérer le retour vers la liste des topics de la catégorie corrspondante
                 ]
             ];
         }

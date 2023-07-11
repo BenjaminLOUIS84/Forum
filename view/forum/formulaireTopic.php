@@ -1,7 +1,7 @@
 <?php
    
     $topics = $result["data"]['topics'];
-    $category = $result["data"]['category'];
+    $category = $result["data"]['category']; //Pour permettre le retour vers la liste des topics de la catégorie correspondante
    // $user = $result["data"]['user'];
 ?>
 
@@ -79,6 +79,6 @@
     <img src="./public/img/patisserie4.jpg" class="photo" alt="Panna Cotta aux Fruits rouges">
 </figure>
 
-<!-- Gérer le retour vers la liste des topics de la catégorie correspondante -->
+<!-- Gérer le retour du formulaire vers la liste des topics de la catégorie correspondante -->
 
 <a class="retour" href="index.php?ctrl=forum&action=listTopics&id=<?=$category->getId()?><?=$category->getName()?>">- RETOUR -</a>

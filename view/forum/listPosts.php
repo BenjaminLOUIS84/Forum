@@ -1,5 +1,6 @@
 <?php
     $posts = $result["data"]['posts'];// Cette variable permet d'accéder et d'afficher les informations demandées dans cette page
+    $category = $result["data"]['category'];// Pour permettre le retour vers la liste des topics de la catégorie correspondante
 ?>
 
 <h2>LES POSTS</h2>
@@ -79,6 +80,8 @@
 <a class="retour" href="index.php?ctrl=forum&action=listTopics&id=1">- TOPICS CUISINE -</a>
 <a class="retour" href="index.php?ctrl=forum&action=listTopics&id=2">- TOPICS PATISSERIE -</a>
 
-<!-- <a class="retour" href="index.php?ctrl=forum&action=listTopics&id=<?=$post->getTopic()->getId()?>">- Retour -</a> -->
+<!-- Gérer le retour du formulaire vers la liste des topics de la catégorie correspondante -->
+
+<a class="retour" href="index.php?ctrl=forum&action=listTopics&id=<?=$category->getId()?><?=$category->getName()?>">- RETOUR -</a>
 
 
