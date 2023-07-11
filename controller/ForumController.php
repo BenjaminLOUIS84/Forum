@@ -122,7 +122,7 @@
         public function formulaireTopic($idCategory){       // Fonction pour accéder au formulaire des Catégories à séparer de la fonction d'ajout
 
             $topicManager = new TopicManager();
-            //$categoryManager = new CategoryManager();     // Instancier cette variable permettre l'ajout d'un topic dans une catégorie vide
+            $categoryManager = new CategoryManager();     // Instancier cette variable permettre l'ajout d'un topic dans une catégorie vide
             //$userManager = new UserManager();             // Instancier cette variable permettre l'ajout d'un topic dans une catégorie vide 
 
             return [                                        // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
@@ -136,7 +136,7 @@
                         ? $topicManager->findListByIdDep($idCategory, "category", ["creationdate", "DESC"])
                         : $topicManager->findAll(["creationdate", "DESC"])// Permet d'afficher toutes les informations d'un topic
                     ),
-                    //"category" => $categoryManager->findOneById($idCategory)// Pour retrouver un élément selon un id
+                    "category" => $categoryManager->findOneById($idCategory)// Pour retrouver un élément selon un id
 
                     // "topic" => $topicManager->findOneById($id),
                     // "category" => $categoryManager->findOneById($id),// Pour retrouver un élément selon un id
@@ -181,19 +181,22 @@
             $topicManager = new TopicManager();
             $categoryManager = new CategoryManager();
 
+            $topic_id = $topicManager->delete($id);  // Pour effacer le topic
+
             return [                                     // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
 
                 "view" => VIEW_DIR."forum/listTopics.php",// Retour vers la liste des topics de la categorie correspondante
 
-                "data" => [$topicManager->delete($id),  // Pour effacer le topic
+                 
+                "data" => [
 
                     "topics" => 
 
-                        // isset($id)
-                        // ? $topicManager->findListByIdDep($id, "category", ["creationdate", "DESC"]) // Affiche les topics de la catégorie correspondante
-                        // : $topicManager->findAll(["creationdate", "DESC"]), // Affiche la liste de tous les topics 
+                        isset($id)
+                        ? $topicManager->findListByIdDep($id, "category", ["creationdate", "DESC"]) // Affiche les topics de la catégorie correspondante
+                        : $topicManager->findAll(["creationdate", "DESC"]), // Affiche la liste de tous les topics 
                         
-                        $topicManager->findAll(), // Affiche la liste de tous les topics 
+                        //$topicManager->findAll(), // Affiche la liste de tous les topics 
                     
                     "category" => $categoryManager->findOneById($id)
                 ]                                         

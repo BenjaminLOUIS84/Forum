@@ -21,7 +21,7 @@
         foreach($categories as $category){
             ?>
                 <div class="back">
-                    <!-- Pour accéder aux détails de la catégorie sélectionnée -->
+                    <!-- Pour accéder aux TOPICS de la catégorie sélectionnée -->
                     <a href="index.php?ctrl=forum&action=listTopics&id=<?=$category->getId()?>"><?=$category->getName()?></a>
 
                     <div class="option">
