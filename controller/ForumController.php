@@ -164,7 +164,7 @@
             
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
 
-                "view" => VIEW_DIR."forum/listTopic.php", // Après l'ajout on reste sur la même page
+                "view" => VIEW_DIR."forum/listTopics.php", // Après l'ajout on reste sur la même page
 
                 "data" => [                             // Ce référer à la base SQL pour ajouter les informations en argument dans le tableau ci dessous
                     
