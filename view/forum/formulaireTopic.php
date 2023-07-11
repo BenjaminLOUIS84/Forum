@@ -14,7 +14,7 @@
 
             foreach($topics as $topic){}
             // Afficher le nom de la Catégorie sélectionnée
-            //echo "<div class='titreT'>".$topic->getCategory()->getName()."</div>";
+            echo "<div class='titreT'>".$topic->getCategory()->getName()."</div>";
             
             ?>
 

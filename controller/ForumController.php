@@ -98,7 +98,7 @@
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // TOPICS FONCTIONS
 
-        public function listTopics($idCategory){        // Fonction pour afficher la liste de tout les Topics selon la catégorie
+        public function listTopics($id){        // Fonction pour afficher la liste de tout les Topics selon la catégorie
         
             $topicManager = new TopicManager();         // Instancier cette variable pour accéder aux méthodes de la classe 
             $categoryManager = new CategoryManager();   // Instancier cette variable pour accéder aux méthodes de la classe et permettre l'ajout de topic dans une catégorie vide
@@ -110,11 +110,11 @@
                 "data" => [                             // Les fonctions natives du FrameWork findAll() et findOneById($id) (se trouvent dans Manager.php) on demande à la variable d'utiliser cette fonction
 
                     "topics" => (
-                        isset($idCategory)
-                        ? $topicManager->findListByIdDep($idCategory, "category", ["creationdate", "DESC"])
+                        isset($id)
+                        ? $topicManager->findListByIdDep($id, "category", ["creationdate", "DESC"])
                         : $topicManager->findAll(["creationdate", "DESC"])// Permet d'afficher toutes les informations d'un topic
                     ),
-                    "category" => $categoryManager->findOneById($idCategory)// Pour retrouver un élément selon un id
+                    "category" => $categoryManager->findOneById($id)// Pour retrouver un élément selon un id
                 ]                               
             ];                                          
         }
@@ -179,6 +179,7 @@
         public function delTopic($id){                  // Fonction pour supprimer un Topic
 
             $topicManager = new TopicManager();
+            $categoryManager = new CategoryManager();
 
             return [                                     // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
 
@@ -186,14 +187,15 @@
 
                 "data" => [$topicManager->delete($id),  // Pour effacer le topic
 
-                    "topics" => (
+                    "topics" => 
 
                         // isset($id)
                         // ? $topicManager->findListByIdDep($id, "category", ["creationdate", "DESC"]) // Affiche les topics de la catégorie correspondante
-                        // : $topicManager->findAll(["creationdate", "DESC"]) // Affiche la liste de tous les topics 
+                        // : $topicManager->findAll(["creationdate", "DESC"]), // Affiche la liste de tous les topics 
                         
-                        $topicManager->findAll() // Affiche la liste de tous les topics 
-                    )
+                        $topicManager->findAll(), // Affiche la liste de tous les topics 
+                    
+                    "category" => $categoryManager->findOneById($id)
                 ]                                         
             ];
         }
