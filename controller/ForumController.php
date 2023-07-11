@@ -209,7 +209,7 @@
         public function listPosts($idTopic){            // Fonction permettant d'afficher la liste de tout les posts de chaque utilisateurs selon le topic sélectionné
 
             $postManager = new PostManager();           // Instancier cette variable pour accéder aux méthodes de leurs classes
-            $categoryManager = new CategoryManager();   // Instancier cette variable pour gérer le retour
+           // $categoryManager = new CategoryManager();   // Instancier cette variable pour gérer le retour
 
             return [
 
@@ -223,7 +223,7 @@
                         : $postManager->findAll(["dateCreate", "DESC"])
                     ),
 
-                    "category" => $categoryManager->findOneById($idTopic)// Pour gérer le retour vers la liste des topics de la catégorie corrspondante
+                   // "category" => $categoryManager->findOneById($idTopic)// Pour gérer le retour vers la liste des topics de la catégorie corrspondante
                 ]
             ];
         }
