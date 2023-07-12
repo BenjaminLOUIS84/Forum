@@ -11,7 +11,7 @@
     use Model\Managers\CategoryManager;
     use Model\Managers\ReponseManager;
 
-    class HomeController extends AbstractController implements ControllerInterface{
+    class ForumController extends AbstractController implements ControllerInterface{
 
         public function index(){                        // Fonction index() qui redirige en cas de problème vers la page listCategory.php par défaut (pour éviter une page d'erreur)
 
