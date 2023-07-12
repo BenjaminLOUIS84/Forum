@@ -3,7 +3,7 @@
     namespace Controller; 
 
     use App\Session;
-    use App\AbstractController; //Pour le faire fonctionner 
+    use App\AbstractController; // Pour le faire fonctionner 
     use App\ControllerInterface;
     use Model\Managers\UserManager;
     use Model\Managers\TopicManager;
