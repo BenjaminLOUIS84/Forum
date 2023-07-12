@@ -66,7 +66,7 @@
 
                     return [
                         "view" => VIEW_DIR."security/register.php",       // Rediriger vers le formulaire d'inscription avec header()
-                        $session->addFlash('error',"Ce mail existe déjà") // Afficher un message d'erreur
+                        $session->addFlash('error',"Ce mail existe déjà") // Afficher un message d'erreur (CF layout.php)
                     ];
 
                 } elseif($pseudoExist) {
