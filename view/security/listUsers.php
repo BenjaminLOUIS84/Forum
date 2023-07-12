@@ -18,7 +18,7 @@
 </div>
 
 <figure>
-    <img src="./public/img/cuisine6.jpg" class="photo" alt="Plateau de charcuteries et fromages">
+    <img src="./public/img/patisserie3.jpg" class="photo" alt="Nougat glacé, chantilly et crème anglaise">
 </figure>
 
 <a class="retour" href="index.php">Retour</a>
