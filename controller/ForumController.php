@@ -50,7 +50,8 @@
         public function addCategory(){                  // Fonction pour ajouter une catégorie vide au formulaire 
 
             $categoryManager = new CategoryManager();   // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
-            
+            $session = new Session(); 
+             
             $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             $categoryManager->add(['name' => $name]);   // Pour effectuer l'action d'ajout 
@@ -58,7 +59,7 @@
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
                                            
                 "view" => VIEW_DIR."forum/listCategories.php",
-
+                $session->addFlash('success',"Ajouté avec succès"),
                 "data" => ["categories" => $categoryManager->findAll()]                               
             ];
         }
