@@ -22,24 +22,27 @@
                         <!-- <div id="nav-left"> -->
                             <!-- <a href="/">Accueil</a> -->
                             <?php
-                            //if(App\Session::isAdmin()){
+                            // if(App\Session::isAdmin()){
                                 ?>
-                                <!-- <a href="index.php?ctrl=home&action=users">Voir la liste des gens</a> -->
+                                <!-- <a href="index.php?ctrl=security&action=listUsers">Voir la liste des membres</a> -->
                             
                             <?php
-                            //}
+                            // }
                             ?>
                         <!-- </div> -->
                         <!-- <div id="nav-right"> -->
                         <?php
                             
-                            //if(App\Session::getUser()){
+                            if(App\Session::getUser()){
                                 ?>
-                                <!-- <a href="/security/viewProfile.html"><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()?></a> -->
-                                <!-- <a href="/security/logout.html">Déconnexion</a> -->
+                                <!-- Accéder au profil -->
+                                <a href=""><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()?></a>
+                                
+                                <!-- Déconnexion -->
+                                <a href="index.php?ctrl=security&action=logout">Déconnexion</a>
                                 <?php
-                            // }
-                            // else{
+                             }
+                             else{
                                 ?>
                                 <a href="index.php">Accueil</a>
                                 <a href="index.php?ctrl=security&action=login">Connexion</a>
@@ -47,7 +50,7 @@
                                 <a href="index.php?ctrl=forum&action=listCategories">Liste des Catégories</a>
                                 <a href="index.php?ctrl=security&action=listUsers">Liste des Membres</a>
                                 <?php
-                            //}
+                            }
                         ?>
                         <!-- </div> -->
                     </nav>
