@@ -10,8 +10,8 @@
         private $id;
         private $pseudo;
         private $password;
+        private $mail;
        
-
         public function __construct($data){         
             $this->hydrate($data);        
         }
@@ -76,6 +76,24 @@
                 return $this;
         }
 
-     
+        /**
+         * Get the value of mail
+         */ 
+        public function getMail()
+        {
+                return $this->mail;
+        }
+
+        /**
+         * Set the value of mail
+         *
+         * @return  self
+         */ 
+        public function setMail($mail)
+        {
+                $this->mail = $mail;
+
+                return $this;
+        }
     }
 
