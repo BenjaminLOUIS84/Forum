@@ -51,14 +51,14 @@
         public function addUser(){ 
             
            $userManager = new UserManager();                              // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
-           //$session = new Session();
+           $session = new Session();                                      // Instancier cette variable pour afficher des messages (CF app)
 
            $pseudo = filter_input(INPUT_POST, 'pseudo', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
            $mail = filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_VALIDATE_EMAIL);
            $pass1 = filter_input(INPUT_POST, 'pass1', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
            $pass2 = filter_input(INPUT_POST, 'pass2', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-           $mailExist = $userManager->findUserByMail($mail);              // Pour vérifier s'il y a des utilisateur existant dans la BDD
+           $mailExist = $userManager->findUserByMail($mail);              // Pour vérifier s'il y a des utilisateurs existant dans la BDD
            $pseudoExist = $userManager->findUserByPseudo($pseudo);        // Faire appel aux fonctions de userManager pour checker les mails et les pseudos 
 
            if($pseudo && $mail && $pass1 && $pass2) { 
@@ -66,14 +66,14 @@
 
                     return [
                         "view" => VIEW_DIR."security/register.php",       // Rediriger vers le formulaire d'inscription avec header()
-                        //$session->addFlash('Le mail ou le pseudo existent déjà') // Afficher un message d'erreur
+                        $session->addFlash('error',"Ce mail existe déjà") // Afficher un message d'erreur
                     ];
 
                 } elseif($pseudoExist) {
 
                     return [
                         "view" => VIEW_DIR."security/register.php",
-                        //$session->addFlash('Le mail ou le pseudo existent déjà')
+                        $session->addFlash('error',"Ce pseudo existe déjà")
                     ];
 
                 } else {
@@ -85,7 +85,11 @@
                             'password' => password_hash($pass1, PASSWORD_DEFAULT)// Filtre pour hacher le mot de passe
                         ]);
                             
-                        return ["view" => VIEW_DIR."security/listUsers.php", "data" => ["users" => $userManager->findAll()]]; // Renvoi vers la liste des users
+                        return [
+                            "view" => VIEW_DIR."security/listUsers.php", // Renvoi vers la liste de tous les utilisateurs
+                            $session->addFlash('success',"Ajouté avec succès"),
+                            "data" => ["users" => $userManager->findAll()] // Permettre l'affichage de toutes les infos (mais dans la liste seul les pseudos sont affichés)
+                        ]; 
                     }
                 }
             }
