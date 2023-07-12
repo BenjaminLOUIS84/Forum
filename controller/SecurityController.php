@@ -49,21 +49,40 @@
         public function addUser(){ 
             
            $userManager = new UserManager();            // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
-           
+           //$session = new Session();
+
            $pseudo = filter_input(INPUT_POST, 'pseudo', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
            $mail = filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_VALIDATE_EMAIL);
            $pass1 = filter_input(INPUT_POST, 'pass1', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
            $pass2 = filter_input(INPUT_POST, 'pass2', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            
-           if($pass1 == $pass2 && strlen($pass1) >= 8) {// Condition pour vérifier si le mot de passe est confirmé et doit contenir au moins 8 caractères
-                $userManager->add([                     // add() pour ajouter un user à la BDD
-                    'pseudo' => $pseudo,
-                    'mail' => $mail,
-                    'password' => password_hash($pass1, PASSWORD_DEFAULT)// Filtre pour hacher le mot de passe
-                ]);
+
+           //$mailExist = $userManager->find();        // Pour vérifier s'il y a des utilisateur existant dans la BDD
+           //$pseudoExist = $userManager->findOneById($id);        // Pour vérifier s'il y a des utilisateur existant dans la BDD
+
+           //if($pseudo && $mail && $pass1 && $pass2) {
+               
+
+                //if($mailExist) {                        // Si on isncrit un user est déjà présent on redirige vers le formulaire d'inscription avec header()
+
+                    //return [
+                        //"view" => VIEW_DIR."security/register.php",
+                        //$session->addFlash('Email ou Pseudo existe déjà')
+                    //];
+                    //header("Location: register.php"); exit;
+                
+                //} else {
                     
-                return ["view" => VIEW_DIR."security/listUsers.php", "data" => ["users" => $userManager->findAll()]]; // Renvoi vers la liste des users
-            }
+                    if($pass1 == $pass2 && strlen($pass1) >= 8) {// Condition pour vérifier si le mot de passe est confirmé et doit contenir au moins 8 caractères
+                        $userManager->add([                     // add() pour ajouter un user à la BDD
+                            'pseudo' => $pseudo,
+                            'mail' => $mail,
+                            'password' => password_hash($pass1, PASSWORD_DEFAULT)// Filtre pour hacher le mot de passe
+                        ]);
+                            
+                        return ["view" => VIEW_DIR."security/listUsers.php", "data" => ["users" => $userManager->findAll()]]; // Renvoi vers la liste des users
+                    }
+                //}
+            //}
         }
     }
 ?>
