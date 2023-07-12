@@ -50,13 +50,13 @@
 
         public function addUser(){ 
 
-            if(isset($_GET["action"])) {
-                switch($_GET["action"]) {
+            //if(isset($_GET["action"])) {
+                //switch($_GET["action"]) {
 
-                    case "register":
+                    //case "register":
                         // Si le formulaire est soumis
 
-                        if($_POST["submit"]){
+                       // if($_POST["submit"]){
 
                             $userManager = new UserManager();                              // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
                             $session = new Session();                                      // Instancier cette variable pour afficher des messages (CF app & layout.php)
@@ -98,48 +98,48 @@
                                             $session->addFlash('success',"Ajouté avec succès"),
                                             "data" => ["users" => $userManager->findAll()] // Permettre l'affichage de toutes les infos (mais dans la liste seul les pseudos sont affichés)
                                         ]; 
-                                    } else {
+                                    } //else {
                                         // message "Les mots de passe ne sont pas identiques"
-                                    }
+                                   // }
                                 }   
-                            } else {
+                            } //else {
                                 // Problème de saisie dans les champs de formulaire
-                            }
-                        }
+                           // }
+                       // }
 
                         // Par défaut afficher le formulaire d'inscription
-                        return [
-                            "view" => VIEW_DIR."security/register.php"
-                        ];
-                    break;
+                        //return [
+                           // "view" => VIEW_DIR."security/register.php"
+                       // ];
+                    //break;
                     
-                    case "login":
+                    //case "login":
                       
-                        if($_POST["submit"]) {
+                    //     if($_POST["submit"]) {
 
-                            $userManager = new UserManager();                              // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
-                            // $session = new Session();                                      // Instancier cette variable pour afficher des messages (CF app & layout.php)
+                    //         $userManager = new UserManager();                              // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
+                    //         // $session = new Session();                                      // Instancier cette variable pour afficher des messages (CF app & layout.php)
 
-                            $mail = filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_VALIDATE_EMAIL);
-                            $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                    //         $mail = filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_VALIDATE_EMAIL);
+                    //         $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-                            if($mail && $password) {
+                    //         if($mail && $password) {
 
 
-                            }
-                        }
+                    //         }
+                    //     }
 
-                        return [
-                            "view" => VIEW_DIR."security/login.php"
-                        ];
+                    //     return [
+                    //         "view" => VIEW_DIR."security/login.php"
+                    //     ];
 
-                    break;
+                    // break;
 
-                    case "logout":
-                    break;
+                    // case "logout":
+                    // break;
 
-                }
-            }
+                //}
+           // }
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
