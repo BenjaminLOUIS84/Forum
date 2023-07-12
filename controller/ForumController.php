@@ -50,8 +50,8 @@
         public function addCategory(){                  // Fonction pour ajouter une catégorie vide au formulaire 
 
             $categoryManager = new CategoryManager();   // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
-            $session = new Session(); 
-             
+            $session = new Session();                   // Instancier pour ajouter une notification
+
             $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             $categoryManager->add(['name' => $name]);   // Pour effectuer l'action d'ajout 
@@ -59,7 +59,7 @@
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
                                            
                 "view" => VIEW_DIR."forum/listCategories.php",
-                $session->addFlash('success',"Ajouté avec succès"),
+                $session->addFlash('success',"Ajouté avec succès"),// Afficher la notification
                 "data" => ["categories" => $categoryManager->findAll()]                               
             ];
         }
@@ -69,11 +69,12 @@
         public function delCategory($id){               // Fonction pour supprimer une Catégorie
 
             $categoryManager = new CategoryManager();
+            $session = new Session();                   // Instancier pour ajouter une notification
 
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
 
                 "view" => VIEW_DIR."forum/listCategories.php",  // Après la suppression -> redirection sur la même page
-
+                $session->addFlash('success',"Supprimé avec succès"),// Afficher la notification
                 "data" => [$categoryManager->delete($id), "categories" => $categoryManager->findAll(["name", "ASC"])]           
             ];
         }
@@ -97,13 +98,14 @@
         public function majCategory($id){               // Fonction pour modifier une catégorie  
 
             $categoryManager = new CategoryManager();   // Instancier cette variable pour accéder aux méthodes de la classe et ajouter le filtre
+            $session = new Session();                   // Instancier pour ajouter une notification
             
             $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
                                            
                 "view" => VIEW_DIR."forum/listCategories.php",
-
+                $session->addFlash('success',"Modifié avec succès"),// Afficher la notification
                 "data" => [$categoryManager->majCategory($name, $id), "categories" => $categoryManager->findAll(["name", "ASC"])]     
             ];
         }
@@ -167,6 +169,7 @@
             $topicManager = new TopicManager();         // Instancier ces variables pour accéder aux méthodes de leur classes et ajouter les filtres
             $postManager = new PostManager();           // Instancier pour lier un post à un topic
             $categoryManager = new CategoryManager();
+            $session = new Session();                   // Instancier pour ajouter une notification
             
             $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             date_default_timezone_set('Europe/Paris');
@@ -183,7 +186,7 @@
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
 
                 "view" => VIEW_DIR."forum/listTopics.php", // Après l'ajout on reste sur la même page
-
+                $session->addFlash('success',"Ajouté avec succès"),// Afficher la notification
                 "data" => [                             // Ce référer à la base SQL pour ajouter les informations en argument dans le tableau ci dessous
                     
                     "topics" => $topicManager->findListByIdDep($category_id, "category"),
@@ -202,13 +205,14 @@
 
             $topicManager = new TopicManager();
             $categoryManager = new CategoryManager();
+            $session = new Session();                   // Instancier pour ajouter une notification
 
             $topic_id = $topicManager->delete($id);  // Pour effacer le topic
 
             return [                                     // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
 
                 "view" => VIEW_DIR."forum/listTopics.php",// Retour vers la liste des topics de la categorie correspondante
-
+                $session->addFlash('success',"Supprimé avec succès"),// Afficher la notification
                  
                 "data" => [
 
@@ -270,7 +274,8 @@
 
         public function addPost(){                    // Fonction pour accéder au formulaire des Posts selon le topic
 
-            $postManager = new PostManager();              
+            $postManager = new PostManager(); 
+            $session = new Session();                   // Instancier pour ajouter une notification            
 
             $text = filter_input(INPUT_POST, 'text', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             date_default_timezone_set('Europe/Paris');
@@ -284,7 +289,7 @@
             return [     
 
                 "view" => VIEW_DIR."forum/formulairePost.php",
-
+                $session->addFlash('success',"Ajouté avec succès"),// Afficher la notification
                 "data" => ["posts" => $postManager->findListByIdDep($topic_id, "topic")]                               
             ];                                          
         }
@@ -294,13 +299,14 @@
         public function delPost($id){                 // Fonction pour supprimer un Post
 
             $postManager = new PostManager();
+            $session = new Session();                   // Instancier pour ajouter une notification
 
             $text = filter_input(INPUT_POST, 'text', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             return [                                  // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
 
                 "view" => VIEW_DIR."forum/listPosts.php", // ATTENTION Gérer le retour vers la même page
-
+                $session->addFlash('success',"Supprimé avec succès"),// Afficher la notification
                 "data" => [$postManager->delete($id),"posts" => $postManager->findAll()]
             ];
         }
@@ -355,7 +361,8 @@
         public function addReponse(){                   // Fonction pour ajouter une réponse au post 
 
            $reponseManager = new ReponseManager();      // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
-            
+           $session = new Session();                   // Instancier pour ajouter une notification
+
             $text = filter_input(INPUT_POST, 'text', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             date_default_timezone_set('Europe/Paris');
@@ -370,7 +377,7 @@
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
                                            
                 "view" => VIEW_DIR."forum/formulaireReponse.php",
-
+                $session->addFlash('success',"Ajouté avec succès"),// Afficher la notification
                 "data" => ["reponses" => $reponseManager->findListByIdDep($post_id, "post")]                       
             ];
         }
@@ -381,11 +388,12 @@
 
             $reponseManager = new ReponseManager();
             $postManager = new PostManager();
+            $session = new Session();                   // Instancier pour ajouter une notification
 
             return [                                     // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
 
                 "view" => VIEW_DIR."forum/detailPost.php", // ATTENTION Gérer le retour vers la même page
-
+                $session->addFlash('success',"Supprimé avec succès"),// Afficher la notification
                 "data" => [
                     $reponseManager->delete($id),
 
