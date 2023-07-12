@@ -56,21 +56,25 @@
            $pass1 = filter_input(INPUT_POST, 'pass1', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
            $pass2 = filter_input(INPUT_POST, 'pass2', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-           //$mailExist = $userManager->find();        // Pour vérifier s'il y a des utilisateur existant dans la BDD
-           //$pseudoExist = $userManager->findOneById($id);        // Pour vérifier s'il y a des utilisateur existant dans la BDD
+           $mailExist = $userManager->findUserByMail($mail);              // Pour vérifier s'il y a des utilisateur existant dans la BDD
+           $pseudoExist = $userManager->findUserByPseudo($pseudo);        // Faire appel aux fonctions de userManager pour checker les mails et les pseudos 
 
-           //if($pseudo && $mail && $pass1 && $pass2) {
-               
+           if($pseudo && $mail && $pass1 && $pass2) { 
+                if($mailExist) {                        // Si on inscrit un user qui est déjà présent dans la BDD (on inscrit le même mail)
 
-                //if($mailExist) {                        // Si on isncrit un user est déjà présent on redirige vers le formulaire d'inscription avec header()
+                    return [
+                        "view" => VIEW_DIR."security/register.php",         // Rediriger vers le formulaire d'inscription avec header()
+                        //$session->addFlash('Le mail ou le pseudo existent déjà') // Afficher un message d'erreur
+                    ];
 
-                    //return [
-                        //"view" => VIEW_DIR."security/register.php",
-                        //$session->addFlash('Email ou Pseudo existe déjà')
-                    //];
-                    //header("Location: register.php"); exit;
-                
-                //} else {
+                } elseif($pseudoExist) {
+
+                    return [
+                        "view" => VIEW_DIR."security/register.php",
+                        //$session->addFlash('Le mail ou le pseudo existent déjà')
+                    ];
+
+                } else {
                     
                     if($pass1 == $pass2 && strlen($pass1) >= 8) {// Condition pour vérifier si le mot de passe est confirmé et doit contenir au moins 8 caractères
                         $userManager->add([                     // add() pour ajouter un user à la BDD
@@ -81,8 +85,8 @@
                             
                         return ["view" => VIEW_DIR."security/listUsers.php", "data" => ["users" => $userManager->findAll()]]; // Renvoi vers la liste des users
                     }
-                //}
-            //}
+                }
+            }
         }
     }
 ?>
