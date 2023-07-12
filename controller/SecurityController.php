@@ -51,7 +51,7 @@
         public function addUser(){ 
             
            $userManager = new UserManager();                              // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
-           $session = new Session();                                      // Instancier cette variable pour afficher des messages (CF app)
+           $session = new Session();                                      // Instancier cette variable pour afficher des messages (CF app & layout.php)
 
            $pseudo = filter_input(INPUT_POST, 'pseudo', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
            $mail = filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_VALIDATE_EMAIL);

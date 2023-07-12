@@ -487,7 +487,24 @@ h3 {
     padding: 20px;
 }
 
+/*PARAM Notifications (Messages Flash)*/
 
+.message {
+    font-size: 2.5em;
+    animation: appear 1s;
+}
+
+ /* Animation Faire apparaitre certains éléments Zoom*/
+
+ @keyframes appear {
+    from {
+        transform: scale(0)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
 
 /*PARAM LE MENU ET LE PIED DE PAGE*/
 
