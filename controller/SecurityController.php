@@ -94,5 +94,18 @@
                 }
             }
         }
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // LOGIN FONCTIONS
+
+        //////////////////////////////AFFICHER LE FORMULAIRE DE CONNEXION
+
+        public function login(){                     
+
+            return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
+                
+                "view" => VIEW_DIR."security/login.php",                           
+            ];
+        }
     }
 ?>
