@@ -49,48 +49,95 @@
         //////////////////////////////AJOUTER UN UTILISATEUR DANS LA BDD VIA LE FORMULAIRE D'INSCRIPTION
 
         public function addUser(){ 
-            
-           $userManager = new UserManager();                              // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
-           $session = new Session();                                      // Instancier cette variable pour afficher des messages (CF app & layout.php)
 
-           $pseudo = filter_input(INPUT_POST, 'pseudo', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-           $mail = filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_VALIDATE_EMAIL);
-           $pass1 = filter_input(INPUT_POST, 'pass1', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-           $pass2 = filter_input(INPUT_POST, 'pass2', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            if(isset($_GET["action"])) {
+                switch($_GET["action"]) {
 
-           $mailExist = $userManager->findUserByMail($mail);              // Pour vérifier s'il y a des utilisateurs existant dans la BDD
-           $pseudoExist = $userManager->findUserByPseudo($pseudo);        // Faire appel aux fonctions de userManager pour checker les mails et les pseudos 
+                    case "register":
+                        // Si le formulaire est soumis
 
-           if($pseudo && $mail && $pass1 && $pass2) { 
-                if($mailExist) {                                          // Si on inscrit un user qui est déjà présent dans la BDD (on inscrit le même mail)
+                        if($_POST["submit"]){
 
-                    return [
-                        "view" => VIEW_DIR."security/register.php",       // Rediriger vers le formulaire d'inscription avec header()
-                        $session->addFlash('error',"Ce mail existe déjà") // Afficher un message d'erreur (CF layout.php)
-                    ];
+                            $userManager = new UserManager();                              // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
+                            $session = new Session();                                      // Instancier cette variable pour afficher des messages (CF app & layout.php)
 
-                } elseif($pseudoExist) {
+                            $pseudo = filter_input(INPUT_POST, 'pseudo', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                            $mail = filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_VALIDATE_EMAIL);
+                            $pass1 = filter_input(INPUT_POST, 'pass1', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                            $pass2 = filter_input(INPUT_POST, 'pass2', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-                    return [
-                        "view" => VIEW_DIR."security/register.php",
-                        $session->addFlash('error',"Ce pseudo existe déjà")
-                    ];
+                            $mailExist = $userManager->findUserByMail($mail);              // Pour vérifier s'il y a des utilisateurs existant dans la BDD
+                            $pseudoExist = $userManager->findUserByPseudo($pseudo);        // Faire appel aux fonctions de userManager pour checker les mails et les pseudos 
 
-                } else {
-                    
-                    if($pass1 == $pass2 && strlen($pass1) >= 8) {       // Condition pour vérifier si le mot de passe est confirmé et doit contenir au moins 8 caractères
-                        $userManager->add([                             // add() pour ajouter un user à la BDD
-                            'pseudo' => $pseudo,
-                            'mail' => $mail,
-                            'password' => password_hash($pass1, PASSWORD_DEFAULT)// Filtre pour hacher le mot de passe
-                        ]);
-                            
+                            if($pseudo && $mail && $pass1 && $pass2) { 
+                                if($mailExist) {                                          // Si on inscrit un user qui est déjà présent dans la BDD (on inscrit le même mail)
+
+                                    return [
+                                        "view" => VIEW_DIR."security/register.php",       // Rediriger vers le formulaire d'inscription avec header()
+                                        $session->addFlash('error',"Ce mail existe déjà") // Afficher un message d'erreur (CF layout.php)
+                                    ];
+
+                                } elseif($pseudoExist) {
+
+                                    return [
+                                        "view" => VIEW_DIR."security/register.php",
+                                        $session->addFlash('error',"Ce pseudo existe déjà")
+                                    ];
+
+                                } else {
+                                    
+                                    if($pass1 == $pass2 && strlen($pass1) >= 8) {       // Condition pour vérifier si le mot de passe est confirmé et doit contenir au moins 8 caractères
+                                        $userManager->add([                             // add() pour ajouter un user à la BDD
+                                            'pseudo' => $pseudo,
+                                            'mail' => $mail,
+                                            'password' => password_hash($pass1, PASSWORD_DEFAULT)// Filtre pour hacher le mot de passe
+                                        ]);
+                                            
+                                        return [
+                                            "view" => VIEW_DIR."security/login.php", // Renvoi vers la liste de tous les utilisateurs
+                                            $session->addFlash('success',"Ajouté avec succès"),
+                                            "data" => ["users" => $userManager->findAll()] // Permettre l'affichage de toutes les infos (mais dans la liste seul les pseudos sont affichés)
+                                        ]; 
+                                    } else {
+                                        // message "Les mots de passe ne sont pas identiques"
+                                    }
+                                }   
+                            } else {
+                                // Problème de saisie dans les champs de formulaire
+                            }
+                        }
+
+                        // Par défaut afficher le formulaire d'inscription
                         return [
-                            "view" => VIEW_DIR."security/listUsers.php", // Renvoi vers la liste de tous les utilisateurs
-                            $session->addFlash('success',"Ajouté avec succès"),
-                            "data" => ["users" => $userManager->findAll()] // Permettre l'affichage de toutes les infos (mais dans la liste seul les pseudos sont affichés)
-                        ]; 
-                    }
+                            "view" => VIEW_DIR."security/register.php"
+                        ];
+                    break;
+                    
+                    case "login":
+                      
+                        if($_POST["submit"]) {
+
+                            $userManager = new UserManager();                              // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
+                            // $session = new Session();                                      // Instancier cette variable pour afficher des messages (CF app & layout.php)
+
+                            $mail = filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_VALIDATE_EMAIL);
+                            $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+                            if($mail && $password) {
+
+
+                            }
+                        }
+
+                        return [
+                            "view" => VIEW_DIR."security/login.php"
+                        ];
+
+                    break;
+
+                    case "logout":
+                    break;
+
                 }
             }
         }
