@@ -16,7 +16,7 @@
         public function index(){
             
             return [
-                "view" => VIEW_DIR."home.php"
+                "view" => VIEW_DIR."register.php"// Pour accéder à la view register.php
             ];
     
         }
