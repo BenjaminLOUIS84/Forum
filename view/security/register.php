@@ -58,7 +58,7 @@
                 <main id="forum">
                     <!-- Pour faire la temporisation de sortie -->
                     <!-- Renvoi les différents contenus respectifs de chaque rubriques -->
-                    <?= $page ?>
+                    <!-- <?= $page ?> -->
 
                     <h2>S'inscrire</h2>
 
