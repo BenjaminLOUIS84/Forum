@@ -19,40 +19,50 @@
 
                 <header>
                     <nav>
-                        <!-- <div id="nav-left"> -->
-                            <!-- <a href="/">Accueil</a> -->
-                            <?php
-                            // if(App\Session::isAdmin()){
-                                ?>
-                                <!-- <a href="index.php?ctrl=security&action=listUsers">Voir la liste des membres</a> -->
-                            
-                            <?php
-                            // }
+
+                        <?php
+                            if(App\Session::isAdmin()){
                             ?>
-                        <!-- </div> -->
-                        <!-- <div id="nav-right"> -->
+                            <a href="index.php">Accueil</a>
+                            <a href="index.php?ctrl=security&action=loginUser">Connexion</a>
+                            <a href="index.php?ctrl=forum&action=listCategories">Liste des Catégories</a>
+                            <a href="index.php?ctrl=security&action=listUsers">Liste des Membres</a>
+
+                            <!-- Accéder au profil -->
+                            <a href=""><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()?></a>
+                            <!-- Déconnexion -->
+                            <a href="index.php?ctrl=security&action=logout">Déconnexion</a>
+                        <?php
+                            }
+                        ?>
+                       
                         <?php
                             
                             if(App\Session::getUser()){
                                 ?>
+                                <a href="index.php">Accueil</a>
+                                <a href="index.php?ctrl=security&action=loginUser">Connexion</a>
+                                <a href="index.php?ctrl=forum&action=listCategories">Liste des Catégories</a>
+                                <a href="index.php?ctrl=security&action=listUsers">Liste des Membres</a>
+
                                 <!-- Accéder au profil -->
                                 <a href=""><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()?></a>
-                                
                                 <!-- Déconnexion -->
                                 <a href="index.php?ctrl=security&action=logout">Déconnexion</a>
                                 <?php
-                             }
-                             else{
+                            }
+                            else{
                                 ?>
                                 <a href="index.php">Accueil</a>
-                                <a href="index.php?ctrl=security&action=login">Connexion</a>
+                                <a href="index.php?ctrl=security&action=loginUser">Connexion</a>
                                 <a href="index.php?ctrl=security&action=register">Inscription</a>
+
                                 <a href="index.php?ctrl=forum&action=listCategories">Liste des Catégories</a>
                                 <a href="index.php?ctrl=security&action=listUsers">Liste des Membres</a>
                                 <?php
                             }
                         ?>
-                        <!-- </div> -->
+                        
                     </nav>
 
                     <!-- c'est ici que les messages (erreur ou succès) s'affichent-->

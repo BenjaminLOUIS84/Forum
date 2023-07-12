@@ -147,7 +147,7 @@
 
         //////////////////////////////AFFICHER LE FORMULAIRE DE CONNEXION
 
-        public function login(){                     
+        public function loginUser(){                     
 
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
                 
@@ -158,7 +158,7 @@
         //////////////////////////////AFFICHER LE FORMULAIRE DE CONNEXION
 
 
-        public function loginUser() {
+        public function login() {
             
             $userManager = new UserManager();
             $session = new Session();
@@ -175,7 +175,7 @@
                         $session = new Session();
                         return [
                             $session->setUser($user),
-                            "view" => VIEW_DIR."forum/categoriesList.php"
+                            "view" => VIEW_DIR."forum/listCategories.php"
                         ];
                     } else {
                         $session->addFlash('error',"Mot de passe incorrect ou inexistant");
@@ -183,10 +183,11 @@
                     // On récupère le mot de passe
                 } else {
                     $session = new Session();
-                        return [
-                            "view" => VIEW_DIR."security/login.php",
-                            $session->addFlash('error',"Mail ou mot de passe incorrect")
-                        ];
+
+                    return [
+                        "view" => VIEW_DIR."security/login.php",
+                        $session->addFlash('error',"Mail ou mot de passe incorrect")
+                    ];
                 }
             }
                         
