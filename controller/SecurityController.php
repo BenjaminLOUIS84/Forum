@@ -30,7 +30,7 @@
 
             return [                                    // Fonction native du FrameWork findAll() (se trouve dans Manager.php) on demande à la variable d'utiliser cette fonction
                 
-                "view" => VIEW_DIR."forum/listUsers.php",
+                "view" => VIEW_DIR."security/listUsers.php",
 
                 "data" => ["users" => $userManager->findAll(["pseudo","ASC"])]                               
             ];                                          // Permet d'afficher tous les utilisateurs

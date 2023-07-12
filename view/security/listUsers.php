@@ -4,13 +4,13 @@
 
 <h2>LES MEMBRES</h2>
 
-<div class="topic">
+<div class="users">
 
     <?php
         foreach($users as $user){
 
             ?>
-                <?=$user->getId()?><?=$user->getPseudo()?>
+                <?=$user->getPseudo()?><br>
             <?php
         }
     ?>
@@ -18,7 +18,7 @@
 </div>
 
 <figure>
-    <img src="./public/img/cuisine5.jpg" class="images" alt="Foie de veu en persillade, pomme de terre rôties et champignons">
+    <img src="./public/img/cuisine5.jpg" class="photo" alt="Foie de veu en persillade, pomme de terre rôties et champignons">
 </figure>
 
 <a class="retour" href="index.php">Retour</a>

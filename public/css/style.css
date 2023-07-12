@@ -474,6 +474,18 @@ h3 {
     margin-top: 40px;
 }
 
+/*PAGE Users*/
+
+.users {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+    backdrop-filter: blur(8px);
+    font-size: 3em;
+}
+
 
 
 /*PARAM LE MENU ET LE PIED DE PAGE*/
