@@ -22,7 +22,7 @@
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // REGISTER FONCTIONS
 
-        //////////////////////////////AFFICHER LA LISTE DES USERS
+        //////////////////////////////AFFICHER LA LISTE DES UTILISATEURS
 
         public function listUsers(){                    // Fonction pour afficher la liste de toute les catégories
             
@@ -46,9 +46,11 @@
             ];
         }
 
+        //////////////////////////////AJOUTER UN UTILISATEUR DANS LA BDD VIA LE FORMULAIRE D'INSCRIPTION
+
         public function addUser(){ 
             
-           $userManager = new UserManager();            // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
+           $userManager = new UserManager();                              // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
            //$session = new Session();
 
            $pseudo = filter_input(INPUT_POST, 'pseudo', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -60,10 +62,10 @@
            $pseudoExist = $userManager->findUserByPseudo($pseudo);        // Faire appel aux fonctions de userManager pour checker les mails et les pseudos 
 
            if($pseudo && $mail && $pass1 && $pass2) { 
-                if($mailExist) {                        // Si on inscrit un user qui est déjà présent dans la BDD (on inscrit le même mail)
+                if($mailExist) {                                          // Si on inscrit un user qui est déjà présent dans la BDD (on inscrit le même mail)
 
                     return [
-                        "view" => VIEW_DIR."security/register.php",         // Rediriger vers le formulaire d'inscription avec header()
+                        "view" => VIEW_DIR."security/register.php",       // Rediriger vers le formulaire d'inscription avec header()
                         //$session->addFlash('Le mail ou le pseudo existent déjà') // Afficher un message d'erreur
                     ];
 
@@ -76,8 +78,8 @@
 
                 } else {
                     
-                    if($pass1 == $pass2 && strlen($pass1) >= 8) {// Condition pour vérifier si le mot de passe est confirmé et doit contenir au moins 8 caractères
-                        $userManager->add([                     // add() pour ajouter un user à la BDD
+                    if($pass1 == $pass2 && strlen($pass1) >= 8) {       // Condition pour vérifier si le mot de passe est confirmé et doit contenir au moins 8 caractères
+                        $userManager->add([                             // add() pour ajouter un user à la BDD
                             'pseudo' => $pseudo,
                             'mail' => $mail,
                             'password' => password_hash($pass1, PASSWORD_DEFAULT)// Filtre pour hacher le mot de passe
