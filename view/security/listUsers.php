@@ -18,7 +18,7 @@
 </div>
 
 <figure>
-    <img src="./public/img/cuisine5.jpg" class="photo" alt="Foie de veu en persillade, pomme de terre rôties et champignons">
+    <img src="./public/img/cuisine6.jpg" class="photo" alt="Plateau de charcuteries et fromages">
 </figure>
 
 <a class="retour" href="index.php">Retour</a>
