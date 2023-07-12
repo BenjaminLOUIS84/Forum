@@ -55,17 +55,15 @@
            $pass1 = filter_input(INPUT_POST, 'pass1', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
            $pass2 = filter_input(INPUT_POST, 'pass2', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-           $userManager->add(['pseudo' => $pseudo, 'mail' => $mail, 'password' => $password]);
-            
-           return [                               
-
-                "view" => VIEW_DIR."security/listUsers.php",
-
-                "data" => ["users" => $userManager->findAll()]
-
-            ];
+           if($pass1 == $pass2 && strlen($pass1) >= 8) {// Condition pour vérifier si le mot de passe est confirmé et doit contenir au moins 8 caractères
+                $userManager->add([
+                    'pseudo' => $pseudo,
+                    'mail' => $mail,
+                    'password' => password_hash($pass1, PASSWORD_DEFAULT)// Filtre pour hacher le mot de passe
+                ]);
+                    
+                return ["view" => VIEW_DIR."security/listUsers.php", "data" => ["users" => $userManager->findAll()]]; // Renvoi vers la liste des users
+            }
         }
-
-
     }
 ?>
