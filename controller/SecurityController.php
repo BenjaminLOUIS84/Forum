@@ -69,7 +69,7 @@
 
                             $mailExist = $userManager->findUserByMail($mail);              // Pour vérifier s'il y a des utilisateurs existant dans la BDD
                             $pseudoExist = $userManager->findUserByPseudo($pseudo);        // Faire appel aux fonctions de userManager pour checker les mails et les pseudos 
-
+  
                             if($pseudo && $mail && $pass1 && $pass2) { 
                                 if($mailExist) {                                          // Si on inscrit un user qui est déjà présent dans la BDD (on inscrit le même mail)
 
@@ -100,7 +100,7 @@
                                             "data" => ["users" => $userManager->findAll()] // Permettre l'affichage de toutes les infos (mais dans la liste seul les pseudos sont affichés)
                                         ]; 
                                     } else {
-                                        // message "Les mots de passe ne sont pas identiques"
+                                         // message "Les mots de passe ne sont pas identiques"
                                     }
                                 }   
                             } else {
@@ -169,64 +169,45 @@
                 $mail = filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_VALIDATE_EMAIL); // Filtre les champs contre les failles XSS
                 $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 
-                if ($mail && $password) {                           // Vérifier si les filtres sont valides
+                //if ($mail && $password) {                           // Vérifier si les filtres sont valides
 
                     $user = $userManager->findUserByMail($mail);    // Equivaut à une réquête préparée $pdo=prepare(SELECT* FROM...) utilisée quand il n'y a pas de Framework
 
-                    var_dump($user);die;                          // Pour vérifier si on entre dans le formulaire un utilisateur qui existe dans la BDD
-                
+                    //var_dump($user);die;                          // Pour vérifier si on entre dans le formulaire un utilisateur qui existe dans la BDD
                     
                     if($user) {                                     // Si l'utilisateur existe
 
-                        $hash = $user["password"];                  // Récuréper le mot de passe haché de l'utilisateur $hash = $user->getPassword(); est une formule équivalente
-                
+                        $hash = $user->getPassword();  // Récuréper le mot de passe haché de l'utilisateur Equivaut à $hash = $user["password"]; est une formule équivalente
+                        //var_dump($user);die;         // Vérifier s'il y a un utilisateur 
+
                         if(password_verify($password, $hash)) {     // Pour vérifier si le mot de passe inscrit dans le formulaire correspond à celui de la BDD
-                            $_SESSION["user"] = $user;              // Mettre l'utilisateur en session (stocker dans un tableau toute les informations de l'utilisateur)
+                            
+                            $session->setUser($user);               // Mettre l'utilisateur en session Equivaut à $_SESSION["user"] = $user; (stocker dans un tableau toute les informations de l'utilisateur) CF Session.php
                             
                             return [
-                                "view" => VIEW_DIR."view/home.php",
-                                $session->addFlash('success', " .$user "." est connecté !")
+                                "view" => VIEW_DIR."forum/listCategoires.php",  // Renvoyer l'utilisateur vers la liste des Catégories
+                                $session->addFlash('success', " .$user "." est connecté !") // Notification
                             ];
+
                         } else {
 
                             return [
-                                "view" => VIEW_DIR."security/login.php",
-                                $session->addFlash('error', "Utilisateur inconnu ou mot de passe incorrect")
-                            ]; 
-                        }
+                            "view" => VIEW_DIR."security/login.php",    // Rester sur le formulaire de connexion
+                                $session->addFlash('error', "Utilisateur inconnu ou mot de passe incorrect") // Notification de refus
+                            ];
 
+                        }
                     } else {
 
                         return [
-                            "view" => VIEW_DIR."security/login.php",
-                            $session->addFlash('error',"Utilisateur inconnu ou mot de passe incorrect")
-                        ]; 
+                        "view" => VIEW_DIR."security/login.php",    // Rester sur le formulaire de connexion
+                            $session->addFlash('error', "Utilisateur inconnu ou mot de passe incorrect") // Notification de refus
+                        ];
 
                     }
                     
-                }
-                    //$check = password_verify($password, $hash);
-
-                // 
-                //         $hash = $user->getPassword(); 
-                //         if (password_verify($password, $hash)) {
-                //             
-
-                //             $session->addFlash('success'," .$user "." est connecté !");
-
-                //         } else {
-
-                //             $session->addFlash('error',"Mail ou mot de passe incorrect ou inexistant");
-                //         }
-                           
-                //         // return [
-
-                //         //     $session->setUser($user),
-                //         //     "view" => VIEW_DIR."forum/listCategories.php",
-                                
-                //         // ];     
-                //    }
-                // }
+                //}
+     
             }
 
             return [
