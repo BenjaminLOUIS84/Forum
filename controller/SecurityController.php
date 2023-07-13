@@ -170,39 +170,35 @@
                 $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 
                 $user = $userManager->findUserByMail($mail);
+                
+                //$check = password_verify($password, $hash);
 
-                if ($mail && $password) {
+                // if ($mail && $password) {
 
-                    if ($user) {
-                        $hash = $user->getPassword(); 
-                        if (password_verify($password, $hash)) {
-                            
-                            $session = new Session();
-                            return [
-                                $session->setUser($user),
-                                "view" => VIEW_DIR."forum/listCategories.php",
-                                var_dump($_SESSION["user"])
-                            ];
-                            ///////////////////////////////////////////////////////////////////////////
-                        } else {
-                           $session->addFlash('error',"Mot de passe incorrect ou inexistant");
-                        }
-                        // On récupère le mot de passe
-                    } else {
-                        //$session = new Session();
+                //     if ($user) {
+                //         $hash = $user->getPassword(); 
+                //         if (password_verify($password, $hash)) {
+                //             $_SESSION["user"] = $user;
 
-                        return [
-                            "view" => VIEW_DIR."security/login.php",
-                            $session->addFlash('error',"Mail ou mot de passe incorrect")
-                        ];
-                    }
-                }
+                //             $session->addFlash('success'," .$user "." est connecté !");
+
+                //         } else {
+
+                //             $session->addFlash('error',"Mail ou mot de passe incorrect ou inexistant");
+                //         }
+                           
+                //         // return [
+
+                //         //     $session->setUser($user),
+                //         //     "view" => VIEW_DIR."forum/listCategories.php",
+                                
+                //         // ];     
+                //     }
+                // }
             }
 
             return [
                 "view" => VIEW_DIR."security/login.php",
-                
-               
                 var_dump($user)
             ];
                         
