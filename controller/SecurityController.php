@@ -214,7 +214,7 @@
         }
 
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // CGU FONCTIONS
+        // CGU & MENTIONS LEGALES FONCTIONS
 
         //////////////////////////////AFFICHER LA PAGE DES CONDITIONS GENERALES D'UTILISATION
 
@@ -222,6 +222,15 @@
 
             return [                                                                
                 "view" => VIEW_DIR."security/cgu.php",                           
+            ];
+        }
+
+        //////////////////////////////AFFICHER LA PAGE DES MENTIONS LEGALES
+
+        public function mentions(){                     
+
+            return [                                                                
+                "view" => VIEW_DIR."security/mentions.php",                           
             ];
         }
 

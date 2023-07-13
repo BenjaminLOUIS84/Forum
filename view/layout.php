@@ -79,7 +79,7 @@
                 </main>
             </div>
             <footer>
-                <p>&copy; 2023 - Forum DEV COOK - <a href="index.php?ctrl=security&action=cgu">CGU</a> - <a href="">Mentions légales</a></p>
+                <p>&copy; 2023 - Forum DEV COOK - <a href="index.php?ctrl=security&action=cgu">CGU</a> - <a href="index.php?ctrl=security&action=mentions">Mentions légales</a></p>
                 <!--<button id="ajaxbtn">Surprise en Ajax !</button> -> cliqué <span id="nbajax">0</span> fois-->
             </footer>
         </div>
