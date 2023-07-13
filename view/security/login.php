@@ -19,7 +19,7 @@
         <label for="password">Mot de passe</label>
         <input type="password" name="password" id="password" minlength="8" required><br>
 
-        <input id="submit" type="submit" name="login" value="CONNEXION">
+        <input id="submitLog" type="submit" name="login" value="CONNEXION">
     </form>
 
     </div>

@@ -282,7 +282,8 @@ input {
     padding: 10px;
 }
 
-#submit {
+#submit, 
+#submitLog {
     padding: 10px;
     color: white;
     background: none;
@@ -292,7 +293,8 @@ input {
     cursor: pointer;
 }
 
-#submit:hover {
+#submit:hover,
+#submitLog:hover {
     transition: ease-in-out 0.5s;
     color: rgb(9, 4, 42);
     background: white;
@@ -479,11 +481,19 @@ h3 {
 
 .connexion {
     text-align: end;
-    padding-right: 160px;
+    padding-right: 140px;
 }
+
+/*Boutons*/
 
 .topicINSC #submit {
     margin-top: 40px;
+    margin-right: 15px;
+}
+
+.topicINSC #submitLog {
+    margin-top: 40px;
+    margin-right: 25px;
 }
 
 /*PAGE Users*/
