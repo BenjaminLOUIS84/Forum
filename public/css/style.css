@@ -472,10 +472,14 @@ h3 {
 
 /*Mettre en forme les formulaire*/
 
-.inscription, 
+.inscription {
+    text-align: end;
+    padding-right: 300px;
+}
+
 .connexion {
     text-align: end;
-    padding-right: 120px;
+    padding-right: 160px;
 }
 
 .topicINSC #submit {
