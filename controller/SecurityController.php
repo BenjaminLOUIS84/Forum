@@ -50,25 +50,22 @@
 
         public function addUser(){ 
             
-
             //if(isset($_GET["action"])) {
                 //switch($_GET["action"]) {
+                    //case "register":   
 
-                    //case "register":
-                        // Si le formulaire est soumis
+                        if($_POST["addUser"]){                                            // Si le formulaire est soumis
 
-                        if($_POST["addUser"]){
-
-                            $userManager = new UserManager();                              // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
-                            $session = new Session();                                      // Instancier cette variable pour afficher des messages (CF app & layout.php)
+                            $userManager = new UserManager();                             // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
+                            $session = new Session();                                     // Instancier cette variable pour afficher des messages (CF app & layout.php)
 
                             $pseudo = filter_input(INPUT_POST, 'pseudo', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                             $mail = filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_VALIDATE_EMAIL);
                             $pass1 = filter_input(INPUT_POST, 'pass1', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                             $pass2 = filter_input(INPUT_POST, 'pass2', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-                            $mailExist = $userManager->findUserByMail($mail);              // Pour vérifier s'il y a des utilisateurs existant dans la BDD
-                            $pseudoExist = $userManager->findUserByPseudo($pseudo);        // Faire appel aux fonctions de userManager pour checker les mails et les pseudos 
+                            $mailExist = $userManager->findUserByMail($mail);             // Pour vérifier s'il y a des utilisateurs existant dans la BDD
+                            $pseudoExist = $userManager->findUserByPseudo($pseudo);       // Faire appel aux fonctions de userManager pour checker les mails et les pseudos 
   
                             if($pseudo && $mail && $pass1 && $pass2) { 
                                 if($mailExist) {                                          // Si on inscrit un user qui est déjà présent dans la BDD (on inscrit le même mail)
@@ -95,12 +92,16 @@
                                         ]);
                                             
                                         return [
-                                            "view" => VIEW_DIR."security/login.php", // Renvoi vers la liste de tous les utilisateurs
+                                            "view" => VIEW_DIR."security/login.php",    // Renvoi vers la liste de tous les utilisateurs
                                             $session->addFlash('success',"Ajouté avec succès"),
                                             "data" => ["users" => $userManager->findAll()] // Permettre l'affichage de toutes les infos (mais dans la liste seul les pseudos sont affichés)
                                         ]; 
-                                    } else {
-                                         // message "Les mots de passe ne sont pas identiques"
+                                    } else {                                            // message "Les mots de passe ne sont pas identiques"
+                                         
+                                        return [
+                                            "view" => VIEW_DIR."security/register.php",
+                                            $session->addFlash('error',"Les mots de passe ne sont identiques")
+                                        ];
                                     }
                                 }   
                             } else {
@@ -113,33 +114,11 @@
                             "view" => VIEW_DIR."security/register.php"
                         ];
 
-                   // break;
-                    
+                    // break;
                     //case "login":
-                      
-                        // if($_POST["login"]) {
-
-                        //     $userManager = new UserManager();                              // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
-                        //     // $session = new Session();                                      // Instancier cette variable pour afficher des messages (CF app & layout.php)
-
-                        //     $mail = filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_VALIDATE_EMAIL);
-                        //     $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
-                        //     if($mail && $password) {
-
-
-                        //     }
-                        // }
-
-                        // return [
-                        //     "view" => VIEW_DIR."security/login.php"
-                        // ];
-
-                   // break;
-
-                   // case "logout":
-                   // break;
-
+                    // break;
+                    // case "logout":
+                    // break;
                // }
             //}
         }
@@ -151,7 +130,7 @@
 
         public function loginUser(){                     
 
-            return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
+            return [                                                // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
                 
                 "view" => VIEW_DIR."security/login.php",                           
             ];
@@ -169,18 +148,21 @@
                 $mail = filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_VALIDATE_EMAIL); // Filtre les champs contre les failles XSS
                 $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 
-                //if ($mail && $password) {                           // Vérifier si les filtres sont valides
+                //if ($mail && $password) {                         // Vérifier si les filtres sont valides
 
                     $user = $userManager->findUserByMail($mail);    // Equivaut à une réquête préparée $pdo=prepare(SELECT* FROM...) utilisée quand il n'y a pas de Framework
 
                     //var_dump($user);die;                          // Pour vérifier si on entre dans le formulaire un utilisateur qui existe dans la BDD
                     
-                    if($user) {                                     // Si l'utilisateur existe
+                    if($user) {                                     // Si l'utilisateur existe dans la BDD
 
-                        $hash = $user->getPassword();  // Récuréper le mot de passe haché de l'utilisateur Equivaut à $hash = $user["password"]; est une formule équivalente
-                        //var_dump($user);die;         // Vérifier s'il y a un utilisateur 
+                        $hash = $user->getPassword();               // Récuréper le mot de passe haché de l'utilisateur Equivaut à $hash = $user["password"]; est une formule équivalente
 
-                        if(password_verify($password, $hash)) {     // Pour vérifier si le mot de passe inscrit dans le formulaire correspond à celui de la BDD
+                        //var_dump($user);die;                        // Vérifier s'il y a un utilisateur 
+                        //var_dump($hash);die;                        // Vérifier s'il y a un mot de passe
+
+                        $check = password_verify($password, $hash);
+                        if($check) {                                // Pour vérifier si le mot de passe inscrit dans le formulaire correspond à celui de la BDD
                             
                             $session->setUser($user);               // Mettre l'utilisateur en session Equivaut à $_SESSION["user"] = $user; (stocker dans un tableau toute les informations de l'utilisateur) CF Session.php
                             
@@ -189,7 +171,7 @@
                                 $session->addFlash('success', " .$user "." est connecté !") // Notification
                             ];
 
-                        } else {
+                        } else {                                    // Si le mot de passe ne correspond pas
 
                             return [
                             "view" => VIEW_DIR."security/login.php",    // Rester sur le formulaire de connexion
@@ -197,7 +179,7 @@
                             ];
 
                         }
-                    } else {
+                    } else {                                        // Si l'utilisateur n'est pas inscrit dans la BDD
 
                         return [
                         "view" => VIEW_DIR."security/login.php",    // Rester sur le formulaire de connexion
