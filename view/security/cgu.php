@@ -57,7 +57,7 @@
         Lorsque que vous avez obtenu une recette ou un conseil par un forum pensez au retour.<br>
         Postez donc vos impressions sur cette recette, faites partager votre expérience à l'ensemble des lecteurs.<br>
 
-        <h3>Faire des critiques constructives si possible.</h3><br>
+        <h3>Faire des critiques constructives de préférence.</h3><br>
 
         Pour éviter de reposer une question déjà abordée sur l'un des forums, utilisez le moteur de recherche du site (dans la barre de menu en haut à gauche).<br>
         Tapez vos mots clés, par exemple : recette confiture cerise. Cliquez sur "ok".<br>
