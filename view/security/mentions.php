@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CGU</title>
+    <title>Mentions Légales</title>
 </head>
 <body>
 
     <div class="topicCGU">
 
-        <h2>CONDITIONS GENERALES D'UTILISATION</h2>
+        <h2>MENTIONS LEGALES</h2>
 
         <p>Cet article a pour but d'indiquer aux participants, et plus particulièrement aux nouveaux venus, quelques règles à respecter pour la bonne tenue des forums.<br>
         Les forums de discussion de DEV COOK sont modérés par le webmaster du site.<br>
