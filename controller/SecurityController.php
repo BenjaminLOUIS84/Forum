@@ -140,7 +140,7 @@
 
         public function login() {
 
-            if($_POST["login"]) { // Si le formulaire de connexion est soumis
+            if($_POST["login"]) {                                   // Si le formulaire de connexion est soumis
             
                 $userManager = new UserManager();
                 $session = new Session();
