@@ -164,67 +164,51 @@
             if($_POST["login"]) {
             
                 $userManager = new UserManager();
-                // $session = new Session();
+                $session = new Session();
                 
                 $mail = filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_VALIDATE_EMAIL);
                 $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 
-                
+                $user = $userManager->findUserByMail($mail);
 
                 if ($mail && $password) {
-                    $user = $userManager->findUserByMail($mail);
-                    var_dump($user); die;
 
-                }               
+                    if ($user) {
+                        $hash = $user->getPassword(); 
+                        if (password_verify($password, $hash)) {
+                            
+                            $session = new Session();
+                            return [
+                                $session->setUser($user),
+                                "view" => VIEW_DIR."forum/listCategories.php",
+                                var_dump($_SESSION["user"])
+                            ];
+                            ///////////////////////////////////////////////////////////////////////////
+                        } else {
+                           $session->addFlash('error',"Mot de passe incorrect ou inexistant");
+                        }
+                        // On récupère le mot de passe
+                    } else {
+                        //$session = new Session();
+
+                        return [
+                            "view" => VIEW_DIR."security/login.php",
+                            $session->addFlash('error',"Mail ou mot de passe incorrect")
+                        ];
+                    }
+                }
             }
-            // return [
-            //     "view" => VIEW_DIR."security/login.php"
-            // ];
 
+            return [
+                "view" => VIEW_DIR."security/login.php",
+                
+               
+                var_dump($user)
+            ];
+                        
         }
 
-        // public function login() {
 
-        //     if($_POST["login"]) {
-            
-        //         $userManager = new UserManager();
-        //         $session = new Session();
-                
-        //         $mail = filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_VALIDATE_EMAIL);
-        //         $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                
-        //         $user = $userManager->findUserByMail($mail);
-
-        //         if ($mail && $password) {
-        //             if ($user) {
-        //                 $hash = $user->getPassword(); 
-        //                 if (password_verify($password, $hash)) {
-        //                     $session = new Session();
-        //                     return [
-        //                         $session->setUser($user),
-        //                         "view" => VIEW_DIR."forum/listCategories.php"
-        //                     ];
-        //                 } else {
-        //                     $session->addFlash('error',"Mot de passe incorrect ou inexistant");
-        //                 }
-        //                 // On récupère le mot de passe
-        //             } else {
-        //                 $session = new Session();
-
-        //                 return [
-        //                     "view" => VIEW_DIR."security/login.php",
-        //                     $session->addFlash('error',"Mail ou mot de passe incorrect")
-        //                 ];
-        //             }
-        //         }
-        //     }
-
-        //     return [
-        //         "view" => VIEW_DIR."security/login.php"
-                
-        //     ];
-                        
-        // }
 
         // public function logout() {
         //     $session = new Session();
