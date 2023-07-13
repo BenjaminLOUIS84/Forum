@@ -167,7 +167,7 @@
                             $session->setUser($user);               // Mettre l'utilisateur en session Equivaut à $_SESSION["user"] = $user; (stocker dans un tableau toute les informations de l'utilisateur) CF Session.php
                             
                             return [
-                                "view" => VIEW_DIR."forum/listCategoires.php",  // Renvoyer l'utilisateur vers la liste des Catégories
+                            "view" => VIEW_DIR."forum/listCategoires.php",  // Renvoyer l'utilisateur vers la liste des Catégories
                                 $session->addFlash('success', " .$user "." est connecté !") // Notification
                             ];
 
@@ -185,11 +185,8 @@
                         "view" => VIEW_DIR."security/login.php",    // Rester sur le formulaire de connexion
                             $session->addFlash('error', "Utilisateur inconnu ou mot de passe incorrect") // Notification de refus
                         ];
-
-                    }
-                    
-                //}
-     
+                    } 
+                //}   
             }
 
             return [
