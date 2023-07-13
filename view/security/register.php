@@ -12,6 +12,10 @@
 
         <h2>INSCRIPTION</h2>
 
+        <p>Pour accéder à nos services, à votre espace personnel, ou pour nous contacter, il est nécessaire de créer un compte.<br>
+            DEV COOK s’engage à sécuriser vos informations et à les garder confidentielles.
+        </p>
+
         <form class="inscription" action="index.php?ctrl=security&action=addUser" method="post">
             <label for="pseudo">Pseudo</label>
             <input type="text" name="pseudo" id="pseudo" required><br>
@@ -24,6 +28,9 @@
 
             <label for="pass2">Confirmation du mot de passe</label>
             <input type="password" name="pass2" id="pass2" minlength="8" required><br>
+
+            <label class="consent" for="consent">J'ai lu et accepte les CGU</label>
+            <input type="checkbox" name="consent" id="consent" required><br>
 
             <input id="submit" type="submit" name="addUser" value="ENREGISTRER">
         </form>

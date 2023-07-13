@@ -282,7 +282,7 @@ input {
     padding: 10px;
 }
 
-#submit, 
+#submit,
 #submitLog {
     padding: 10px;
     color: white;
@@ -472,6 +472,10 @@ h3 {
     line-height: 3;
 }
 
+.topicINSC p {
+    line-height: 1.2;
+}
+
 /*Mettre en forme les formulaire*/
 
 .inscription {
@@ -496,6 +500,10 @@ h3 {
     margin-right: 25px;
 }
 
+.consent {
+    font-size: 0.8em;
+}
+
 /*PAGE Users*/
 
 .users {
@@ -516,9 +524,9 @@ h3 {
     animation: appear 1s;
 }
 
- /* Animation Faire apparaitre certains éléments Zoom*/
+/* Animation Faire apparaitre certains éléments Zoom*/
 
- @keyframes appear {
+@keyframes appear {
     from {
         transform: scale(0)
     }
