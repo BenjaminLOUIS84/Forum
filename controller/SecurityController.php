@@ -61,13 +61,13 @@
 
                             $pseudo = filter_input(INPUT_POST, 'pseudo', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                             $mail = filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_VALIDATE_EMAIL);
-                            $pass1 = filter_input(INPUT_POST, 'pass1', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                            $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                             $pass2 = filter_input(INPUT_POST, 'pass2', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
                             $mailExist = $userManager->findUserByMail($mail);             // Pour vérifier s'il y a des utilisateurs existant dans la BDD
                             $pseudoExist = $userManager->findUserByPseudo($pseudo);       // Faire appel aux fonctions de userManager pour checker les mails et les pseudos 
   
-                            if($pseudo && $mail && $pass1 && $pass2) { 
+                            if($pseudo && $mail && $password && $pass2) { 
                                 if($mailExist) {                                          // Si on inscrit un user qui est déjà présent dans la BDD (on inscrit le même mail)
 
                                     return [
@@ -84,11 +84,11 @@
 
                                 } else {
                                     
-                                    if($pass1 == $pass2 && strlen($pass1) >= 8) {       // Condition pour vérifier si le mot de passe est confirmé et doit contenir au moins 8 caractères
+                                    if($password == $pass2 && strlen($password) >= 8) {       // Condition pour vérifier si le mot de passe est confirmé et doit contenir au moins 8 caractères
                                         $userManager->add([                             // add() pour ajouter un user à la BDD
                                             'pseudo' => $pseudo,
                                             'mail' => $mail,
-                                            'password' => password_hash($pass1, PASSWORD_DEFAULT)// Filtre pour hacher le mot de passe
+                                            'password' => password_hash($password, PASSWORD_DEFAULT)// Filtre pour hacher le mot de passe
                                         ]);
                                             
                                         return [
@@ -167,8 +167,8 @@
                             $session->setUser($user);               // Mettre l'utilisateur en session Equivaut à $_SESSION["user"] = $user; (stocker dans un tableau toute les informations de l'utilisateur) CF Session.php
                             
                             return [
-                            "view" => VIEW_DIR."forum/listCategoires.php",  // Renvoyer l'utilisateur vers la liste des Catégories
-                                $session->addFlash('success', " .$user "." est connecté !") // Notification
+                            "view" => VIEW_DIR."home.php",          // Renvoyer l'utilisateur vers la liste des Catégories
+                                $session->addFlash('success', "Connecté !") // Notification
                             ];
 
                         } else {                                    // Si le mot de passe ne correspond pas
@@ -198,13 +198,20 @@
 
         //////////////////////////////PERMETTRE LA DECONNEXION
 
-        // public function logout() {
-        //     $session = new Session();
+        public function logout() {
+            $session = new Session();
             
-        //     if ($session->getUser() || $session->isAdmin()) {
-        //         unset($_SESSION['user']);
-        //     }
-        // }
+            if ($session->getUser() //|| $session->isAdmin()
+            ) {
+                unset($_SESSION['user']); // Détruit la session
+
+                return [
+                    "view" => VIEW_DIR."security/login.php",    // Renvoie vers le formulaire de connexion
+                    $session->addFlash('success', "Déconnecté avec succès") // Notification 
+                ];
+
+            }
+        }
     }
 
 ?>

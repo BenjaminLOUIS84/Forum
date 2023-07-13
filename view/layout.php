@@ -21,24 +21,24 @@
                     <nav>
 
                         <?php
-                            if(App\Session::isAdmin()){
+                           // if(App\Session::isAdmin()){   // Espace réservé à l'Administrateur (Peut accéder à tous!)
                             ?>
-                            <a href="index.php">Accueil</a>
-                            <a href="index.php?ctrl=security&action=loginUser">Connexion</a>
-                            <a href="index.php?ctrl=forum&action=listCategories">Liste des Catégories</a>
-                            <a href="index.php?ctrl=security&action=listUsers">Liste des Membres</a>
+                            <!-- <a href="index.php">Accueil</a> -->
+                            <!-- <a href="index.php?ctrl=security&action=loginUser">Connexion</a> -->
+                            <!-- <a href="index.php?ctrl=forum&action=listCategories">Liste des Catégories</a> -->
+                            <!-- <a href="index.php?ctrl=security&action=listUsers">Liste des Membres</a> -->
 
                             <!-- Accéder au profil -->
-                            <a href=""><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()?></a>
+                            <!-- <a href=""><span class="fas fa-user"></span>&nbsp;></a> -->
                             <!-- Déconnexion -->
-                            <a href="index.php?ctrl=security&action=logout">Déconnexion</a>
+                            <!-- <a href="index.php?ctrl=security&action=logout">Déconnexion</a> -->
                         <?php
-                            }
+                            //}
                         ?>
                        
                         <?php
                             
-                            if(App\Session::getUser()){
+                            if(App\Session::getUser()){ // Espace utilisateur (Peut accéder aux catégories et à son profil)
                                 ?>
                                 <a href="index.php">Accueil</a>
                                 <!-- <a href="index.php?ctrl=security&action=loginUser">Connexion</a> -->
@@ -46,17 +46,16 @@
                                 <!-- <a href="index.php?ctrl=security&action=listUsers">Liste des Membres</a> -->
 
                                 <!-- Accéder au profil -->
-                                <a href=""><span class="fas fa-user"></span>&nbsp;<?= App\Session::getUser()?></a>
+                                <!-- <a href=""><span class="fas fa-user"></span>&nbsp;</a> -->
                                 <!-- Déconnexion -->
                                 <a href="index.php?ctrl=security&action=logout">Déconnexion</a>
                                 <?php
                             }
-                            else{
+                            else{   //Espace de travail Développeur pour gérer le site (deviendra un espace d'accueil lorsque les rôle Administrateur et la fonction rubrique seront installés)
                                 ?>
                                 <a href="index.php">Accueil</a>
                                 <a href="index.php?ctrl=security&action=loginUser">Connexion</a>
                                 <a href="index.php?ctrl=security&action=register">Inscription</a>
-
                                 <a href="index.php?ctrl=forum&action=listCategories">Liste des Catégories</a>
                                 <a href="index.php?ctrl=security&action=listUsers">Liste des Membres</a>
                                 <?php

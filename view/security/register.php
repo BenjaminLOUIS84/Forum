@@ -19,8 +19,8 @@
             <label for="mail">Mail</label>
             <input type="email" name="mail" id="mail" required><br>
 
-            <label for="pass1">Mot de passe</label>
-            <input type="password" name="pass1" id="pass1" minlength="8" required><br>
+            <label for="password">Mot de passe</label>
+            <input type="password" name="password" id="password" minlength="8" required><br>
 
             <label for="pass2">Confirmation du mot de passe</label>
             <input type="password" name="pass2" id="pass2" minlength="8" required><br>
