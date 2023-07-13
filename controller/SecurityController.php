@@ -157,28 +157,60 @@
             ];
         }
 
-        //////////////////////////////AFFICHER LE FORMULAIRE DE CONNEXION
+        //////////////////////////////AFFICHER LE FORMULAIRE DE CONNEXION ET METTRE UN UTILISATEUR EN SESSION
 
         public function login() {
 
-            if($_POST["login"]) {
+            if($_POST["login"]) { // Si le formulaire de connexion est soumis
             
                 $userManager = new UserManager();
                 $session = new Session();
                 
-                $mail = filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_VALIDATE_EMAIL);
+                $mail = filter_input(INPUT_POST, 'mail', FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_VALIDATE_EMAIL); // Filtre les champs contre les failles XSS
                 $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 
-                $user = $userManager->findUserByMail($mail);
+                if ($mail && $password) {                           // Vérifier si les filtres sont valides
+
+                    $user = $userManager->findUserByMail($mail);    // Equivaut à une réquête préparée $pdo=prepare(SELECT* FROM...) utilisée quand il n'y a pas de Framework
+
+                    //var_dump($user);die;                          // Pour vérifier si on entre dans le formulaire un utilisateur qui existe dans la BDD
                 
-                //$check = password_verify($password, $hash);
+                    
+                    if($user) {                                     // Si l'utilisateur existe
 
-                // if ($mail && $password) {
+                        $hash = $user["password"];                  // Récuréper le mot de passe haché de l'utilisateur $hash = $user->getPassword(); est une formule équivalente
+                
+                        if(password_verify($password, $hash)) {     // Pour vérifier si le mot de passe inscrit dans le formulaire correspond à celui de la BDD
+                            $_SESSION["user"] = $user;              // Mettre l'utilisateur en session (stocker dans un tableau toute les informations de l'utilisateur)
+                            
+                            return [
+                                "view" => VIEW_DIR."view/home.php",
+                                $session->addFlash('success', " .$user "." est connecté !")
+                            ];
+                        } else {
 
-                //     if ($user) {
+                            return [
+                                "view" => VIEW_DIR."security/login.php",
+                                $session->addFlash('error', "Utilisateur inconnu ou mot de passe incorrect")
+                            ]; 
+                        }
+
+                    } else {
+
+                        return [
+                            "view" => VIEW_DIR."security/login.php",
+                            $session->addFlash('error',"Utilisateur inconnu ou mot de passe incorrect")
+                        ]; 
+
+                    }
+                    
+                }
+                    //$check = password_verify($password, $hash);
+
+                // 
                 //         $hash = $user->getPassword(); 
                 //         if (password_verify($password, $hash)) {
-                //             $_SESSION["user"] = $user;
+                //             
 
                 //             $session->addFlash('success'," .$user "." est connecté !");
 
@@ -193,18 +225,18 @@
                 //         //     "view" => VIEW_DIR."forum/listCategories.php",
                                 
                 //         // ];     
-                //     }
+                //    }
                 // }
             }
 
             return [
                 "view" => VIEW_DIR."security/login.php",
-                var_dump($user)
+                //var_dump($user)
             ];
                         
         }
 
-
+        //////////////////////////////PERMETTRE LA DECONNEXION
 
         // public function logout() {
         //     $session = new Session();
