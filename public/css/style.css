@@ -550,3 +550,29 @@ nav {
 footer {
     margin-top: 250px;
 }
+
+/*CGU et Mentions Légales*/
+
+/*CGU*/
+
+.topicCGU {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    padding: 30px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+    backdrop-filter: blur(8px);
+    justify-content: left;
+    align-items: baseline;
+    text-align: justify;
+    box-shadow: 0px 6px 10px black;
+    line-height: 2;
+}
+
+.topicCGU h3 {
+    font-weight: bold;
+}
+
+.topicCGU li {
+    line-height: 2;
+}
