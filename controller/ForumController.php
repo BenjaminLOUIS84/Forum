@@ -207,25 +207,24 @@
             $categoryManager = new CategoryManager();
             $session = new Session();                   // Instancier pour ajouter une notification
 
-            $topic_id = $topicManager->delete($id);  // Pour effacer le topic
+            return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
 
-            return [                                     // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
-
-                "view" => VIEW_DIR."forum/listTopics.php",// Retour vers la liste des topics de la categorie correspondante
-                $session->addFlash('success',"Supprimé avec succès"),// Afficher la notification
-                 
                 "data" => [
 
-                    "topics" => 
-
-                        isset($id)
-                        ? $topicManager->findListByIdDep($id, "category", ["creationdate", "DESC"]) // Affiche les topics de la catégorie correspondante
-                        : $topicManager->findAll(["creationdate", "DESC"]), // Affiche la liste de tous les topics 
-                        
-                        //$topicManager->findAll(), // Affiche la liste de tous les topics 
+                    $topicManager->delete($id),         // Pour effacer le topic
+                   
+                    "topics" => $topicManager->findTopicsByCategoryId($id), // Affiche la liste des topics selon la Catégorie
                     
                     "category" => $categoryManager->findOneById($id)
-                ]                                         
+                ],                                      // Retour vers la liste des topics de la categorie correspondante
+
+                
+                "view" => VIEW_DIR."forum/listTopics.php",// Retour vers la liste des topics de la categorie correspondante
+
+                // Retour vers la liste des topics de la categorie correspondante
+
+                $session->addFlash('success',"Supprimé avec succès")// Afficher la notification
+                                                         
             ];
         }
 
