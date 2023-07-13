@@ -212,6 +212,19 @@
 
             }
         }
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // CGU FONCTIONS
+
+        //////////////////////////////AFFICHER LA PAGE DES CONDITIONS GENERALES D'UTILISATION
+
+        public function cgu(){                     
+
+            return [                                                                
+                "view" => VIEW_DIR."security/cgu.php",                           
+            ];
+        }
+
     }
 
 ?>
