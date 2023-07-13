@@ -12,9 +12,9 @@
 
         <h2>INSCRIPTION</h2>
 
-        <form action="index.php?ctrl=security&action=addUser" method="post">
+        <form class="inscription" action="index.php?ctrl=security&action=addUser" method="post">
             <label for="pseudo">Pseudo</label>
-            <input type="text" name="pseudo" id="pseudo" required>
+            <input type="text" name="pseudo" id="pseudo" required><br>
 
             <label for="mail">Mail</label>
             <input type="email" name="mail" id="mail" required><br>

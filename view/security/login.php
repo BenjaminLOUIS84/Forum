@@ -11,7 +11,7 @@
 
     <h2>CONNEXION</h2>
 
-    <form action="index.php?ctrl=security&action=login" method="post">
+    <form class="connexion" action="index.php?ctrl=security&action=login" method="post">
        
         <label for="mail">Mail</label>
         <input type="email" name="mail" id="mail" required><br>

@@ -470,6 +470,14 @@ h3 {
     line-height: 3;
 }
 
+/*Mettre en forme les formulaire*/
+
+.inscription, 
+.connexion {
+    text-align: end;
+    padding-right: 120px;
+}
+
 .topicINSC #submit {
     margin-top: 40px;
 }
