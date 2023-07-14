@@ -57,7 +57,7 @@
                 // Afficher le nom de la Catégorie sélectionnée
                 echo "<div class='titreT'>".$topic->getCategory()->getName()."</div>";
 
-            }else{// Sinon afficher ci dessous ( pour permettre l'ajout de topic dans une catégorie vide instancier la variable $category CF Controlleur)
+            }else{// Sinon afficher ci dessous (pour permettre l'ajout de topic dans une catégorie vide instancier la variable $category CF Controlleur)
                
                 echo "<div class='titreT'>".$category->getName()."</div>";
                 echo "Il n'y a pas encore de topic pour cette categorie";   
