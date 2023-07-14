@@ -33,7 +33,15 @@
         Pour cela le membre devra se conformer aux instructions décrites dans son espace membre, contacter Benjamin LOUIS via le formulaire de contact (bientôt disponible).</p>
                 
 
+        <div class="next">
+        
+        <figure>
+            <img src="./public/img/logo.png" class="log" alt="Logo Dev Cook">
+        </figure>
+
         <a class="retour" href="index.php">Retour</a>
+
+    </div>
 
     </div>
 

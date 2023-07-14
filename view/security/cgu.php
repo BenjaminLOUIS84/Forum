@@ -65,8 +65,16 @@
         Dire "bonjour" et "merci" est une marque de courtoisie qui n'a rien d'obligatoire mais qui est toujours apprécié de la communauté des internautes.<br>
 
         En tout état de cause, DEV COOK se réserve le droit de supprimer tout message inapproprié, sans justification.</p>
+        
+        <div class="next">
+        
+            <figure>
+                <img src="./public/img/logo.png" class="log" alt="Logo Dev Cook">
+            </figure>
 
-        <a class="retour" href="index.php">Retour</a>
+            <a class="retour" href="index.php">Retour</a>
+
+        </div>
 
     </div>
 

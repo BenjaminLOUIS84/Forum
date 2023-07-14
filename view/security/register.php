@@ -10,7 +10,10 @@
 
     <div class="topicINSC">
 
-        <h2>INSCRIPTION</h2>
+        <!-- Logo en arrière plan -->
+        <figure>
+            <img src="./public/img/logo.png" class="logo" alt="Logo Dev Cook">
+        </figure>
 
         <p>Pour accéder à nos services, à votre espace personnel, ou pour nous contacter, il est nécessaire de créer un compte.<br>
             DEV COOK s’engage à sécuriser vos informations et à les garder confidentielles.
