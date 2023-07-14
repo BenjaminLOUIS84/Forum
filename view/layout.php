@@ -71,7 +71,12 @@
                 </header>
                 
                 <main id="forum">
-                    
+
+                    <!-- Logo en arrière plan -->
+                        <figure>
+                            <img src="./public/img/logo.png" class="photo" alt="Logo Dev Cook">
+                        </figure>
+
                     <!-- Pour faire la temporisation de sortie -->
                     <!-- Renvoi les différents contenus respectifs de chaque rubriques -->
                     <?= $page ?>
