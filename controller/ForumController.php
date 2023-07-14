@@ -213,9 +213,13 @@
 
                     $topicManager->delete($id),         // Pour effacer le topic
                    
-                    "topics" => $topicManager->findTopicsByCategoryId($id), // Affiche la liste des topics selon la Catégorie
-                    
-                    "category" => $categoryManager->findOneById($id)
+                    "topics" => (
+                        isset($id)
+                        ? $topicManager->findListByIdDep($id, "Category", ["creationdate", "DESC"])
+                        : $topicManager->findTopicsByCategoryId($id)
+                    ),
+                    // "topics" => $topicManager->findTopicsByCategoryId($id), // Affiche la liste des topics selon la Catégorie
+                     "category" => $categoryManager->findOneById($id)
                 ],                                      // Retour vers la liste des topics de la categorie correspondante
 
                 
