@@ -213,7 +213,7 @@ body {
 
 /*Déplier le background pour afficher les options au passage de la souris*/
 .backT:hover {
-    width: 30%;
+    width: 35%;
 }
 
 .backT a {
