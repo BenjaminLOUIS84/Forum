@@ -41,7 +41,6 @@
                                 
                                                 <!-- Mettre une icône dans l'input -->
                                                 <input type="image" class="suppT" alt="Supprimer" src="./public/img/supp.jpg">
-                                                <!-- <input type="" class="suppT" alt="Supprimer" src="./public/img/supp.jpg"> -->
 
                                             </form>
 

@@ -213,7 +213,7 @@ body {
 
 /*Déplier le background pour afficher les options au passage de la souris*/
 .backT:hover {
-    width: 25%;
+    width: 30%;
 }
 
 .backT a {
@@ -236,7 +236,7 @@ td .suppT {
     cursor: pointer;
     width: 30%;
     background: snow;
-    margin-left: 30px;
+    margin-left: 15px;
 }
 
 td .majT {
