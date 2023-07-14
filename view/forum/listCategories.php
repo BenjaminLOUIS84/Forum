@@ -4,7 +4,8 @@
 
 <h2>LES CATEGORIES</h2>
 
-<p>Le Forum DEV COOK est un lieu de discussion francophone consacré aux arts culinaires. Choisissez une catégorie et entrez dans le topic qui vous convient.
+<p>Le Forum DEV COOK est un lieu de discussion francophone consacré aux arts culinaires.<br>
+    Choisissez une catégorie et entrez dans le topic qui vous convient.<br>
     Pour les nouveaux contributeurs, merci de lire les conditions d'utilisation avant de poster votre premier message.
 </p>
 

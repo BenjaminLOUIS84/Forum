@@ -41,12 +41,8 @@
                                 
                                                 <!-- Mettre une icône dans l'input -->
                                                 <input type="image" class="suppT" alt="Supprimer" src="./public/img/supp.jpg">
+                                                <!-- <input type="" class="suppT" alt="Supprimer" src="./public/img/supp.jpg"> -->
 
-                                            </form>
-
-                                            <!-- Pour modifier un topic -->
-                                            <form action="index.php?ctrl=forum&action=formulaireTopic&id=<?=$topic->getCategory()->getId()?>" method="post">
-                                                <input type="image" class="majT" alt="Modifier" src="./public/img/maj.jpg">
                                             </form>
 
                                         </div>
