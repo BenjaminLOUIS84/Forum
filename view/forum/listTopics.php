@@ -5,6 +5,8 @@
 
 <h2>LES TOPICS</h2>
 
+<p>Choisissez un sujet qui vous intéresse dans la liste ci dessous ou créer le votre!<p>
+
 <div class="topicT">
     <table>
         <thead>

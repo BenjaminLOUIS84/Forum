@@ -14,6 +14,8 @@
             <img src="./public/img/logo.png" class="logo" alt="Logo Dev Cook">
         </figure>
 
+        <p>Renseigner votre adresse mail et votre mot de passe pour vous connecter<p>
+
         <form class="connexion" action="index.php?ctrl=security&action=login" method="post">
         
             <label for="mail">Mail</label>

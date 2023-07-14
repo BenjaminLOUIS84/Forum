@@ -220,8 +220,8 @@
                     //     : $topicManager->findTopicsByCategoryId($id)
                     // )
                     
-                    "topics" => $topicManager->findAll(), // Affiche la liste des topics selon la Catégorie
-                    // "topics" => $topicManager->findTopicsByCategoryId($id), // Affiche la liste des topics selon la Catégorie
+                    //"topics" => $topicManager->findAll(), // Affiche la liste des topics selon la Catégorie
+                    "topics" => $topicManager->findTopicsByCategoryId($id), // Affiche la liste des topics selon la Catégorie
                     
                     "category" => $categoryManager->findOneById($id)
 

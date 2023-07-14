@@ -5,7 +5,8 @@
     
 ?>
 
-<h2>AJOUTER UN TOPIC</h2>
+<h2>AJOUTER UN TOPIC & UN POST</h2>
+<p> Démarrer un Topic c'est l'occasion de lancer un nouveau sujet sur lequel tout le monde peut débattre</p>
 
 <div class="topicT">
 
@@ -18,16 +19,16 @@
             
             ?>
 
-            <h3>Remplir ce formulaire pour ajouter un nouveau Topic à la base SQL</h3>
+            <h3>Remplir les champs ci dessous pour ajouter un nouveau Topic et un Post dans le Forum</h3>
 
             <form class="formulaireTopic" action="index.php?ctrl=forum&action=addTopic" method="post">
                             
-                <label class="title" for="title">TITRE</label>
+                <label class="title" for="title">TITRE DU TOPIC</label>
                 <input name="title" type="text" id="title" required>
                 
                 <!-- Rédiger le post pour pouvoir aussi entrer dans le topic pour ajouter d'autres posts -->
 
-                <label class="text" for="text">TEXTE</label>
+                <label class="text" for="text">MESSAGE DU POST</label>
                 <input name="text" type="text" id="text" required>
 
                 <!-- Liaisons du topic avec la catégorie et l'utilisateur -->
