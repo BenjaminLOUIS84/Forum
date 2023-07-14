@@ -201,7 +201,7 @@
 
         //////////////////////////////SUPPRIMER UN TOPIC 
 
-        public function delTopic($category_id){                  // Fonction pour supprimer un Topic
+        public function delTopic($id){                  // Fonction pour supprimer un Topic
 
             $topicManager = new TopicManager();
             $categoryManager = new CategoryManager();
@@ -212,7 +212,7 @@
                 "view" => VIEW_DIR."forum/listTopics.php",// Retour vers la liste des topics de la categorie correspondante
                 $session->addFlash('success',"Supprimé avec succès"),// Afficher la notification
                                                         
-                "data" => [$topicManager->delete(category_id),// Pour effacer le topic
+                "data" => [$topicManager->delete($id),// Pour effacer le topic
 
                     // "topics" => (
                     //     isset($id)
@@ -222,9 +222,9 @@
                     
                     //"topics" => $topicManager->findAll(), // Affiche la liste des topics selon la Catégorie
                     //"topics" => $topicManager->findTopicsByCategoryId($id), // Affiche la liste des topics selon la Catégorie
-                    "topics" => $topicManager->findListByIdDep($category_id, "category"), // Affiche la liste des topics selon la Catégorie
+                    "topics" => $topicManager->findListByIdDep($id, "Category", ["creationdate", "DESC"]), // Affiche la liste des topics selon la Catégorie
                     
-                    "category" => $categoryManager->findOneById(category_id)
+                    "category" => $categoryManager->findOneById($id)
 
                 ]                                   // Retour vers la liste des topics de la categorie correspondante
             ];
