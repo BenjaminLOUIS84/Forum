@@ -207,28 +207,25 @@
             $categoryManager = new CategoryManager();
             $session = new Session();                   // Instancier pour ajouter une notification
 
-            return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
+            return [  
 
-                "data" => [
-
-                    $topicManager->delete($id),         // Pour effacer le topic
-                   
-                    "topics" => (
-                        isset($id)
-                        ? $topicManager->findListByIdDep($id, "Category", ["creationdate", "DESC"])
-                        : $topicManager->findTopicsByCategoryId($id)
-                    ),
-                    // "topics" => $topicManager->findTopicsByCategoryId($id), // Affiche la liste des topics selon la Catégorie
-                     "category" => $categoryManager->findOneById($id)
-                ],                                      // Retour vers la liste des topics de la categorie correspondante
-
-                
                 "view" => VIEW_DIR."forum/listTopics.php",// Retour vers la liste des topics de la categorie correspondante
+                $session->addFlash('success',"Supprimé avec succès"),// Afficher la notification
+                                                        
+                "data" => [$topicManager->delete($id),// Pour effacer le topic
 
-                // Retour vers la liste des topics de la categorie correspondante
+                    // "topics" => (
+                    //     isset($id)
+                    //     ? $topicManager->findListByIdDep($id, "Category", ["creationdate", "DESC"])
+                    //     : $topicManager->findTopicsByCategoryId($id)
+                    // )
+                    
+                    "topics" => $topicManager->findAll(), // Affiche la liste des topics selon la Catégorie
+                    // "topics" => $topicManager->findTopicsByCategoryId($id), // Affiche la liste des topics selon la Catégorie
+                    
+                    "category" => $categoryManager->findOneById($id)
 
-                $session->addFlash('success',"Supprimé avec succès")// Afficher la notification
-                                                         
+                ]                                   // Retour vers la liste des topics de la categorie correspondante
             ];
         }
 
@@ -304,13 +301,16 @@
             $postManager = new PostManager();
             $session = new Session();                   // Instancier pour ajouter une notification
 
-            $text = filter_input(INPUT_POST, 'text', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
             return [                                  // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
 
                 "view" => VIEW_DIR."forum/listPosts.php", // ATTENTION Gérer le retour vers la même page
                 $session->addFlash('success',"Supprimé avec succès"),// Afficher la notification
-                "data" => [$postManager->delete($id),"posts" => $postManager->findAll()]
+                
+                "data" => [$postManager->delete($id),// Pour effacer le post
+                    
+                "posts" => $postManager->findAll()
+                
+                ]
             ];
         }
 
