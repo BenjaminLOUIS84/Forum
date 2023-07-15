@@ -19,7 +19,7 @@
         </thead>
         <?php
 
-            if($topics == true){//Créer une condition pour afficher une catégorie vide si il y a un ou plusieurs topics alors afficher ci desous)
+            if($topics == true){// Créer une condition pour afficher une catégorie vide si il y a un ou plusieurs topics alors afficher ci desous)
                 
                 foreach($topics as $topic){// On fait un foreach pour afficher tous les Topics dans un tableau
                     
@@ -59,7 +59,7 @@
 
             }else{// Sinon afficher ci dessous (Page Liste Topics sans Topics)
                
-                echo "<div class='titreT'>".$category->getName()."</div>";
+                //echo "<div class='titreT'>".$category->getName()."</div>";
                 echo "Il n'y a pas encore de topic pour cette categorie";   
             }
 

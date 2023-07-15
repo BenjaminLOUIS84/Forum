@@ -2,7 +2,7 @@
    
     $topics = $result["data"]['topics'];
     $category = $result["data"]['category']; //Pour permettre le retour vers la liste des topics de la catégorie correspondante
-    
+    $user = $result["data"]['user'];
 ?>
 
 <h2>AJOUTER UN TOPIC & UN POST</h2>
@@ -59,6 +59,8 @@
 
                     <!-- Liaison du topic avec la catégorie -->
                     <input type="hidden" name="category_id" value="<?=$category->getId()?>">
+                    <input type="hidden" name="user_id" value="<?=$user->getId()?>">
+
                    
                     <!-- Liaison du topic avec l'utilisateur problème pour récupérer l'Id de l'utilisateur nécessaire pour valider l'ajout d'un nouveau post dans une catégorie vide-->
                     

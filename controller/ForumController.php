@@ -138,11 +138,12 @@
 
         //////////////////////////////FORMULAIRE POUR AJOUTER UN TOPIC 
 
-        public function formulaireTopic($idCategory){       // Fonction pour accéder au formulaire des Catégories à séparer de la fonction d'ajout
+        public function formulaireTopic($id){       // Fonction pour accéder au formulaire des Catégories à séparer de la fonction d'ajout
 
             $topicManager = new TopicManager();
             $categoryManager = new CategoryManager();       // Instancier cette variable permettre l'ajout d'un topic dans une catégorie vide et gérer le retour
-
+            $userManager = new UserManager();
+            
             return [                                        // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
 
                 "view" => VIEW_DIR."forum/formulaireTopic.php",
@@ -150,14 +151,14 @@
                 "data" => [
                     
                     "topics" => (
-                        isset($idCategory)
-                        ? $topicManager->findListByIdDep($idCategory, "category", ["creationdate", "DESC"])
+                        isset($id)
+                        ? $topicManager->findListByIdDep($id, "category", ["creationdate", "DESC"])
                         : $topicManager->findAll(["creationdate", "DESC"])// Permet d'afficher toutes les informations d'un topic
                     ),
-                    "category" => $categoryManager->findOneById($idCategory),// Pour retrouver un élément selon un id pour gérer le retour
+                    "category" => $categoryManager->findOneById($id),// Pour retrouver un élément selon un id pour gérer le retour
 
                     // "topic" => $topicManager->findOneById($id),
-                    // "category" => $categoryManager->findOneById($id),// Pour retrouver un élément selon un id
+                    "user" => $userManager->findOneById($id),// Pour retrouver un élément selon un id
                    
                 ]                            
             ];
@@ -169,6 +170,7 @@
             $topicManager = new TopicManager();         // Instancier ces variables pour accéder aux méthodes de leur classes et ajouter les filtres
             $postManager = new PostManager();           // Instancier pour lier un post à un topic
             $categoryManager = new CategoryManager();
+            //$userManager = new UserManager();
             $session = new Session();                   // Instancier pour ajouter une notification
             
             $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -191,6 +193,7 @@
                     
                     "topics" => $topicManager->findListByIdDep($category_id, "category"),
                     "category" => $categoryManager->findOneById($category_id),
+                    //"user" => $userManager->findOneById($user_id),
                     
                     
                     $postManager->add(['text' => $text, 'dateCreate' => $date, 'user_id' => $user_id, 'topic_id' => $topic_id]) 
