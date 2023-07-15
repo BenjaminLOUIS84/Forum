@@ -120,6 +120,7 @@
         
             $topicManager = new TopicManager();         // Instancier cette variable pour accéder aux méthodes de la classe 
             $categoryManager = new CategoryManager();   // Instancier cette variable pour accéder aux méthodes de la classe et permettre l'ajout de topic dans une catégorie vide
+            $userManager = new UserManager();   // Instancier cette variable pour accéder aux méthodes de la classe et permettre l'ajout de topic dans une catégorie vide
 
             return [
 
@@ -132,7 +133,9 @@
                         ? $topicManager->findListByIdDep($id, "category", ["creationdate", "DESC"])
                         : $topicManager->findAll(["creationdate", "DESC"])// Permet d'afficher toutes les informations d'un topic
                     ),
-                    "category" => $categoryManager->findOneById($id)// Pour retrouver un élément selon un id 
+                    "category" => $categoryManager->findOneById($id),// Pour retrouver un élément selon un id
+                    
+                    "user" => $userManager->findOneById($id)// Pour retrouver un élément selon un id 
                 ]                                  
             ];                                          
         }
@@ -143,9 +146,8 @@
 
             $topicManager = new TopicManager();
             $categoryManager = new CategoryManager();       // Instancier cette variable permettre l'ajout d'un topic dans une catégorie vide et gérer le retour
-            //$postManager = new PostManager();
 
-            //$userManager = new UserManager();
+            $userManager = new UserManager();
             
             return [                                        // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
 
@@ -160,9 +162,7 @@
                     ),
                     "category" => $categoryManager->findOneById($id),// Pour retrouver un élément selon un id pour gérer le retour
 
-                    //"post" => $postManager->findOneById($id)// Pour retrouver un élément selon un id
-
-                    //"user" => $userManager->findOneById($id)// Pour retrouver un élément selon un id
+                    "user" => $userManager->findOneById($id)// Pour retrouver un élément selon un id
                    
                 ]                            
             ];
@@ -175,7 +175,7 @@
             $postManager = new PostManager();           // Instancier pour lier un post à un topic
             $categoryManager = new CategoryManager();
 
-            //$userManager = new UserManager();
+            $userManager = new UserManager();
 
             $session = new Session();                   // Instancier pour ajouter une notification
             
@@ -200,7 +200,7 @@
                     "topics" => $topicManager->findListByIdDep($category_id, "category"),
                     "category" => $categoryManager->findOneById($category_id),
 
-                    //"user" => $userManager->findOneById($user_id),
+                    "user" => $userManager->findOneById($user_id),
                     
                     
                     $postManager->add(['text' => $text, 'dateCreate' => $date, 'user_id' => $user_id, 'topic_id' => $topic_id]) 
@@ -211,10 +211,12 @@
 
         //////////////////////////////SUPPRIMER UN TOPIC 
 
-        public function delTopic($category_id){                  // Fonction pour supprimer un Topic
+        public function delTopic($id){                  // Fonction pour supprimer un Topic
 
             $topicManager = new TopicManager();
             $categoryManager = new CategoryManager();
+            $userManager = new UserManager();
+
             $session = new Session();                   // Instancier pour ajouter une notification
 
             return [  
@@ -222,15 +224,16 @@
                 "view" => VIEW_DIR."forum/listTopics.php",// Retour vers la liste des topics de la categorie correspondante
                 $session->addFlash('success',"Supprimé avec succès"),// Afficher la notification
                                                         
-                "data" => [$topicManager->delete($category_id),// Pour effacer le topic
+                "data" => [$topicManager->delete($id),// Pour effacer le topic
 
                     "topics" => (
-                        isset($category_id)
-                        ? $topicManager->findListByIdDep($category_id, "category", ["creationdate", "DESC"])
+                        isset($id)
+                        ? $topicManager->findListByIdDep($id, "category", ["creationdate", "DESC"])
                         : $topicManager->findAll(["creationdate", "DESC"])
                     ),
                     
-                    "category" => $categoryManager->findOneById($category_id)
+                    "category" => $categoryManager->findOneById($id),
+                    "user" => $userManager->findOneById($id)
 
                 ]                                   // Retour vers la liste des topics de la categorie correspondante
             ];
