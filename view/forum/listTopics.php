@@ -62,7 +62,7 @@
 
             }else{// Sinon afficher ci dessous (Page Liste Topics sans Topics)
                
-                //echo "<div class='titreT'>".$category->getName()."</div>";
+                echo "<div class='titreT'>".$category->getName()."</div>";
                 //echo "Il n'y a pas encore de topic pour cette categorie";   
             }
 
