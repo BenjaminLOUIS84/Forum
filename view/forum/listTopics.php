@@ -1,9 +1,7 @@
 <?php
     $topics = $result["data"]['topics'];// Ces variables permettent d'accéder et d'afficher les informations demandées dans cette page
     $category = $result["data"]['category'];// Pour permettre l'ajout de topic dans une catégorie vide instancier la variable $category (CF forumControlleur)
-    //$post = $result["data"]['post'];
-
-    //$user = $result["data"]['user'];
+    $user = $result["data"]['user'];
 ?>
 
 <h2>LES TOPICS</h2>
@@ -62,7 +60,8 @@
 
             }else{// Sinon afficher ci dessous (Page Liste Topics sans Topics)
                
-                //echo "<div class='titreT'>".$category->getName()."</div>";
+                echo "<div class='titreT'>".$category->getName()."</div>";
+
                 echo "Il n'y a pas encore de topics pour cette categorie";   
             }
 
