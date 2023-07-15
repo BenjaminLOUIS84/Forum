@@ -1,6 +1,6 @@
 <?php
     $posts = $result["data"]['posts'];// Cette variable permet d'accéder et d'afficher les informations demandées dans cette page
-   // $category = $result["data"]['category'];// Pour permettre le retour vers la liste des topics de la catégorie correspondante
+    //$category = $result["data"]['category'];// Pour permettre le retour vers la liste des topics de la catégorie correspondante
 ?>
 
 <h2>LES POSTS</h2>

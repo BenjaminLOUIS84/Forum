@@ -211,7 +211,7 @@
 
         //////////////////////////////SUPPRIMER UN TOPIC 
 
-        public function delTopic($id){                  // Fonction pour supprimer un Topic
+        public function delTopic($category_id){                  // Fonction pour supprimer un Topic
 
             $topicManager = new TopicManager();
             $categoryManager = new CategoryManager();
@@ -222,20 +222,15 @@
                 "view" => VIEW_DIR."forum/listTopics.php",// Retour vers la liste des topics de la categorie correspondante
                 $session->addFlash('success',"Supprimé avec succès"),// Afficher la notification
                                                         
-                "data" => [$topicManager->delete($id),// Pour effacer le topic
+                "data" => [$topicManager->delete($category_id),// Pour effacer le topic
 
-                    // "topics" => (
-                    //     isset($id)
-                    //     ? $topicManager->findListByIdDep($id, "Category", ["creationdate", "DESC"])
-                    //     : $topicManager->findTopicsByCategoryId($id)
-                    // )
+                    "topics" => (
+                        isset($category_id)
+                        ? $topicManager->findListByIdDep($category_id, "category", ["creationdate", "DESC"])
+                        : $topicManager->findAll()
+                    ),
                     
-                    "topics" => $topicManager->findAll(), // Affiche la liste des topics selon la Catégorie
-                    "topics" => $topicManager->findOneById($id), // Affiche la liste des topics selon la Catégorie
-                    //"topics" => $topicManager->findTopicsByCategoryId($id), // Affiche la liste des topics selon la Catégorie
-                    "topics" => $topicManager->findListByIdDep($id, "Category", ["creationdate", "DESC"]), // Affiche la liste des topics selon la Catégorie
-                    
-                    "category" => $categoryManager->findOneById($id)
+                    "category" => $categoryManager->findOneById($category_id)
 
                 ]                                   // Retour vers la liste des topics de la categorie correspondante
             ];
@@ -249,7 +244,7 @@
         public function listPosts($idTopic){            // Fonction permettant d'afficher la liste de tout les posts de chaque utilisateurs selon le topic sélectionné
 
             $postManager = new PostManager();           // Instancier cette variable pour accéder aux méthodes de leurs classes
-           // $categoryManager = new CategoryManager();   // Instancier cette variable pour gérer le retour
+            //$categoryManager = new CategoryManager();   // Instancier cette variable pour gérer le retour
 
             return [
 
@@ -263,7 +258,7 @@
                         : $postManager->findAll(["dateCreate", "DESC"])
                     ),
 
-                   // "category" => $categoryManager->findOneById($idTopic)// Pour gérer le retour vers la liste des topics de la catégorie corrspondante
+                   //"category" => $categoryManager->findOneById($idTopic)// Pour gérer le retour vers la liste des topics de la catégorie corrspondante
                 ]
             ];
         }
@@ -300,7 +295,7 @@
 
             return [     
 
-                "view" => VIEW_DIR."forum/formulairePost.php",
+                "view" => VIEW_DIR."forum/listPosts.php",
                 $session->addFlash('success',"Ajouté avec succès"),// Afficher la notification
                 "data" => ["posts" => $postManager->findListByIdDep($topic_id, "topic")]                               
             ];                                          
@@ -308,7 +303,7 @@
 
         //////////////////////////////SUPPRIMER UN POST
 
-        public function delPost($id){                 // Fonction pour supprimer un Post
+        public function delPost($topic_id){                 // Fonction pour supprimer un Post
 
             $postManager = new PostManager();
             $session = new Session();                   // Instancier pour ajouter une notification
@@ -318,7 +313,7 @@
                 "view" => VIEW_DIR."forum/listPosts.php", // ATTENTION Gérer le retour vers la même page
                 $session->addFlash('success',"Supprimé avec succès"),// Afficher la notification
                 
-                "data" => [$postManager->delete($id),// Pour effacer le post
+                "data" => [$postManager->delete($topic_id),// Pour effacer le post
                     
                 "posts" => $postManager->findAll()
                 
