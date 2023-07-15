@@ -75,6 +75,7 @@
 
                 "view" => VIEW_DIR."forum/listCategories.php",  // Après la suppression -> redirection sur la même page
                 $session->addFlash('success',"Supprimé avec succès"),// Afficher la notification
+                
                 "data" => [$categoryManager->delete($id), "categories" => $categoryManager->findAll(["name", "ASC"])]           
             ];
         }
@@ -198,7 +199,7 @@
                     
                     "topics" => $topicManager->findListByIdDep($category_id, "category"),
                     "category" => $categoryManager->findOneById($category_id),
-                    
+
                     //"user" => $userManager->findOneById($user_id),
                     
                     
@@ -229,7 +230,8 @@
                     //     : $topicManager->findTopicsByCategoryId($id)
                     // )
                     
-                    //"topics" => $topicManager->findAll(), // Affiche la liste des topics selon la Catégorie
+                    "topics" => $topicManager->findAll(), // Affiche la liste des topics selon la Catégorie
+                    "topics" => $topicManager->findOneById($id), // Affiche la liste des topics selon la Catégorie
                     //"topics" => $topicManager->findTopicsByCategoryId($id), // Affiche la liste des topics selon la Catégorie
                     "topics" => $topicManager->findListByIdDep($id, "Category", ["creationdate", "DESC"]), // Affiche la liste des topics selon la Catégorie
                     
