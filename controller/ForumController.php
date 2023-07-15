@@ -227,7 +227,7 @@
                     "topics" => (
                         isset($category_id)
                         ? $topicManager->findListByIdDep($category_id, "category", ["creationdate", "DESC"])
-                        : $topicManager->findAll()
+                        : $topicManager->findAll(["creationdate", "DESC"])
                     ),
                     
                     "category" => $categoryManager->findOneById($category_id)
