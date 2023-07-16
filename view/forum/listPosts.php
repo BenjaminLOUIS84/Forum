@@ -1,7 +1,6 @@
 <?php
     $posts = $result["data"]['posts'];// Cette variable permet d'accéder et d'afficher les informations demandées dans cette page
     $topic = $result["data"]['topic'];// Pour gérer le retour
-    ?>
 ?>
 
 <h2>LES POSTS</h2>
