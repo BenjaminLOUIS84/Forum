@@ -310,6 +310,8 @@
 
             $postManager = new PostManager();
             $reponseManager = new ReponseManager();
+            
+            $topicManager = new TopicManager();
             $session = new Session();                   // Instancier pour ajouter une notification
 
             return [                                  // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
@@ -320,7 +322,9 @@
                 "data" => [$postManager->delete($topic_id),// Pour effacer le post
                     
                 "posts" => $postManager->findAll(),
-                "reponses" => $reponseManager->findAll()
+                "reponses" => $reponseManager->findAll(),
+
+                "topic" => $topicManager->findOneById($topic_id)
                 
                 ]
             ];
