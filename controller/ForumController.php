@@ -328,9 +328,9 @@
 
                     $postManager->delete($topic_id),    // Pour effacer le post 
                     
-                    "posts" => $postManager->findPostByIdDep($topic_id),
+                    "posts" => $postManager->findAll(["dateCreate", "DESC"]),
 
-                    "topic" => $topicManager->findOneById($topic_id)
+                    "topic" => $topicManager->findListByIdDep($topic_id, "topic")
                 
                 ]
             ];
