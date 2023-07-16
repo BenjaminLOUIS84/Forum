@@ -285,6 +285,8 @@
         public function addPost(){                    // Fonction pour accéder au formulaire des Posts selon le topic
 
             $postManager = new PostManager(); 
+            $topicManager = new TopicManager();
+
             $session = new Session();                   // Instancier pour ajouter une notification            
 
             $text = filter_input(INPUT_POST, 'text', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -300,7 +302,10 @@
 
                 "view" => VIEW_DIR."forum/listPosts.php",
                 $session->addFlash('success',"Ajouté avec succès"),// Afficher la notification
-                "data" => ["posts" => $postManager->findListByIdDep($topic_id, "topic")]                               
+                "data" => [
+                    "posts" => $postManager->findListByIdDep($topic_id, "topic"),
+                    "topic" => $topicManager->findOneById($topic_id)
+                    ]                               
             ];                                          
         }
 
@@ -310,7 +315,7 @@
 
             $postManager = new PostManager();
             $reponseManager = new ReponseManager();
-            
+
             $topicManager = new TopicManager();
             $session = new Session();                   // Instancier pour ajouter une notification
 
