@@ -1,6 +1,5 @@
 <?php
     $posts = $result["data"]['posts'];// Cette variable permet d'accéder et d'afficher les informations demandées dans cette page
-    //$category = $result["data"]['category'];// Pour permettre le retour vers la liste des topics de la catégorie correspondante
 ?>
 
 <h2>LES POSTS</h2>
@@ -77,5 +76,5 @@
 
 
 <!-- Gérer le retour de la liste des posts vers la liste des topics de la catégorie correspondante -->
-<!-- <a class="retour" href="index.php?ctrl=forum&action=listTopics&id=">- RETOUR -</a> -->
+
 

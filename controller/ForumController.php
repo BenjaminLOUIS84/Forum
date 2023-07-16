@@ -247,7 +247,6 @@
         public function listPosts($idTopic){            // Fonction permettant d'afficher la liste de tout les posts de chaque utilisateurs selon le topic sélectionné
 
             $postManager = new PostManager();           // Instancier cette variable pour accéder aux méthodes de leurs classes
-            //$categoryManager = new CategoryManager();   // Instancier cette variable pour gérer le retour
 
             return [
 
@@ -260,8 +259,6 @@
                         ? $postManager->findListByIdDep($idTopic, "Topic", ["dateCreate", "DESC"])
                         : $postManager->findAll(["dateCreate", "DESC"])
                     ),
-
-                   //"category" => $categoryManager->findOneById($idTopic)// Pour gérer le retour vers la liste des topics de la catégorie corrspondante
                 ]
             ];
         }
@@ -271,6 +268,7 @@
         public function formulairePost($idTopic){      // Fonction pour accéder au formulaire des Posts à séparer de la fonction d'ajout
 
             $postManager = new PostManager();          // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
+             
             
             return [   
                                                 
@@ -280,7 +278,7 @@
             ];
         }
 
-        //////////////////////////////AJOUTER UN POST VIDE
+        //////////////////////////////AJOUTER UN POST VID
 
         public function addPost(){                    // Fonction pour accéder au formulaire des Posts selon le topic
 
@@ -309,6 +307,7 @@
         public function delPost($topic_id){                 // Fonction pour supprimer un Post
 
             $postManager = new PostManager();
+            $reponseManager = new ReponseManager();
             $session = new Session();                   // Instancier pour ajouter une notification
 
             return [                                  // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
@@ -318,7 +317,8 @@
                 
                 "data" => [$postManager->delete($topic_id),// Pour effacer le post
                     
-                "posts" => $postManager->findAll()
+                "posts" => $postManager->findAll(),
+                "reponses" => $reponseManager->findAll()
                 
                 ]
             ];
@@ -343,7 +343,7 @@
 
                 "data" => [
 
-                    "posts" => $postManager->findPostByIdDep($id), // Pour que le message corresponde au post    
+                    "posts" => $postManager->findPostByIdDep($id, "Post", ["dateCreate", "DESC"]), // Pour que le message corresponde au post    
                 
                     "reponses" => (
                         isset($id)
@@ -374,6 +374,8 @@
         public function addReponse(){                   // Fonction pour ajouter une réponse au post 
 
            $reponseManager = new ReponseManager();      // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
+           //$postManager = new PostManager();
+
            $session = new Session();                   // Instancier pour ajouter une notification
 
             $text = filter_input(INPUT_POST, 'text', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -391,7 +393,11 @@
                                            
                 "view" => VIEW_DIR."forum/formulaireReponse.php",
                 $session->addFlash('success',"Ajouté avec succès"),// Afficher la notification
-                "data" => ["reponses" => $reponseManager->findListByIdDep($post_id, "post")]                       
+                "data" => [
+                    "reponses" => $reponseManager->findListByIdDep($post_id, "post"),
+                    //"posts" => $postManager->findPostByIdDep($id, "Post", ["dateCreate", "DESC"]),
+
+                    ]                       
             ];
         }
 
