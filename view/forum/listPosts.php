@@ -1,5 +1,6 @@
 <?php
     $posts = $result["data"]['posts'];// Cette variable permet d'accéder et d'afficher les informations demandées dans cette page
+    $topic = $result["data"]['topic'];// Pour gérer le retour
 ?>
 
 <h2>LES POSTS</h2>
@@ -69,13 +70,4 @@
     <img src="./public/img/patisserie1.jpg" class="photo" alt="Paris-Brest">
 </figure>
 
-<!-- Trouver une solution pour gérer le retour vers la liste des Topics selon la catégorie -->
-<!-- SOLUTION 1 -->
-<a class="retour" href="index.php?ctrl=forum&action=listTopics&id=1">- TOPICS CUISINE -</a>
-<a class="retour" href="index.php?ctrl=forum&action=listTopics&id=2">- TOPICS PATISSERIE -</a>
-
-<a class="retour" href="index.php?ctrl=forum&action=listTopics&id=<?=$post->getTopic()->getId()?>">- RETOUR -</a>
-
-<!-- Gérer le retour de la liste des posts vers la liste des topics de la catégorie correspondante -->
-
-
+<a class="retour" href="index.php?ctrl=forum&action=listTopics&id=<?=$topic->getCategory()->getId()?>">RETOUR</a>

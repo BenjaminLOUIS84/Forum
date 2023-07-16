@@ -247,6 +247,7 @@
         public function listPosts($idTopic){            // Fonction permettant d'afficher la liste de tout les posts de chaque utilisateurs selon le topic sélectionné
 
             $postManager = new PostManager();           // Instancier cette variable pour accéder aux méthodes de leurs classes
+            $topicManager = new TopicManager();         // Pour gérer le retour 
 
             return [
 
@@ -259,6 +260,7 @@
                         ? $postManager->findListByIdDep($idTopic, "Topic", ["dateCreate", "DESC"])
                         : $postManager->findAll(["dateCreate", "DESC"])
                     ),
+                    "topic" => $topicManager->findOneById($idTopic) // Pour gérer le retour
                 ]
             ];
         }
