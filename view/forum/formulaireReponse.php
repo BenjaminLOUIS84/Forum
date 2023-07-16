@@ -31,5 +31,5 @@
     <img src="./public/img/cuisine4.jpg" class="photo" alt="Tartare de boeuf et salade verte">
 </figure>
 
-<a class="retour" href="index.php?ctrl=forum&action=detailPost&id=<?=$reponse->getPost()->getId()?>">- RETOUR -</a>
+<a class="retour" href="index.php?ctrl=forum&action=detailPost&id=<?=$reponse->getPost()->getId()?>">RETOUR</a>
 

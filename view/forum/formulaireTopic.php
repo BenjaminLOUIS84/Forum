@@ -85,4 +85,4 @@
 
 <!-- Gérer le retour du formulaire vers la liste des topics de la catégorie correspondante -->
 
-<a class="retour" href="index.php?ctrl=forum&action=listTopics&id=<?=$category->getId()?><?=$category->getName()?>">- RETOUR -</a>
+<a class="retour" href="index.php?ctrl=forum&action=listTopics&id=<?=$category->getId()?><?=$category->getName()?>">RETOUR</a>

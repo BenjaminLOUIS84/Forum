@@ -35,4 +35,4 @@
     <img src="./public/img/patisserie4.jpg" class="photo" alt="Panna Cotta aux Fruits rouges">
 </figure>
 
-<a class="retour" href="index.php?ctrl=forum&action=listPosts&id=<?=$post->getTopic()->getId()?>">- RETOUR -</a>
+<a class="retour" href="index.php?ctrl=forum&action=listPosts&id=<?=$post->getTopic()->getId()?>">RETOUR</a>

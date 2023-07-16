@@ -80,4 +80,4 @@
 </figure>
 
 <!-- Lien vers la liste des Catégories -->
-<a class="retour" href="index.php?ctrl=forum&action=listCategories">Retour</a>
+<a class="retour" href="index.php?ctrl=forum&action=listCategories">RETOUR</a>
