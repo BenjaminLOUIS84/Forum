@@ -74,6 +74,7 @@
 <a class="retour" href="index.php?ctrl=forum&action=listTopics&id=1">- TOPICS CUISINE -</a>
 <a class="retour" href="index.php?ctrl=forum&action=listTopics&id=2">- TOPICS PATISSERIE -</a>
 
+<a class="retour" href="index.php?ctrl=forum&action=listTopics&id=<?=$post->getTopic()->getId()?>">- RETOUR -</a>
 
 <!-- Gérer le retour de la liste des posts vers la liste des topics de la catégorie correspondante -->
 

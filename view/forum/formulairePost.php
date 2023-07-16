@@ -35,5 +35,4 @@
     <img src="./public/img/patisserie4.jpg" class="photo" alt="Panna Cotta aux Fruits rouges">
 </figure>
 
-<a class="retour" href="index.php?ctrl=forum&action=listTopics&id=1">- TOPICS CUISINE -</a>
-<a class="retour" href="index.php?ctrl=forum&action=listTopics&id=2">- TOPICS PATISSERIE -</a>
+<a class="retour" href="index.php?ctrl=forum&action=listPosts&id=<?=$post->getTopic()->getId()?>">- RETOUR -</a>

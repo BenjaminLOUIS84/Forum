@@ -87,4 +87,4 @@
     <img src="./public/img/cuisine2.jpg" class="photo" alt="Rösti oeuf aux légumes">
 </figure>
 
-<a class="retour" href="index.php?ctrl=forum&action=listPosts&id=<?=$reponse->getPost()->getId()?>">- RETOUR -</a>
+<a class="retour" href="index.php?ctrl=forum&action=listPosts&id=<?=$post->getTopic()->getId()?>">- RETOUR -</a>
