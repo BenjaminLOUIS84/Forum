@@ -222,6 +222,7 @@
             return [  
 
                 "view" => VIEW_DIR."forum/listTopics.php",// Retour vers la liste des topics de la categorie correspondante
+                
                 $session->addFlash('success',"Supprimé avec succès"),// Afficher la notification
                                                         
                 "data" => [$topicManager->delete($id),// Pour effacer le topic
@@ -235,6 +236,7 @@
                     // ),
                     
                     "category" => $categoryManager->findOneById($id),
+
                     "user" => $userManager->findOneById($id)
 
                 ]                                   // Retour vers la liste des topics de la categorie correspondante
