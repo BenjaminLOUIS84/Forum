@@ -21,7 +21,7 @@
                     <nav>
 
                         <?php
-                           // if(App\Session::isAdmin()){   // Espace réservé à l'Administrateur (Peut accéder à tous!)
+                           // if(App\Session::isAdmin()){   // Espace réservé à l'Administrateur (Peut accéder à toutes les fonctionnalités du site!)
                             ?>
                             <!-- <a href="index.php">Accueil</a> -->
                             <!-- <a href="index.php?ctrl=security&action=loginUser">Connexion</a> -->
@@ -31,6 +31,7 @@
                             <!-- Accéder au profil -->
                             <!-- <a href=""><span class="fas fa-user"></span>&nbsp;></a> -->
                             <!-- Déconnexion -->
+
                             <!-- <a href="index.php?ctrl=security&action=logout">Déconnexion</a> -->
                         <?php
                             //}
@@ -41,12 +42,11 @@
                             if(App\Session::getUser()){ // Espace utilisateur (Peut accéder aux catégories et à son profil)
                                 ?>
                                 <a href="index.php">Accueil</a>
-                                <!-- <a href="index.php?ctrl=security&action=loginUser">Connexion</a> -->
                                 <a href="index.php?ctrl=forum&action=listCategories">Liste des Catégories</a>
-                                <!-- <a href="index.php?ctrl=security&action=listUsers">Liste des Membres</a> -->
-
+                                
                                 <!-- Accéder au profil -->
                                 <!-- <a href=""><span class="fas fa-user"></span>&nbsp;</a> -->
+
                                 <!-- Déconnexion -->
                                 <a href="index.php?ctrl=security&action=logout">Déconnexion</a>
                                 <?php
@@ -56,8 +56,6 @@
                                 <a href="index.php">Accueil</a>
                                 <a href="index.php?ctrl=security&action=loginUser">Connexion</a>
                                 <a href="index.php?ctrl=security&action=register">Inscription</a>
-                                <!-- <a href="index.php?ctrl=forum&action=listCategories">Liste des Catégories</a> -->
-                                <!-- <a href="index.php?ctrl=security&action=listUsers">Liste des Membres</a> -->
                                 <?php
                             }
                         ?>
