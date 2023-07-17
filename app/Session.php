@@ -33,7 +33,7 @@
             $_SESSION["user"] = $user;
         }
 
-        public static function getUser(){
+        public static function getUser(){ // Pour que les topics, posts et réponses soient de l'utilisateur en session, utiliser cette fonction $_SESSION->getUser();
             return (isset($_SESSION['user'])) ? $_SESSION['user'] : false;
         }
 

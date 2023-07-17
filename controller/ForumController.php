@@ -178,6 +178,8 @@
             $userManager = new UserManager();
 
             $session = new Session();                   // Instancier pour ajouter une notification
+
+            $session->getUser();                       // Pour que l'utilisateur connecté soit à l'origine du topic ajouté
             
             $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             date_default_timezone_set('Europe/Paris');
