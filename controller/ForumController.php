@@ -227,7 +227,7 @@
                                                         
                 "data" => [$topicManager->delete($id),// Pour effacer le topic
 
-                    "topics" => $topicManager->findOneById($id),
+                    "topics" => $topicManager->findAll(),
                     
                     // "topics" => (
                     //     isset($id)
