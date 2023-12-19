@@ -2,7 +2,7 @@
 
 <div class="topicT">
 
-    <h3>Remplir ce champs pour ajouter une nouvelle Catégorie à la base SQL</h3>
+    <h3>Remplir ce champs pour ajouter une nouvelle Catégorie</h3>
 
     <!-- L'action du formulaire exécute addCategory -->
     <form class="formulaireTopic" action="index.php?ctrl=forum&action=addCategory" method="post">

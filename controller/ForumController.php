@@ -174,12 +174,12 @@
             $topicManager = new TopicManager();         // Instancier ces variables pour accéder aux méthodes de leur classes et ajouter les filtres
             $postManager = new PostManager();           // Instancier pour lier un post à un topic
             $categoryManager = new CategoryManager();
-
             $userManager = new UserManager();
 
             $session = new Session();                   // Instancier pour ajouter une notification
 
-            $session->getUser();                       // Pour que l'utilisateur connecté soit à l'origine du topic ajouté
+            // Pour que l'utilisateur connecté soit à l'origine du topic ajouté
+            
             
             $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             date_default_timezone_set('Europe/Paris');
@@ -201,9 +201,7 @@
                     
                     "topics" => $topicManager->findListByIdDep($category_id, "category"),
                     "category" => $categoryManager->findOneById($category_id),
-
                     "user" => $userManager->findOneById($user_id),
-                    
                     
                     $postManager->add(['text' => $text, 'dateCreate' => $date, 'user_id' => $user_id, 'topic_id' => $topic_id]) 
 

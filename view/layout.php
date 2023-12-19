@@ -82,7 +82,16 @@
                 </main>
             </div>
             <footer>
-                <p>&copy; 2023 - Forum DEV COOK - <a href="index.php?ctrl=security&action=cgu">CGU</a> - <a href="index.php?ctrl=security&action=mentions">Mentions légales</a></p>
+                <div class="pied">
+
+                    <h1>&copy; 2023 - Forum DEV COOK</h1>
+
+                    <a href="https://www.youtube.com/@lesrecettesdebenjamin">Créer par Benjamin LOUIS</a>
+                    
+                    <a href="index.php?ctrl=security&action=cgu">CGU</a> - 
+                    <a href="index.php?ctrl=security&action=mentions">Mentions légales</a>
+
+                </div>
                 <!--<button id="ajaxbtn">Surprise en Ajax !</button> -> cliqué <span id="nbajax">0</span> fois-->
             </footer>
         </div>

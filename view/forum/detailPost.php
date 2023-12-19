@@ -9,12 +9,6 @@
    
     <table>
 
-        <thead>
-            <tr>
-                <th>REPONSES</th>
-            </tr>
-        </thead>
-
         <?php
             foreach($posts as $post){// On fait un foreach pour permettre l'affichage du tableau contenant les réponses 
                 $post->getText();   

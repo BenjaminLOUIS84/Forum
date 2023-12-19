@@ -4,6 +4,7 @@ body {
     text-align: center;
     font-family: cursive;
     background: radial-gradient(gray, rgb(9, 4, 42));
+    color: white;
 }
 
 #mainpage {
@@ -341,8 +342,9 @@ thead {
 /*PARAM LES TITRES ET LES LIENS DE NAVIGATION*/
 
 h1 {
-    color: black;
-    padding-bottom: 270px;
+    color: white;
+    /* padding-bottom: 270px; */
+    font-size: 2em;
 }
 
 h2 {
@@ -372,6 +374,7 @@ a:hover {
 .reponses {
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 40px;
 }
 
 /*Effet de carte retournée*/
@@ -590,4 +593,62 @@ footer {
 .log {
     width: 30%;
     margin-left: 420px;
+}
+
+/*//////////////////////////////////RESPONSIVE/////////////////////////////////*/
+
+@media (min-width: 769px) and (max-width: 1024px) {}
+
+@media (min-width: 0) and (max-width: 768px) {
+
+    .logo {
+        width: 70%;
+    }
+
+    .inscription {
+        padding-right: 0px;
+    }
+
+    .connexion {
+        padding-right: 70px;
+    }
+
+    .ban {
+        width: 100%;
+    }
+
+    a {
+        font-size: 0.8em;
+    }
+
+    h1 {
+        font-size: 1em;
+    }
+
+    .back:hover {
+        width: 95%;
+    }
+
+    .pied {
+        display: flex;
+        flex-direction: column;
+    }
+
+    th,
+    td {
+        padding: 5px;
+        text-align: left;
+        font-size: 0.9em;
+    }
+
+    .formulaireTopic {
+        display: contents;
+    }
+
+    #submit,
+    #submitLog {
+        margin-top: 20px;
+    }
+
+
 }

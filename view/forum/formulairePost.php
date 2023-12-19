@@ -12,7 +12,7 @@
         echo "<div class='titreT'>".$post->getTopic()->getTitle()."</div>";
     ?>
 
-    <h3>Remplir ce formulaire pour ajouter un nouveau Post à la base SQL</h3>
+    <h3>Remplir ce formulaire pour ajouter un nouveau Post</h3>
 
     <form class="formulaireTopic" action="index.php?ctrl=forum&action=addPost" method="post">
                     
