@@ -186,8 +186,11 @@
             $text = filter_input(INPUT_POST, 'text', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             $category_id = filter_input(INPUT_POST, 'category_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $_SESSION['user'] = filter_input(INPUT_POST, 'user_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             
+            // $user_id = filter_input(INPUT_POST, 'user_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            
+            // Pour lier le Topic à un utilisateur connecté
+            $user_id = Session::getUser()->getId();
 
             // Pour rédiger un post automatiquement quand on créer un topic on doit lier l'id topic au post
             
@@ -195,7 +198,7 @@
                 'title' => $title, 
                 'creationdate' => $date,
                 'category_id' => $category_id, 
-                'user_id' => $_SESSION['user']
+                'user_id' => $user_id
             ]);
             
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
@@ -210,14 +213,15 @@
                     
                     "category" => $categoryManager->findOneById($category_id),
 
-                    //////////////////////////////////////////////////////////////////////PB
-                    "user" => $userManager->findOneById($_SESSION['user']),
+                    //////////////////////////////////////////////////////////////////////
+                    "user" => $userManager->findOneById($user_id),
+                    
                     //////////////////////////////////////////////////////////////////////
 
                     $postManager->add([
                         'text' => $text, 
                         'dateCreate' => $date, 
-                        'user_id' => $_SESSION['user'], 
+                        'user_id' => $user_id, 
                         'topic_id' => $topic_id
                     ]) 
 
@@ -231,14 +235,17 @@
 
             $topicManager = new TopicManager();
             $categoryManager = new CategoryManager();
-            $userManager = new UserManager();
+            // $userManager = new UserManager();
 
             $session = new Session();                   // Instancier pour ajouter une notification
+
+            $category_id = $topicManager->findOneById($id);
 
             return [  
 
                 "view" => VIEW_DIR."forum/listTopics.php",// Retour vers la liste des topics de la categorie correspondante
-                
+                header("Location: index.php?ctrl=forum&action=detailCategory&id=".$categoryId->getCategory()->getId().""),
+
                 $session->addFlash('success',"Supprimé avec succès"),// Afficher la notification
                                                         
                 "data" => [
@@ -246,12 +253,13 @@
                     $topicManager->delete($id),// Pour effacer le topic
                     
                     //////////////////////////////////////////////////////////////////////////PB
-                    "topics" => $topicManager->findAll(),
+                    // "topics" => $topicManager->findAll(),
+                    "topics" => $topicManager->findTopicsByCategoryId($id),
                     //////////////////////////////////////////////////////////////////////////
                     
                     "category" => $categoryManager->findOneById($id),
 
-                    "user" => $userManager->findOneById($id)
+                    // "user" => $userManager->findOneById($id)
 
                 ]                                   // Retour vers la liste des topics de la categorie correspondante
             ];
