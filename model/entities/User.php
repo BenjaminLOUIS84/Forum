@@ -95,5 +95,10 @@
 
                 return $this;
         }
+
+        public function __toString() {                  // Pour faciliter l'affichage des autres informations d'une entité
+
+                return $this->pseudo. " ";  
+        }      
     }
 

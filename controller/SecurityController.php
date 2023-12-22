@@ -24,7 +24,7 @@
 
         //////////////////////////////AFFICHER LA LISTE DES UTILISATEURS
 
-        public function listUsers(){                    // Fonction pour afficher la liste de toute les catégories
+        public function listUsers($id){                    // Fonction pour afficher la liste de toute les utilisateurs
             
             $userManager = new UserManager();           // Instancier cette variable pour accéder aux méthodes de la classe
 
@@ -32,7 +32,10 @@
                 
                 "view" => VIEW_DIR."security/listUsers.php",
 
-                "data" => ["users" => $userManager->findAll(["pseudo","ASC"])]                               
+                "data" => [
+                    "users" => $userManager->findAll(["pseudo","ASC"]),
+                   
+                ]                               
             ];                                          // Permet d'afficher tous les utilisateurs
         }
 

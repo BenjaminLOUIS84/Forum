@@ -43,6 +43,7 @@
                                 ?>
                                 <a href="index.php">Accueil</a>
                                 <a href="index.php?ctrl=forum&action=listCategories">Liste des Catégories</a>
+                                <a href="index.php?ctrl=security&action=listUsers">Liste des Membres</a>
                                 
                                 <!-- Accéder au profil -->
                                 <!-- <a href=""><span class="fas fa-user"></span>&nbsp;</a> -->

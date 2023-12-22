@@ -92,6 +92,7 @@
         // }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////
+        // FONCTION POUR TROUVER UN UTILISATEUR PAR SON ID
         public function findOneById($id){
 
             $sql = "SELECT *

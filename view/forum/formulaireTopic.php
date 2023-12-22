@@ -12,6 +12,7 @@
 <div class="topicT">
 
     <?php
+        // if(isset($topics)){
         if($topics == true){//Créer une condition pour permettre l'ajout d'un topic dans une catégorie vide
 
             foreach($topics as $topic){}
@@ -35,8 +36,9 @@
                 <!-- Liaisons du topic avec la catégorie et l'utilisateur -->
 
                 <input type="hidden" name="category_id" value="<?=$topic->getCategory()->getId()?>">
+                
                 <input type="hidden" name="user_id" value="<?=$topic->getUser()->getId()?>">
-                                               
+
                 <input id="submit" type="submit" name="addTopic" value="AJOUTER">
 
             </form>
@@ -53,9 +55,10 @@
 
                 <form class="formulaireTopic" action="index.php?ctrl=forum&action=addTopic" method="post">
                     
-                    <label class="title" for="title">TITRE</label>
+                    <label class="title" for="title">TITRE DU TOPIC</label>
                     <input name="title" type="text" id="title" required>
-                    <label class="text" for="text">TEXTE</label>
+
+                    <label class="text" for="text">MESSAGE DU POST</label>
                     <input name="text" type="text" id="text" required>
 
                     <!-- Liaison du topic avec la catégorie -->
@@ -64,7 +67,7 @@
                     
                     <!-- Liaison du topic avec l'utilisateur problème pour récupérer l'Id de l'utilisateur nécessaire pour valider l'ajout d'un nouveau post dans une catégorie vide-->
                     
-                    <input type="hidden" name="user_id" value="<?=$user->getId()?>">
+                    <input type="hidden" name="user_id" value="<?//=$user->getId()?>">
                     
                     <input id="submit" type="submit" name="addTopic" value="AJOUTER">
             

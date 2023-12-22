@@ -179,31 +179,47 @@
             $session = new Session();                   // Instancier pour ajouter une notification
 
             // Pour que l'utilisateur connecté soit à l'origine du topic ajouté
-            
-            
+                        
             $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             date_default_timezone_set('Europe/Paris');
             $date = date('Y-m-d H:i:s');
             $text = filter_input(INPUT_POST, 'text', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             $category_id = filter_input(INPUT_POST, 'category_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $user_id = filter_input(INPUT_POST, 'user_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $_SESSION['user'] = filter_input(INPUT_POST, 'user_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            
 
             // Pour rédiger un post automatiquement quand on créer un topic on doit lier l'id topic au post
             
-            $topic_id = $topicManager->add(['title' => $title, 'creationdate' => $date,'category_id' => $category_id, 'user_id' => $user_id]);
+            $topic_id = $topicManager->add([
+                'title' => $title, 
+                'creationdate' => $date,
+                'category_id' => $category_id, 
+                'user_id' => $_SESSION['user']
+            ]);
             
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
 
                 "view" => VIEW_DIR."forum/listTopics.php", // Après l'ajout on reste sur la même page
+                
                 $session->addFlash('success',"Ajouté avec succès"),// Afficher la notification
+                
                 "data" => [                             // Ce référer à la base SQL pour ajouter les informations en argument dans le tableau ci dessous
                     
                     "topics" => $topicManager->findListByIdDep($category_id, "category"),
-                    "category" => $categoryManager->findOneById($category_id),
-                    "user" => $userManager->findOneById($user_id),
                     
-                    $postManager->add(['text' => $text, 'dateCreate' => $date, 'user_id' => $user_id, 'topic_id' => $topic_id]) 
+                    "category" => $categoryManager->findOneById($category_id),
+
+                    //////////////////////////////////////////////////////////////////////PB
+                    "user" => $userManager->findOneById($_SESSION['user']),
+                    //////////////////////////////////////////////////////////////////////
+
+                    $postManager->add([
+                        'text' => $text, 
+                        'dateCreate' => $date, 
+                        'user_id' => $_SESSION['user'], 
+                        'topic_id' => $topic_id
+                    ]) 
 
                 ]                                       // Pour lier un post au topic (rédiger le texte du post dans le formulaire, inclure la dateCreate du post, l'utilisateur et le topic)                  
             ];                                          
@@ -225,15 +241,13 @@
                 
                 $session->addFlash('success',"Supprimé avec succès"),// Afficher la notification
                                                         
-                "data" => [$topicManager->delete($id),// Pour effacer le topic
-
-                    "topics" => $topicManager->findAll(),
+                "data" => [
                     
-                    // "topics" => (
-                    //     isset($id)
-                    //     ? $topicManager->findListByIdDep($id, "category", ["creationdate", "DESC"])
-                    //     : $topicManager->findAll(["creationdate", "DESC"])
-                    // ),
+                    $topicManager->delete($id),// Pour effacer le topic
+                    
+                    //////////////////////////////////////////////////////////////////////////PB
+                    "topics" => $topicManager->findAll(),
+                    //////////////////////////////////////////////////////////////////////////
                     
                     "category" => $categoryManager->findOneById($id),
 

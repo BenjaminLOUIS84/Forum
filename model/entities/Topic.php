@@ -15,7 +15,7 @@
         private $user;
 
         public function __construct($data){         
-            $this->hydrate($data);//grâce à cet appel ...        
+            $this->hydrate($data);//grâce à cet appel ...           
         }
  
         /**
