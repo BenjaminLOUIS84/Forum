@@ -188,7 +188,7 @@
             $category_id = filter_input(INPUT_POST, 'category_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             
             // $user_id = filter_input(INPUT_POST, 'user_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            
+
             // Pour lier le Topic à un utilisateur connecté
             $user_id = Session::getUser()->getId();
 
@@ -243,8 +243,9 @@
 
             return [  
 
-                "view" => VIEW_DIR."forum/listTopics.php",// Retour vers la liste des topics de la categorie correspondante
-                header("Location: index.php?ctrl=forum&action=detailCategory&id=".$categoryId->getCategory()->getId().""),
+                // "view" => VIEW_DIR."forum/listTopics.php",
+                // Retour vers la liste des topics de la categorie correspondante
+                header("Location: index.php?ctrl=forum&action=listTopics&id=".$category_id->getCategory()->getId().""),
 
                 $session->addFlash('success',"Supprimé avec succès"),// Afficher la notification
                                                         

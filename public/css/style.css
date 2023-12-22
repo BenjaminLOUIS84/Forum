@@ -650,5 +650,19 @@ footer {
         margin-top: 20px;
     }
 
+    .suppC, .majC {
+        width: 30%;
+    }
+
+    .backT:hover:hover {
+        width: 110%;
+    }
+
+    td .suppT {
+        cursor: pointer;
+        width: 40%;
+        background: none;
+        margin-left: 0px;
+    }
 
 }

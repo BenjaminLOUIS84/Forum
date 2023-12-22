@@ -37,7 +37,7 @@
                                         <form action="index.php?ctrl=forum&action=delPost&id=<?=$post->getId()?>" method="post">
                                 
                                             <!-- Mettre une icône dans l'input -->
-                                            <input type="image" class="suppT" alt="Supprimer" src="./public/img/supp.jpg">
+                                            <input type="image" class="suppT" alt="Supprimer" src="./public/img/xmark-solid.svg">
 
                                         </form>
 
