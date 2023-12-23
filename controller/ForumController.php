@@ -415,9 +415,10 @@
 
         //////////////////////////////AJOUTER UNE REPONSE
 
-        public function addReponse(){                   // Fonction pour ajouter une réponse au post 
+        public function addReponse($post_id){           // Fonction pour ajouter une réponse au post 
 
-            $reponseManager = new ReponseManager();      // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
+            $reponseManager = new ReponseManager();     // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
+            // $postManager = new PostManager();     // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
 
             $session = new Session();                   // Instancier pour ajouter une notification
 
@@ -429,18 +430,32 @@
             $post_id = filter_input(INPUT_POST, 'post_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             // $user_id = filter_input(INPUT_POST, 'user_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            
             // Pour lier la réponse à un utilisateur connecté
             $user_id = Session::getUser()->getId();
             
-            $reponseManager->add(['text' => $text, 'dateCreate' => $date,'post_id' => $post_id, 'user_id' => $user_id]);// Pour effectuer l'action d'ajout
+            $reponse_id = $reponseManager->add([
+                'text' => $text, 
+                'dateCreate' => $date,
+                'post_id' => $post_id, 
+                'user_id' => $user_id
+            
+            ]);                                          // Pour effectuer l'action d'ajout
              
 
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
                                            
                 "view" => VIEW_DIR."forum/formulaireReponse.php",
+                // header("Location: index.php?ctrl=forum&action=detailPost&id".$reponse_id->getPost()->getId().""),
+
+                
                 $session->addFlash('success',"Ajouté avec succès"),// Afficher la notification
+                
                 "data" => [
+
                     "reponses" => $reponseManager->findListByIdDep($post_id, "post"),
+                    
+                    // "post" => $postManager->findOneById($post_id),
 
                 ]                       
             ];

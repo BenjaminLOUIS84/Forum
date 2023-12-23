@@ -1,5 +1,6 @@
 <?php
    $reponses = $result["data"]['reponses'];
+//    $post = $result["data"]['post'];
 ?>
 
 <h2>VOTRE REPONSE</h2>
