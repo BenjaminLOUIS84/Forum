@@ -7,24 +7,50 @@
 <div class="topicT">
 
     <?php
-       foreach($reponses as $reponse){}
+    if($reponses == true){
+        foreach($reponses as $reponse){}
+        ?>
+
+        <form class="formulaireTopic" action="index.php?ctrl=forum&action=addReponse" method="post">
+                        
+            <label class="text" for="text">TEXTE</label>
+            <input name="text" type="text" id="text" required>
+
+            <!-- Liaisons du post avec le topic et l'utilisateur -->
+
+            <input type="hidden" name="post_id" value="<?=$reponse->getPost()->getId()?>">
+            <input type="hidden" name="user_id" value="<?//=$reponse->getUser()->getId()?>">
+            
+            <input id="submit" type="submit" name="addReponse" value="AJOUTER">
+
+        </form>
+
+        <?php
+
+    }else{
+        
+        ?>
+        <form class="formulaireTopic" action="index.php?ctrl=forum&action=addReponse" method="post">
+                        
+            <label class="text" for="text">TEXTE</label>
+            <input name="text" type="text" id="text" required>
+
+            <!-- Liaisons du post avec le topic et l'utilisateur -->
+
+            <input type="hidden" name="post_id" value="<?=$post->getId()?>">
+            <input type="hidden" name="user_id" value="<?//=$reponse->getUser()->getId()?>">
+                
+            <input id="submit" type="submit" name="addReponse" value="AJOUTER">
+
+        </form>
+        <?php
+                
+    }
+
     ?>
 
-    <form class="formulaireTopic" action="index.php?ctrl=forum&action=addReponse" method="post">
-                    
-        <label class="text" for="text">TEXTE</label>
-        <input name="text" type="text" id="text" required>
-
-        <!-- Liaisons du post avec le topic et l'utilisateur -->
-
-        <input type="hidden" name="post_id" value="<?=$reponse->getPost()->getId()?>">
-        <input type="hidden" name="user_id" value="<?//=$reponse->getUser()->getId()?>">
-           
-        <input id="submit" type="submit" name="addReponse" value="AJOUTER">
-
-    </form>
-
 </div>
+
 
 <!-- Image en arrière plan -->
 <figure>
