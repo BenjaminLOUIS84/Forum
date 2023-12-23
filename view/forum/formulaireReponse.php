@@ -18,7 +18,7 @@
         <!-- Liaisons du post avec le topic et l'utilisateur -->
 
         <input type="hidden" name="post_id" value="<?=$reponse->getPost()->getId()?>">
-        <input type="hidden" name="user_id" value="<?=$reponse->getUser()->getId()?>">
+        <input type="hidden" name="user_id" value="<?//=$reponse->getUser()->getId()?>">
            
         <input id="submit" type="submit" name="addReponse" value="AJOUTER">
 

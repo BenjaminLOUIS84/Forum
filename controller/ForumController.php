@@ -344,9 +344,13 @@
             $topicManager = new TopicManager();       // Gérer le retour
             $session = new Session();                 // Instancier pour ajouter une notification
 
+            $post = $postManager->findOneById($topic_id);
+
             return [                                  // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
 
-                "view" => VIEW_DIR."forum/listPosts.php", // ATTENTION Gérer le retour vers la même page
+                // "view" => VIEW_DIR."forum/listPosts.php", // ATTENTION Gérer le retour vers la même page
+                header("Location: index.php?ctrl=forum&action=listPosts&id=".$post->getTopic()->getId().""),
+
                 $session->addFlash('success',"Supprimé avec succès"),// Afficher la notification
                 
                 "data" => [
