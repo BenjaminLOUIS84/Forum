@@ -397,8 +397,15 @@
                 "data" => [
 
                     "reponses" => $reponseManager->findListByIdDep($id, "post"),
+                    
+                    // "reponses" => (
+                    //     isset($id)
+                    //     ? $reponseManager->findListByIdDep($id, "post", ["dateCreate", "DESC"])
+                    //     : $reponseManager->findAll(["dateCreate", "DESC"])
+                    // ),
+
                     "post" => $postManager->findOneById($id)
-                    // "posts" => $postManager->findPostByIdDep($id, "Post"),
+                    // "post" => $postManager->findPostByIdDep($id, "Post"),
                     
                 ]     
                         

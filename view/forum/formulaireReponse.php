@@ -12,25 +12,26 @@
 
     <?php
     if($reponses == true){
-        foreach($reponses as $reponse){}
-        ?>
+        foreach($reponses as $reponse){
+            ?>
 
-            <form class="formulaireTopic" action="index.php?ctrl=forum&action=addReponse" method="post">
-                            
-                <label class="text" for="text">TEXTE</label>
-                <input name="text" type="text" id="text" required>
-                <input type="hidden" name="post_id" value="<?=$reponse->getPost()->getId()?>">
-                <input id="submit" type="submit" name="addReponse" value="AJOUTER">
+                <form class="formulaireTopic" action="index.php?ctrl=forum&action=addReponse" method="post">
+                                
+                    <label class="text" for="text">TEXTE</label>
+                    <input name="text" type="text" id="text" required>
+                    <input type="hidden" name="post_id" value="<?=$reponse->getPost()->getId()?>">
+                    <input id="submit" type="submit" name="addReponse" value="AJOUTER">
 
-            </form>
+                </form>
 
-
-        <?php
+            <?php
+        }
 
     }else{
-        
+
+        // foreach($post as $post){}
+        echo "<div class='titreT'>".$post->getText()."</div>";
         echo "Ajouter une première réponse à ce post";  
-        // foreach($posts as $post){}
         ?>
             <form class="formulaireTopic" action="index.php?ctrl=forum&action=addReponse" method="post">
                             
@@ -40,6 +41,10 @@
                 <input id="submit" type="submit" name="addReponse" value="AJOUTER">
 
             </form>
+
+            <a class="retour" href="index.php?ctrl=forum&action=detailPost&id=<?=$post->getId()?>">RETOUR</a>
+
+
         <?php
                 
     }
@@ -54,5 +59,5 @@
     <img src="./public/img/cuisine4.jpg" class="photo" alt="Tartare de boeuf et salade verte">
 </figure>
 
-<a class="retour" href="index.php?ctrl=forum&action=detailPost&id=<?=$reponse->getPost()->getId()?>">RETOUR</a>
+<a class="retour" href="index.php?ctrl=forum&action=detailPost&id=<?=$reponse->getPost()->getId()?><?=$post->getText()?>">RETOUR</a>
 
