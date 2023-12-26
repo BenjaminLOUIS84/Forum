@@ -187,8 +187,6 @@
 
             $category_id = filter_input(INPUT_POST, 'category_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             
-            // $user_id = filter_input(INPUT_POST, 'user_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
             // Pour lier le Topic à un utilisateur connecté
             $user_id = Session::getUser()->getId();
 
@@ -235,7 +233,6 @@
 
             $topicManager = new TopicManager();
             $categoryManager = new CategoryManager();
-            // $userManager = new UserManager();
 
             $session = new Session();                   // Instancier pour ajouter une notification
 
@@ -252,15 +249,9 @@
                 "data" => [
                     
                     $topicManager->delete($id),// Pour effacer le topic
-                    
-                    //////////////////////////////////////////////////////////////////////////PB
-                    // "topics" => $topicManager->findAll(),
-                    "topics" => $topicManager->findTopicsByCategoryId($id),
-                    //////////////////////////////////////////////////////////////////////////
-                    
+                   
+                    "topics" => $topicManager->findTopicsByCategoryId($id),     
                     "category" => $categoryManager->findOneById($id),
-
-                    // "user" => $userManager->findOneById($id)
 
                 ]                                   // Retour vers la liste des topics de la categorie correspondante
             ];
@@ -268,7 +259,6 @@
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // POSTS FONCTIONS
-
         //////////////////////////////AFFICHER LA LISTE DE TOUT LES POSTS SELON LE TOPIC 
 
         public function listPosts($idTopic){            // Fonction permettant d'afficher la liste de tout les posts de chaque utilisateurs selon le topic sélectionné
@@ -301,13 +291,12 @@
             
             return [   
                                                 
-                "view" => VIEW_DIR."forum/formulairePost.php",
-                
+                "view" => VIEW_DIR."forum/formulairePost.php", 
                 "data" => ["posts" => $postManager->findListByIdDep($idTopic, "topic")]                            
             ];
         }
 
-        //////////////////////////////AJOUTER UN POST VID
+        //////////////////////////////AJOUTER UN POST 
 
         public function addPost(){                    // Fonction pour accéder au formulaire des Posts selon le topic
 
@@ -322,7 +311,6 @@
 
             $topic_id = filter_input(INPUT_POST, 'topic_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-            // $user_id = filter_input(INPUT_POST, 'user_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             // Pour lier le Post à un utilisateur connecté
             $user_id = Session::getUser()->getId();
             
@@ -361,7 +349,6 @@
                     $postManager->delete($topic_id),    // Pour effacer le post 
                     
                     "posts" => $postManager->findAll(["dateCreate", "DESC"]),
-
                     "topic" => $topicManager->findListByIdDep($topic_id, "topic")
                 
                 ]
@@ -369,9 +356,7 @@
         }
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        
         // OBJECTIFS: Créer une fonction pour permettre l'ajout et l'affichage des réponses spécifiquent à chaque posts sous forme de cartes
-
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         //////////////////////////////AFFICHER TOUTES LES REPONSES SELON LE POST
@@ -400,15 +385,22 @@
 
         //////////////////////////////FORMULAIRE POUR AJOUTER UNE REPONSE
 
-        public function formulaireReponse($idPost){     // Fonction pour accéder au formulaire des Réponses à séparer de la fonction d'ajout
+        public function formulaireReponse($id){     // Fonction pour accéder au formulaire des Réponses à séparer de la fonction d'ajout
 
             $reponseManager = new ReponseManager();
+            $postManager = new PostManager();
 
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
                                                 
                 "view" => VIEW_DIR."forum/formulaireReponse.php",
 
-                "data" => ["reponses" => $reponseManager->findListByIdDep($idPost, "post")]     
+                "data" => [
+
+                    "reponses" => $reponseManager->findListByIdDep($id, "post"),
+                    "post" => $postManager->findOneById($id)
+                    // "posts" => $postManager->findPostByIdDep($id, "Post"),
+                    
+                ]     
                         
             ];
         }
@@ -418,7 +410,7 @@
         public function addReponse($post_id){           // Fonction pour ajouter une réponse au post 
 
             $reponseManager = new ReponseManager();     // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
-            // $postManager = new PostManager();     // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
+            $postManager = new PostManager();     // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
 
             $session = new Session();                   // Instancier pour ajouter une notification
 
@@ -428,8 +420,6 @@
             $date = date('Y-m-d H:i:s');
 
             $post_id = filter_input(INPUT_POST, 'post_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-
-            // $user_id = filter_input(INPUT_POST, 'user_id', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             
             // Pour lier la réponse à un utilisateur connecté
             $user_id = Session::getUser()->getId();
@@ -440,23 +430,19 @@
                 'post_id' => $post_id, 
                 'user_id' => $user_id
             
-            ]);                                          // Pour effectuer l'action d'ajout
-             
+            ]);                                          
 
             return [                                    // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
                                            
                 "view" => VIEW_DIR."forum/formulaireReponse.php",
-                // header("Location: index.php?ctrl=forum&action=detailPost&id".$reponse_id->getPost()->getId().""),
-
                 
                 $session->addFlash('success',"Ajouté avec succès"),// Afficher la notification
                 
                 "data" => [
 
                     "reponses" => $reponseManager->findListByIdDep($post_id, "post"),
-                    
-                    // "post" => $postManager->findOneById($post_id),
-
+                    "post" => $postManager->findOneById($post_id),
+                    // "posts" => $postManager->findPostByIdDep($post_id, "Post"),
                 ]                       
             ];
         }
@@ -472,10 +458,12 @@
             return [                                     // Le nom de la fonction doit correspondre avec le fichier cible pour accéder à celui ci
 
                 "view" => VIEW_DIR."forum/detailPost.php", // ATTENTION Gérer le retour vers la même page
-                $session->addFlash('success',"Supprimé avec succès"),// Afficher la notification
-                "data" => [
-                    $reponseManager->delete($id),
 
+                $session->addFlash('success',"Supprimé avec succès"),// Afficher la notification
+
+                "data" => [
+
+                    $reponseManager->delete($id),
                     "posts" => $postManager->findAll()
 
                     // "posts" => (
@@ -483,6 +471,7 @@
                     //     ? $postManager->findListByIdDep($id, "Post", ["dateCreate", "DESC"]) // Pour afficher les réponses de chaque posts
                     //     : $postManager->findAll(["dateCreate", "DESC"]) // Pour afficher toute les réponses
                     // )
+
                 ]
             ];
         }

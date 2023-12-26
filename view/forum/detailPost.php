@@ -3,7 +3,6 @@
     $reponses = $result["data"]['reponses'];// Cette variable permet d'accéder et d'afficher les informations demandées dans cette page
 ?>
 
-<h2>DETAIL</h2>
 <?php
     if($reponses == true){// Créer une condition pour afficher un post sans réponses si il y a une ou plusieurs réponses alors afficher ci desous)
 ?>  

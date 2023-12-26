@@ -1,6 +1,9 @@
 <?php
-   $reponses = $result["data"]['reponses'];
-//    $post = $result["data"]['post'];
+
+    $reponses = $result["data"]['reponses'];
+    $post = $result["data"]['post'];
+    // $posts = $result["data"]['posts'];
+    
 ?>
 
 <h2>VOTRE REPONSE</h2>
@@ -12,38 +15,39 @@
         foreach($reponses as $reponse){}
         ?>
 
-        <form class="formulaireTopic" action="index.php?ctrl=forum&action=addReponse" method="post">
-                        
-            <label class="text" for="text">TEXTE</label>
-            <input name="text" type="text" id="text" required>
+            <form class="formulaireTopic" action="index.php?ctrl=forum&action=addReponse" method="post">
+                            
+                <label class="text" for="text">TEXTE</label>
+                <input name="text" type="text" id="text" required>
 
-            <!-- Liaisons du post avec le topic et l'utilisateur -->
+                <!-- Liaisons du post avec le topic et l'utilisateur -->
 
-            <input type="hidden" name="post_id" value="<?=$reponse->getPost()->getId()?>">
-            <input type="hidden" name="user_id" value="<?//=$reponse->getUser()->getId()?>">
-            
-            <input id="submit" type="submit" name="addReponse" value="AJOUTER">
+                <input type="hidden" name="post_id" value="<?=$reponse->getPost()->getId()?>">
+                
+                <input id="submit" type="submit" name="addReponse" value="AJOUTER">
 
-        </form>
+            </form>
+
 
         <?php
 
     }else{
         
+        echo "Ajouter une première réponse à ce post";  
+        // foreach($posts as $post){}
         ?>
-        <form class="formulaireTopic" action="index.php?ctrl=forum&action=addReponse" method="post">
-                        
-            <label class="text" for="text">TEXTE</label>
-            <input name="text" type="text" id="text" required>
+            <form class="formulaireTopic" action="index.php?ctrl=forum&action=addReponse" method="post">
+                            
+                <label class="text" for="text">TEXTE</label>
+                <input name="text" type="text" id="text" required>
 
-            <!-- Liaisons du post avec le topic et l'utilisateur -->
+                <!-- Liaisons du post avec le topic et l'utilisateur -->
 
-            <input type="hidden" name="post_id" value="<?=$post->getId()?>">
-            <input type="hidden" name="user_id" value="<?//=$reponse->getUser()->getId()?>">
-                
-            <input id="submit" type="submit" name="addReponse" value="AJOUTER">
+                <input type="hidden" name="post_id" value="<?=$post->getId()?>">
 
-        </form>
+                <input id="submit" type="submit" name="addReponse" value="AJOUTER">
+
+            </form>
         <?php
                 
     }
