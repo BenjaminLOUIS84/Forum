@@ -404,9 +404,14 @@
                     //     : $reponseManager->findAll(["dateCreate", "DESC"])
                     // ),
 
-                    "post" => $postManager->findOneById($id)
-                    // "posts" => $postManager->findPostByIdDep($id, "posts"),
-                    
+                    "post" => $postManager->findOneById($id),
+                    // "posts" => $postManager->findPostByIdDep($id, "post"),
+                    // "posts" => (
+                    //     isset($id)
+                    //     ? $postManager->findPostByIdDep($id, "post", ["dateCreate", "DESC"]) // Pour afficher les réponses de chaque posts
+                    //     : $postManager->findAll(["dateCreate", "DESC"]) // Pour afficher toute les réponses
+                    // )
+            
                 ]     
                         
             ];
@@ -417,7 +422,7 @@
         public function addReponse($post_id){           // Fonction pour ajouter une réponse au post 
 
             $reponseManager = new ReponseManager();     // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
-            $postManager = new PostManager();     // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
+            $postManager = new PostManager();           // Instancier cette variable pour accéder aux méthodes de la classe et ajouter les filtres
 
             $session = new Session();                   // Instancier pour ajouter une notification
 
