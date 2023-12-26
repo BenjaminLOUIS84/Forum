@@ -19,11 +19,7 @@
                             
                 <label class="text" for="text">TEXTE</label>
                 <input name="text" type="text" id="text" required>
-
-                <!-- Liaisons du post avec le topic et l'utilisateur -->
-
                 <input type="hidden" name="post_id" value="<?=$reponse->getPost()->getId()?>">
-                
                 <input id="submit" type="submit" name="addReponse" value="AJOUTER">
 
             </form>
@@ -40,11 +36,7 @@
                             
                 <label class="text" for="text">TEXTE</label>
                 <input name="text" type="text" id="text" required>
-
-                <!-- Liaisons du post avec le topic et l'utilisateur -->
-
                 <input type="hidden" name="post_id" value="<?=$post->getId()?>">
-
                 <input id="submit" type="submit" name="addReponse" value="AJOUTER">
 
             </form>
