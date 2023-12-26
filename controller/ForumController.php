@@ -405,7 +405,7 @@
                     // ),
 
                     "post" => $postManager->findOneById($id)
-                    // "post" => $postManager->findPostByIdDep($id, "Post"),
+                    // "posts" => $postManager->findPostByIdDep($id, "posts"),
                     
                 ]     
                         

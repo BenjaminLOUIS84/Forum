@@ -57,5 +57,3 @@
 </figure>
 
 <a class="retour" href="index.php?ctrl=forum&action=detailPost&id=<?=$reponse->getPost()->getId()?><?=$post->getText()?>">RETOUR</a>
-
-1
