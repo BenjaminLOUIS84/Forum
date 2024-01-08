@@ -89,10 +89,10 @@
 
                     <a href="https://www.youtube.com/@lesrecettesdebenjamin">Créer par Benjamin LOUIS</a>
                     
-                    <div class="infos">
-                        <a href="index.php?ctrl=security&action=cgu">CGU</a>
-                        <a href="index.php?ctrl=security&action=mentions">Mentions légales</a>
-                    </div>
+                   
+                    <a href="index.php?ctrl=security&action=cgu">CGU</a> - 
+                    <a href="index.php?ctrl=security&action=mentions">Mentions légales</a>
+                
                 </div>
                 <!--<button id="ajaxbtn">Surprise en Ajax !</button> -> cliqué <span id="nbajax">0</span> fois-->
             </footer>

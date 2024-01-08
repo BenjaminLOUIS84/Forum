@@ -561,11 +561,6 @@ footer {
 
 /*CGU et Mentions Légales*/
 
-.infos {
-    display: flex;
-    flex-direction: row;
-}
-
 /*CGU*/
 
 .topicCGU {
@@ -637,7 +632,7 @@ footer {
 
     .pied {
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
     }
 
     th,
