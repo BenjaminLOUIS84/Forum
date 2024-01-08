@@ -556,10 +556,15 @@ nav {
 }
 
 footer {
-    margin-top: 250px;
+    margin-top: 280px;
 }
 
 /*CGU et Mentions Légales*/
+
+.infos {
+    display: flex;
+    flex-direction: row;
+}
 
 /*CGU*/
 
@@ -632,7 +637,7 @@ footer {
 
     .pied {
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
     }
 
     th,
