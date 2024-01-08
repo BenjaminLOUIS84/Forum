@@ -17,34 +17,39 @@
 </div>
 
 <div class="topic">
-    
     <?php
-        foreach($categories as $category){
-            ?>
-                <div class="back">
-                    <!-- Pour accéder aux TOPICS de la catégorie sélectionnée -->
-                    <a href="index.php?ctrl=forum&action=listTopics&id=<?=$category->getId()?>"><?=$category->getName()?></a>
+        // if(App\Session::isAdmin()){
 
-                    <div class="option">
+            foreach($categories as $category){
+                ?>
+                    <div class="back">
+                        <!-- Pour accéder aux TOPICS de la catégorie sélectionnée -->
+                        <a href="index.php?ctrl=forum&action=listTopics&id=<?=$category->getId()?>"><?=$category->getName()?></a>
 
-                        <!-- Pour modifier une catégorie -->
-                        <form action="index.php?ctrl=forum&action=formCat&id=<?=$category->getId()?>" method="post">
-                        
-                            <input type="image" class="majC" alt="Modifier" src="./public/img/pen-to-square-solid.svg">
-                        </form>
-                        
-                         <!-- Pour supprimmer une catégorie directement dans la liste -->
-                         <form action="index.php?ctrl=forum&action=delCategory&id=<?=$category->getId()?>" method="post">
+                        <div class="option">
+
+                            <!-- Pour modifier une catégorie -->
+                            <!--<form action="index.php?ctrl=forum&action=formCat&id=<?//=$category->getId()?>" method="post">
                             
-                            <!-- Mettre une icône dans l'input -->
-                            <input type="image" class="suppC" alt="Supprimer" src="./public/img/xmark-solid.svg">
+                                <input type="image" class="majC" alt="Modifier" src="./public/img/pen-to-square-solid.svg">
+                            </form>-->
+                            
+                            <!-- Pour supprimmer une catégorie directement dans la liste -->
+                            <!--<form action="index.php?ctrl=forum&action=delCategory&id=<?//=$category->getId()?>" method="post">
+                                
+                                <!-- Mettre une icône dans l'input -->
+                                <!--<input type="image" class="suppC" alt="Supprimer" src="./public/img/xmark-solid.svg">
 
-                        </form>
+                            </form>-->
+                        </div>
+
                     </div>
+                <?php
+            }
+        // }else{
+           
 
-                </div>
-            <?php
-        }
+        //}
     ?>
 
 </div>
